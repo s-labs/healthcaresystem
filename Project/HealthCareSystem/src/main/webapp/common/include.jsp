@@ -5,22 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+
 </head>
 <body>
-<jsp:include page="/common/include.jsp"></jsp:include>
-<div class="header">
-	<jsp:include page="/common/header.jsp"></jsp:include>
-</div>
-
-<hr/>
-<div class="content">
-
-	<div class="leftSection">
-	<jsp:include page="/common/admin/leftnavigation.jsp"></jsp:include>
-	</div>
-	<div class="right">
-	Admin home page
-	</div>
-</div>
 </body>
 </html>

@@ -12,39 +12,30 @@ import com.healthcare.model.StateEntity;
 import com.healthcare.services.AdminService;
 
 @Controller
+@RequestMapping("/admin")
 public class AdminServiceController {
-	
-	@Autowired
-    private AdminService  adminService;
-	
-	 @RequestMapping(value="/testyans",method = RequestMethod.GET)
-	   public String printHello(ModelMap model) {
-		 System.out.println(" thsi is hello message ");
-	      model.addAttribute("message", "Hello Spring MVC Framework!!!!!!!");
 
-	      return "hello";
-	   }
-	
-	@RequestMapping(value = "/addState", method = RequestMethod.GET)
-	public String addState(ModelMap map) {
-		map.addAttribute("state", new StateEntity());
-		return "admin/addState";
-	}
+	@Autowired
+	private AdminService adminService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String test(ModelMap map) {
-		System.out.println("test ==> ");
+	public String homepage(ModelMap map) {
+		
+		return "admin/homepage";
+	}
+
+	@RequestMapping(value = "/addState", method = RequestMethod.GET)
+	public String addStateFrom(ModelMap map) {
 		map.addAttribute("state", new StateEntity());
 		return "admin/addState";
 	}
-	
-	 @RequestMapping(value = "/add", method = RequestMethod.POST)
-	    public String addEmployee(@ModelAttribute(value="state") StateEntity state, BindingResult result)
-	    {
-		 System.out.println(" ================ysna==================");
-		 System.out.println(" name :"+state.getName());
-		 	adminService.addState(state);
-	        return "redirect:/";
-	    }
+
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	public String addState(@ModelAttribute(value = "state") StateEntity state,
+			BindingResult result) {
+
+		adminService.addState(state);
+		return "redirect:/";
+	}
 
 }

@@ -14,7 +14,7 @@
 		 <intercept-url pattern="/**" access="permitAll" />
  
 
-		<form-login login-page="/login.htm" default-target-url="/adminWelcome.htm"
+		<form-login login-page="/login.htm" default-target-url="/admin/"
 			authentication-failure-url="/accessdenied" />
 		<logout logout-success-url="/logout" />
 	</http>
