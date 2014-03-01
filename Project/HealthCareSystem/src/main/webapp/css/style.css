@@ -1,4 +1,16 @@
 @CHARSET "ISO-8859-1";
+.content {
+	height: 100px;
+}
 .leftSection {
 	float :left;	
+	border : 1px solid;
+	padding:20px;
+	width:200px;
+	height : 100%;
+}
+.rightSection {
+	float :left;	
+	padding:20px;
+	height : 100%;
 }

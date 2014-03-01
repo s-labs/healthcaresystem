@@ -2,6 +2,8 @@ package com.healthcare.services;
 
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +21,13 @@ public class AdminServiceImpl implements AdminService {
 	public void addState(StateEntity state) {
     	stateDao.addState(state);
 
+	}
+
+	@Override
+	@Transactional
+	public List<StateEntity> getAllStates() {
+		List<StateEntity> states = stateDao.getAllStates();
+		return states;
 	}
 
 }

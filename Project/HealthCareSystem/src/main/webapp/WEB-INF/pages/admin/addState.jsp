@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<jsp:include page="/common/include.jsp"></jsp:include>
 <div class="header">
 	<jsp:include page="/common/header.jsp"></jsp:include>
 </div>
@@ -18,10 +18,14 @@
 <hr/>
 <div class="content">
 
-	<div class="left">
+	<div class="leftSection">
 	<jsp:include page="/common/admin/leftnavigation.jsp"></jsp:include>
 	</div>
-	<div class="right">
+	<div class="rightSection">
+	
+	<c:forEach var="state" items="${states}">
+		${state.name} <br/>
+	</c:forEach>
 
 <form:form method="post" action="add" commandName="state">
   

@@ -1,7 +1,7 @@
 #################
 ## Eclipse
 #################
-
+/Project/HealthCareSystem/target
 *.pydevproject
 .project
 .metadata
@@ -213,3 +213,4 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+*.class
