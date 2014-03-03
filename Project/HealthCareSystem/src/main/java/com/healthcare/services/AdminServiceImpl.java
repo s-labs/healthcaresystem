@@ -23,14 +23,12 @@ public class AdminServiceImpl implements AdminService {
 
 	}
 
-	@Override
 	@Transactional
 	public List<StateEntity> getAllStates() {
 		List<StateEntity> states = stateDao.getAllStates();
 		return states;
 	}
 
-	@Override
 	@Transactional
 	public StateEntity getState(Long stateCode) {
 		// TODO Auto-generated method stub

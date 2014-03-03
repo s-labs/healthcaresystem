@@ -31,7 +31,6 @@ public class StateDaoImpl implements StateDao {
 
 	}
 
-	@Override
 	public StateEntity getState(Long code) {
 		String hql = "FROM StateEntity S WHERE S.code = "+code;
 		Session session = this.sessionFactory.getCurrentSession();
