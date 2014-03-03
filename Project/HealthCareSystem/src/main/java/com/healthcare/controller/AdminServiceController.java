@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -34,8 +35,18 @@ public class AdminServiceController {
 		map.addAttribute("states", states);
 		return "admin/addState";
 	}
+	
+	 @RequestMapping("/state/{stateCode}")
+	 public ModelAndView stateDetails(@PathVariable("stateCode") Long stateCode) {
+		 ModelAndView model = new ModelAndView();
+		
+			StateEntity state = adminService.getState(stateCode);
+			model.addObject("state", state);
+			model.setViewName("admin/state");
+			return model; 
+	 }
 
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/addState", method = RequestMethod.POST)
 	public ModelAndView addState(@ModelAttribute(value = "state") StateEntity state,
 			BindingResult result) {
 

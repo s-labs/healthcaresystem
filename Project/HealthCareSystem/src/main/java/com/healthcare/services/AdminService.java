@@ -8,5 +8,6 @@ public interface AdminService {
 	
 	public void addState(StateEntity state);
 	public List<StateEntity> getAllStates();
+	public StateEntity getState(Long stateCode);
 
 }

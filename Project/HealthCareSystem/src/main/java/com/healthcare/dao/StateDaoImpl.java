@@ -2,6 +2,8 @@ package com.healthcare.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -27,6 +29,19 @@ public class StateDaoImpl implements StateDao {
 	public void deleteState(Integer stateId) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public StateEntity getState(Long code) {
+		String hql = "FROM StateEntity S WHERE S.code = "+code;
+		Session session = this.sessionFactory.getCurrentSession();
+		Query query = session .createQuery(hql);
+		List results = query.list();
+		StateEntity stateEntity = null;
+		if(results!= null && results.size() > 0) {
+			stateEntity = (StateEntity) results.get(0);
+		}
+		return stateEntity;
 	}
 
 }

@@ -1,4 +1,16 @@
 @CHARSET "ISO-8859-1";
+
+.header {
+	overflow:auto;
+	}
+	.headtitle {
+	float:left;
+	width:500px;
+	}
+	.logoutSection {
+	float:right;
+		margin:30px;
+	}
 .content {
 	height: 100px;
 }

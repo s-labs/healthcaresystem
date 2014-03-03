@@ -6,23 +6,12 @@
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 
+<%@ taglib prefix="template" tagdir="/WEB-INF/tags/template" %>
 
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>fist page</title>
-</head>
-<body>
-	<sec:authorize ifAnyGranted="ROLE_USER">
-		
-		<td><a href="<c:url value="/j_spring_security_logout"/>">Logout</a>
-		</td>
-	</sec:authorize>
-	<sec:authorize ifNotGranted="ROLE_USER">
-		<td><a href=" <c:url value="/login.htm"/>">Login</a>
-		</td>
-	</sec:authorize>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-	<h1>Message111111 : ${message}</h1>
-</body>
-</html>
+<c:set var="title">Health care System</c:set>
+<template:page pageTitle="${pageTitle}" bodyCss="home">
+	
+	This the Welcome page 
+</template:page>

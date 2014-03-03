@@ -30,4 +30,11 @@ public class AdminServiceImpl implements AdminService {
 		return states;
 	}
 
+	@Override
+	@Transactional
+	public StateEntity getState(Long stateCode) {
+		// TODO Auto-generated method stub
+		return stateDao.getState(stateCode);
+	}
+
 }

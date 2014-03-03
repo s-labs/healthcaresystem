@@ -9,5 +9,6 @@ public interface StateDao {
     public void addState(StateEntity state);
     public List<StateEntity> getAllStates();
     public void deleteState(Integer stateId);
+    public StateEntity getState(Long code);
 
 }
