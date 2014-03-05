@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.healthcare.dao.PatientDao;
 import com.healthcare.model.PatientEntity;
@@ -15,8 +16,9 @@ public class HealthCenterServiceImpl implements HealthCenterService{
 	PatientDao patientDao;
 	
 	@Override
+	@Transactional
 	public void addPatient(PatientEntity Patient) {
-		// TODO Auto-generated method stub
+		patientDao.addPatient(Patient);
 		
 	}
 

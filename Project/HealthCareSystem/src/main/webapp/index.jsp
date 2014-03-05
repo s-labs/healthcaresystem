@@ -13,5 +13,5 @@
 <c:set var="title">Health care System</c:set>
 <template:page pageTitle="${pageTitle}" bodyCss="home">
 	
-	This the Welcome page 
+...	This the Welcome page 
 </template:page>

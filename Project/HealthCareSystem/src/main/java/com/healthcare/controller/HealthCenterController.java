@@ -42,7 +42,7 @@ public class HealthCenterController {
 		 ModelAndView model = new ModelAndView();
 		
 			
-			model.setViewName("admin/patient");
+			model.setViewName("healthcenter/patient");
 			return model; 
 	 }
 
@@ -54,7 +54,7 @@ public class HealthCenterController {
 		healthCenterService.addPatient(patient);
 		List<PatientEntity> patients = healthCenterService.getAllPatients();
 		model.addObject("patients", patients);
-		model.setViewName("admin/addPatient");
+		model.setViewName("healthcenter/addPatient");
 		return model;
 	}
 
