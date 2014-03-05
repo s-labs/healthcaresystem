@@ -9,12 +9,14 @@
 	<http auto-config="true" use-expressions="true">
 		<intercept-url pattern="/login.htm" access="permitAll" />
 		<intercept-url pattern="/logout.htm" access="permitAll" />
+		<intercept-url pattern="/home.htm" access="hasRole('ROLE_USER')" />
 		<intercept-url pattern="/admin/*" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/healthcenter/*" access="hasRole('ROLE_HEALTHCENTER')" />
 		<intercept-url pattern="/accessdenied" access="permitAll" />
 		 <intercept-url pattern="/**" access="permitAll" />
  
 
-		<form-login login-page="/login.htm" default-target-url="/admin/"
+		<form-login login-page="/login.htm" default-target-url="/home.htm"
 			authentication-failure-url="/accessdenied" />
 		<logout logout-success-url="/logout" />
 	</http>
@@ -23,6 +25,7 @@
 		<authentication-provider>
 			<user-service>
 				<user name="admin" password="admin" authorities="ROLE_USER,ROLE_ADMIN" />
+				<user name="healthcenter" password="healthcenter" authorities="ROLE_USER,ROLE_HEALTHCENTER" />
 
 			</user-service>
 		</authentication-provider>

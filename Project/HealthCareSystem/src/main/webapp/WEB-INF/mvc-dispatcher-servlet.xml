@@ -37,6 +37,7 @@
 			<props>
 
 				<prop key="/login.htm">loginController</prop>
+				<prop key="/home.htm">homePageController</prop>
 				<prop key="/adminWelcome.htm">adminWelcomeController</prop>
 
 			</props>
@@ -50,6 +51,10 @@
 	<bean name="loginController"
 		class="org.springframework.web.servlet.mvc.ParameterizableViewController">
 		<property name="viewName" value="login" />
+	</bean>
+	<bean name="homePageController"
+		class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="home" />
 	</bean>
 	<bean name="adminWelcomeController"
 		class="org.springframework.web.servlet.mvc.ParameterizableViewController">

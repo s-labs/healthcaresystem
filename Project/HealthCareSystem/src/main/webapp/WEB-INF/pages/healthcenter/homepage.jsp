@@ -13,9 +13,9 @@
 <c:set var="title">Health care System :: Admin Home Page</c:set>
 <template:page pageTitle="${pageTitle}" bodyCss="home">
 	<div class="leftSection">
-	<jsp:include page="/common/admin/leftnavigation.jsp"></jsp:include>
+	<jsp:include page="/common/healthcenter/leftnavigation.jsp"></jsp:include>
 	</div>
 	<div class="right">
-	this is admin home page
+	this is health center home page
 	</div>
 </template:page>
