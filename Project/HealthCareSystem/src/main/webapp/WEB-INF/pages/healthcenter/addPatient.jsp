@@ -43,7 +43,7 @@
 
 					<tr>
 						<td>last Name</td>
-						<td><form:input path="lastname" /></td>
+						<td><form:input path="lastName" /></td>
 					</tr>
 					<tr>
 						<td colspan="2"><input type="submit" value="add Patient" />

@@ -26,7 +26,7 @@
 		your admin ... click here to go to admin home page <a href="admin/"> home page </a> <br/>
 	</sec:authorize>
 	<sec:authorize ifAnyGranted="ROLE_HEALTHCENTER">
-		your healthcenter ... click here to go to healthcenter home page <a href="healthcenter/"> home page </a> <br/>
+		your healthcenter ... click here to go to healthcenter home page <a href="healthCenter/"> home page </a> <br/>
 	</sec:authorize>
 </body>
 </html>
