@@ -18,7 +18,7 @@
 			<jsp:include page="/common/healthcenter/leftnavigation.jsp"></jsp:include>
 		</div>
 		<div class="rightSection">
-<table>
+			<table>
 				<thead>
 					<tr>
 						<th>S.No</th>
@@ -45,10 +45,158 @@
 						<td>last Name</td>
 						<td><form:input path="lastName" /></td>
 					</tr>
+					
+					<tr>
+						<td>middl eName</td>
+						<td><form:input path="middleName" /></td>
+					</tr>
+					
+					<tr>
+						<td>first Name</td>
+						<td><form:input path="firstName" /></td>
+					</tr>
+					
+					<tr>
+						<td>dob</td>
+						<td><form:input path="dob" /></td>
+					</tr>
+					
+					<tr>
+						<td>age</td>
+						<td><form:input path="age" /></td>
+					</tr>
+					
+					<tr>
+						<td>gender</td>
+						<td><form:input path="gender" /></td>
+					</tr>
+					
+					<tr>
+						<td>occupation</td>
+						<td><form:input path="occupation" /></td>
+					</tr>
+					
+					<tr>
+						<td>father/Husband Name</td>
+						<td><form:input path="fatherHusbandName" /></td>
+					</tr>
+					
+					<tr>
+						<td>mother Name</td>
+						<td><form:input path="motherName" /></td>
+					</tr>
+					
+					<tr>
+						<td>address Line1</td>
+						<td><form:input path="addressLine1" /></td>
+					</tr>
+					
+					<tr>
+						<td>address Line2</td>
+						<td><form:input path="addressLine2" /></td>
+					</tr>
+					
+					<tr>
+						<td>pinCode</td>
+						<td><form:input path="pinCode" /></td>
+					</tr>
+					
+					<tr>
+						<td>city/Town/Village</td>
+						<td><form:input path="cityTownVillage" /></td>
+					</tr>
+					
+					<tr>
+						<td>mandal</td>
+						<td><form:input path="mandal" /></td>
+					</tr>
+					
+					<tr>
+						<td>district</td>
+						<td><form:input path="district" /></td>
+					</tr>
+					
+					<tr>
+						<td>sate</td>
+						<td><form:input path="sate" /></td>
+					</tr>
+					
+					<tr>
+						<td>email</td>
+						<td><form:input path="email" /></td>
+					</tr>
+					
+					<tr>
+						<td>phone</td>
+						<td><form:input path="phone" /></td>
+					</tr>
+					
+					<tr>
+						<td>emerContactPerName</td>
+						<td><form:input path="emerContactPerName" /></td>
+					</tr>
+					
+					<tr>
+						<td>emerContactPerRelationship</td>
+						<td><form:input path="emerContactPerRelationship" /></td>
+					</tr>
+					
+					<tr>
+						<td>emerContactPerAddressLine1</td>
+						<td><form:input path="emerContactPerAddressLine1" /></td>
+					</tr>
+					
+					<tr>
+						<td>emerContactPerAddressLine2</td>
+						<td><form:input path="emerContactPerAddressLine2" /></td>
+					</tr>
+					
+					<tr>
+						<td>emerContactPerPinCode</td>
+						<td><form:input path="emerContactPerPinCode" /></td>
+					</tr>
+					
+					<tr>
+						<td>emerContactPerCit</td>
+						<td><form:input path="emerContactPerCit" /></td>
+					</tr>
+					
+					<tr>
+						<td>emerContactPerMandal</td>
+						<td><form:input path="emerContactPerMandal" /></td>
+					</tr>
+					
+					<tr>
+						<td>emerContactPerDistrict</td>
+						<td><form:input path="emerContactPerDistrict" /></td>
+					</tr>
+					
+					<tr>
+						<td>emerContactPerState</td>
+						<td><form:input path="emerContactPerState" /></td>
+					</tr>
+					
+					<tr>
+						<td>emerContactPerPhone</td>
+						<td><form:input path="emerContactPerPhone" /></td>
+					</tr>
+					
+					<tr>
+						<td>emerContactPerPhoneNumber</td>
+						<td><form:input path="emerContactPerPhoneNumber" /></td>
+					</tr>
+					
+					<tr>
+						<td>emerContactPerEmail</td>
+						<td><form:input path="emerContactPerEmail" /></td>
+					</tr>
+					
+					
 					<tr>
 						<td colspan="2"><input type="submit" value="add Patient" />
 						</td>
 					</tr>
+					
 				</table>
 			</form:form>
 		</div>
