@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.healthcare.model.DistrictEntity;
+import com.healthcare.model.StateEntity;
 
 @Repository
 public class DistrictDaoImpl implements DistrictDao{
@@ -19,13 +20,19 @@ public class DistrictDaoImpl implements DistrictDao{
 	}
 
 	public List<DistrictEntity> getAllDistricts() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.sessionFactory.getCurrentSession().createQuery("from DistrictEntity").list();
 	}
 
 	public void deleteDistrict(Integer districtId) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public DistrictEntity getDistrict(Long code) {
+		// TODO Auto-generated method stub
+		DistrictEntity districtEntity = new DistrictEntity();
+		return districtEntity;
 	}
 	
 

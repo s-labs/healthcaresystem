@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.healthcare.model.DistrictEntity;
 import com.healthcare.model.StateEntity;
 import com.healthcare.services.AdminService;
 
@@ -46,6 +47,7 @@ public class AdminServiceController {
 			return model; 
 	 }
 
+	 
 	@RequestMapping(value = "/addState", method = RequestMethod.POST)
 	public ModelAndView addState(@ModelAttribute(value = "state") StateEntity state,
 			BindingResult result) {
@@ -57,5 +59,34 @@ public class AdminServiceController {
 		model.setViewName("admin/addState");
 		return model;
 	}
+		
+		/*srihari *************** code ***************** started*/
+		
+		@RequestMapping(value = "/addDistrict", method = RequestMethod.GET)
+		public String addDistrictFrom(ModelMap map) {
+			map.addAttribute("district", new DistrictEntity());
+			List<DistrictEntity> districts = adminService.getAllDistricts();
+			map.addAttribute("districts", districts);
+			return "admin/addDistrict";
+		}
+		
+		@RequestMapping(value = "/addDistrict", method = RequestMethod.POST)
+		public ModelAndView addDistrict(@ModelAttribute(value = "district") DistrictEntity district,
+				BindingResult result) {
 
-}
+			ModelAndView model = new ModelAndView();
+			adminService.addDistrict(district);
+			List<DistrictEntity> districts = adminService.getAllDistricts();
+			model.addObject("districts", districts);
+			
+			model.setViewName("admin/addDistrict");
+			return model;
+		}
+		
+		/*srihari ************** code **************** ended*/
+		
+		
+		
+	}
+
+
