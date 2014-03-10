@@ -17,6 +17,7 @@ public class PregnancyHistoryEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long uhid;
 	
+	@Column
 	private Date lmp;
 	private Date first_anc;
 	private Date second_anc;

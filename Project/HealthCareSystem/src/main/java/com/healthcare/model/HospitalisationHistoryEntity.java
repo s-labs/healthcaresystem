@@ -17,6 +17,7 @@ public class HospitalisationHistoryEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long uhid;
 	
+	@Column
 	private String care_provider_name;
 	private String care_provider_add_line1;
 	private String care_provider_add_line2;

@@ -17,6 +17,7 @@ public class PregnancyOutcomeEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long uhid;
 	
+	@Column
 	private String delivery_place;
 	private String delivery_type;
 	private String complications;
