@@ -19,9 +19,9 @@ public class DistrictEntity {
 	@Column(name = "name")
 	private String name;
 	
-	/*@Column(name = "statecode")
+	@Column(name = "statecode")
 	private long stateCode;
-*/
+
 	public long getCode() {
 		return code;
 	}
@@ -30,13 +30,13 @@ public class DistrictEntity {
 		this.code = code;
 	}
 
-	/*public long getStateCode() {
+	public long getStateCode() {
 		return stateCode;
 	}
 
 	public void setStateCode(long stateCode) {
 		this.stateCode = stateCode;
-	}*/
+	}
 
 	public String getName() {
 		return name;

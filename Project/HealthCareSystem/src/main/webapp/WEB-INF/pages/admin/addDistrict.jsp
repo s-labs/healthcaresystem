@@ -33,7 +33,7 @@
 							<td>${status.count}</td>
 							<td>${district.code }</td>
 							<td>${district.name }</td>
-							<%-- <td>${state.name}</td> --%>
+							<td>${district.stateCode}</td>
 					</c:forEach>
 				</tbody>
 			</table>
@@ -47,11 +47,17 @@
 						<td><form:input path="name" />
 						</td>
 						
-					<%-- <tr>
+					
 						<td>State Code</td>
-						<td><form:input path="statecode" />
+						<td><form:select path="stateCode" >
+						
+						<c:forEach var="state" items="${states}" varStatus="status">
+						
+							<form:option value="${state.code}">${state.name}</form:option>
+					</c:forEach>
+						</form:select>
 						</td>
-					</tr> --%>
+					</tr>
 					
 					</tr>
 					<tr>

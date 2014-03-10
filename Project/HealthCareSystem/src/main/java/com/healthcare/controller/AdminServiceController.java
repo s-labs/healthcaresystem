@@ -65,8 +65,8 @@ public class AdminServiceController {
 		@RequestMapping(value = "/addDistrict", method = RequestMethod.GET)
 		public String addDistrictFrom(ModelMap map) {
 			map.addAttribute("district", new DistrictEntity());
-			List<DistrictEntity> districts = adminService.getAllDistricts();
-			map.addAttribute("districts", districts);
+			List<StateEntity> states = adminService.getAllStates();
+			map.addAttribute("states", states);
 			return "admin/addDistrict";
 		}
 		
@@ -78,7 +78,8 @@ public class AdminServiceController {
 			adminService.addDistrict(district);
 			List<DistrictEntity> districts = adminService.getAllDistricts();
 			model.addObject("districts", districts);
-			
+			List<StateEntity> states = adminService.getAllStates();
+			model.addObject("states", states);
 			model.setViewName("admin/addDistrict");
 			return model;
 		}
