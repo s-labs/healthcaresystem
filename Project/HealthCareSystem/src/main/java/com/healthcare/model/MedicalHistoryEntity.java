@@ -45,7 +45,22 @@ public class MedicalHistoryEntity {
 					String personalHistory,String familyHistory,Date problemForm,String doctorName,
 					String notes,Date fromDate,Date toDate,String progress,String advice)	
 			{
-				
+				this.ip=ip;
+				this.op=op;
+				this.accPatient=accPatient;
+				this.emerPatient=emerPatient;
+				this.reasonForVisit=reasonForVisit;
+				this.presentHistory=presentHistory;
+				this.pastHistory=pastHistory;
+				this.personalHistory=personalHistory;
+				this.familyHistory=familyHistory;
+				this.problemForm=problemForm;
+				this.doctorName=doctorName;
+				this.notes=notes;
+				this.fromDate=fromDate;
+				this.toDate=toDate;
+				this.progress=progress;
+				this.advice=advice;
 			}
 			public Long getUhid() {
 				return uhid;
