@@ -256,10 +256,5 @@ public class MedicationTreatmentEntity {
 	public void setCurrent_clinical_status(String current_clinical_status) {
 		this.current_clinical_status = current_clinical_status;
 	}
-	
-	
-	
-	
-	
 
 }//class

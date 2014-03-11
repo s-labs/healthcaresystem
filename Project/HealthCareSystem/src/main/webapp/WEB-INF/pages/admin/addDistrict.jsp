@@ -25,6 +25,7 @@
 						<th>S.No</th>
 						<th>Code</th>
 						<th>Name</th>
+						 <th>State Code</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -34,6 +35,7 @@
 							<td>${district.code }</td>
 							<td>${district.name }</td>
 							<td>${district.stateCode}</td>
+						</tr>
 					</c:forEach>
 				</tbody>
 			</table>

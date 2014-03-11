@@ -23,6 +23,7 @@ public class DistrictDaoImpl implements DistrictDao{
 		return this.sessionFactory.getCurrentSession().createQuery("from DistrictEntity").list();
 	}
 
+	
 	public void deleteDistrict(Integer districtId) {
 		// TODO Auto-generated method stub
 		

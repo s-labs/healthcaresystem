@@ -23,7 +23,7 @@
             <td> <input type="password" name="j_password"> </td>
         </tr>
         <tr> 
-            <td colspan="2"> <input type="submit" value="submit">
+           <td></td> <td colspan="2"> <input type="submit" value="submit">
             <input type="reset" value="reset"> </td>
         </tr>
     </table>

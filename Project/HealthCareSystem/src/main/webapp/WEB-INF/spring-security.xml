@@ -19,7 +19,8 @@
 		<form-login login-page="/login.htm" default-target-url="/home.htm"
 			authentication-failure-url="/accessdenied" 
 			authentication-success-handler-ref="healthCenterAuthenticationSuccessHandler"/>
-		<logout logout-success-url="/logout.htm" />
+		<!-- <logout logout-success-url="/logout.htm" /> -->
+		<logout logout-success-url="/login.htm" />
 	</http>
 	<beans:bean id="healthCenterAuthenticationSuccessHandler" class="com.healthcare.security.HealthCenterAuthenticationSuccessHandler"/>
 	
