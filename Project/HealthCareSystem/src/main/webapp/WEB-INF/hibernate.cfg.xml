@@ -8,6 +8,7 @@
 	<session-factory>
 		<mapping class="com.healthcare.model.StateEntity"></mapping>
 		<mapping class="com.healthcare.model.DistrictEntity"></mapping>
+		<mapping class="com.healthcare.model.MandalEntity"></mapping>
 	</session-factory>
 
 </hibernate-configuration>

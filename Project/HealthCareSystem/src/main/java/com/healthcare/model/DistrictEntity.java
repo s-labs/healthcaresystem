@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "DISTRICT")
+@Table(name = "district")
 public class DistrictEntity {
 	
 	@Id
@@ -21,6 +21,8 @@ public class DistrictEntity {
 	
 	@Column(name = "statecode")
 	private long stateCode;
+	
+	
 
 	public long getCode() {
 		return code;
@@ -45,7 +47,5 @@ public class DistrictEntity {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
 
 }

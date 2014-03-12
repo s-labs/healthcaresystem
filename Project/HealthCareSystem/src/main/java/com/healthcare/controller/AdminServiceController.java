@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.healthcare.model.DistrictEntity;
+import com.healthcare.model.MandalEntity;
 import com.healthcare.model.StateEntity;
 import com.healthcare.services.AdminService;
 
@@ -85,6 +86,48 @@ public class AdminServiceController {
 		}
 		
 		/*srihari ************** code **************** ended*/
+		
+		
+		/*srihari ****code for adding mandals*******date 12/03/2014 *******started*/
+		
+		@RequestMapping(value = "/addMandal", method = RequestMethod.GET)
+		public String addMandalFrom(ModelMap map) {
+			map.addAttribute("mandal", new MandalEntity());
+			List<MandalEntity> mandals=adminService.getAllMandals();
+			map.addAttribute("mandals",mandals);
+			
+			List<DistrictEntity> districts=adminService.getAllDistricts();
+			map.addAttribute("districts", districts);
+			
+			return "admin/addMandal";
+		}
+		
+		 /*@RequestMapping("/state/{stateCode}")
+		 public ModelAndView stateDetails(@PathVariable("stateCode") Long stateCode) {
+			 ModelAndView model = new ModelAndView();
+			
+				StateEntity state = adminService.getState(stateCode);
+				model.addObject("state", state);
+				model.setViewName("admin/state");
+				return model; 
+		 }*/
+
+		 
+		@RequestMapping(value = "/addMandal", method = RequestMethod.POST)
+		public ModelAndView addMandal(@ModelAttribute(value = "mandal") MandalEntity mandal,
+				BindingResult result) {
+
+			ModelAndView model = new ModelAndView();
+			adminService.addMandal(mandal);
+			List<MandalEntity> mandals=adminService.getAllMandals();
+			model.addObject("mandals", mandals);
+			List<DistrictEntity> districts=adminService.getAllDistricts();
+			model.addObject("districts", districts);
+			model.setViewName("admin/addMandal");
+			return model;
+		}
+		
+		/*srihari **************date 12/03/2014 **************** ended*/
 		
 		
 		

@@ -19,13 +19,13 @@
 		</div>
 		<div class="rightSection">
 			<table>
-				<thead>
+				<!-- <thead>
 					<tr>
 						<th>S.No</th>
 						
 						<th>Last Name</th>
 					</tr>
-				</thead>
+				</thead> -->
 				<tbody>
 					<c:forEach var="patient" items="${patients}" varStatus="status">
 						<tr>
@@ -193,7 +193,7 @@
 					
 					
 					<tr>
-						<td colspan="2"><input type="submit" value="add Patient" />
+						<td></td><td colspan="2"><input type="submit" value="add Patient" />
 						</td>
 					</tr>
 					

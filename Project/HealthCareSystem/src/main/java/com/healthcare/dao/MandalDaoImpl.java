@@ -19,8 +19,8 @@ public class MandalDaoImpl implements MandalDao{
 	}
 
 	public List<MandalEntity> getAllMandals() {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("getAllMandals() method of MandalDaoImpl class");
+		return this.sessionFactory.getCurrentSession().createQuery("from MandalEntity").list();
 	}
 
 	public void deleteMandal(Integer mandalId) {

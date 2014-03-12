@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.healthcare.dao.DistrictDao;
+import com.healthcare.dao.MandalDao;
 import com.healthcare.dao.StateDao;
 import com.healthcare.model.DistrictEntity;
+import com.healthcare.model.MandalEntity;
 import com.healthcare.model.StateEntity;
 
 @Service
@@ -64,6 +66,33 @@ public class AdminServiceImpl implements AdminService {
 	
 	
 	/*srihari **********************code ended*********************/
+
+	/*srihari ****code for adding mandals*******date 12/03/2014 *******started*/
+	
+	@Autowired
+    private MandalDao mandalDao;
+    
+    @Transactional
+	public void addMandal(MandalEntity mandal) {
+    	mandalDao.addMandal(mandal);
+	}
+    
+    
+    @Transactional
+	public List<MandalEntity> getAllMandals() {
+    	System.out.println("inside getAllMandals() method of AdminServiceImpl class");
+		List<MandalEntity> mandals=mandalDao.getAllMandals();
+		return mandals;
+	}
+
+	@Override
+	public MandalEntity getMandal(Long mandalCode) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+	/*srihari **************date 12/03/2014 **************** ended*/
 	
 
 }

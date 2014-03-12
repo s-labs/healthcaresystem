@@ -3,6 +3,7 @@ package com.healthcare.services;
 import java.util.List;
 
 import com.healthcare.model.DistrictEntity;
+import com.healthcare.model.MandalEntity;
 import com.healthcare.model.StateEntity;
 
 public interface AdminService {
@@ -15,5 +16,9 @@ public interface AdminService {
 	public void addDistrict(DistrictEntity district);
 	public List<DistrictEntity> getAllDistricts();
 	public DistrictEntity getDistrict(Long districtCode);
+	
+	public void addMandal(MandalEntity mandal);
+	public List<MandalEntity> getAllMandals();
+	public MandalEntity getMandal(Long mandalCode);
 
 }
