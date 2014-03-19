@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.healthcare.model.DistrictEntity;
 import com.healthcare.model.StateEntity;
 
 @Repository
@@ -41,6 +42,14 @@ public class StateDaoImpl implements StateDao {
 			stateEntity = (StateEntity) results.get(0);
 		}
 		return stateEntity;
+	}
+
+	@Override
+	public void addDistrict(DistrictEntity district,long statecode) {
+		StateEntity state = getState(statecode);
+		state.getDistricts().add(district);
+		 this.sessionFactory.getCurrentSession().save(state);
+		
 	}
 
 }

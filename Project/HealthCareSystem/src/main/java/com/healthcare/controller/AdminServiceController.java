@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.healthcare.model.DistrictEntity;
@@ -76,7 +77,7 @@ public class AdminServiceController {
 				BindingResult result) {
 
 			ModelAndView model = new ModelAndView();
-			adminService.addDistrict(district);
+			adminService.addDistrict(district,new Long(1));
 			List<DistrictEntity> districts = adminService.getAllDistricts();
 			model.addObject("districts", districts);
 			List<StateEntity> states = adminService.getAllStates();

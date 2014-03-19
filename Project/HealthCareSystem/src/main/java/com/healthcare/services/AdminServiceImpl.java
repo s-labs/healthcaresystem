@@ -1,7 +1,5 @@
 package com.healthcare.services;
 
-
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +16,12 @@ import com.healthcare.model.StateEntity;
 @Service
 public class AdminServiceImpl implements AdminService {
 
-    @Autowired
-    private StateDao stateDao;
-    
-    @Transactional
+	@Autowired
+	private StateDao stateDao;
+
+	@Transactional
 	public void addState(StateEntity state) {
-    	stateDao.addState(state);
+		stateDao.addState(state);
 
 	}
 
@@ -38,50 +36,43 @@ public class AdminServiceImpl implements AdminService {
 		// TODO Auto-generated method stub
 		return stateDao.getState(stateCode);
 	}
-	
-	/*srihari  *************** code *************** started*/
-	
+
+	/* srihari *************** code *************** started */
+
 	@Autowired
-    private DistrictDao districtDao;
-	
+	private DistrictDao districtDao;
+
 	@Transactional
-	public void addDistrict(DistrictEntity district)
-	{
-		districtDao.addDistrict(district);
-	}
-	
-	@Transactional
-	public List<DistrictEntity> getAllDistricts()
-	{
-		System.out.println("inside getAllDistricts() method of AdminServiceImpl class");
+	public List<DistrictEntity> getAllDistricts() {
+		System.out
+				.println("inside getAllDistricts() method of AdminServiceImpl class");
 		List<DistrictEntity> districts = districtDao.getAllDistricts();
 		return districts;
 	}
-	
+
 	@Transactional
 	public DistrictEntity getDistrict(Long districtCode) {
 		// TODO Auto-generated method stub
 		return districtDao.getDistrict(districtCode);
 	}
-	
-	
-	/*srihari **********************code ended*********************/
 
-	/*srihari ****code for adding mandals*******date 12/03/2014 *******started*/
-	
+	/* srihari **********************code ended******************** */
+
+	/* srihari ****code for adding mandals*******date 12/03/2014 *******started */
+
 	@Autowired
-    private MandalDao mandalDao;
-    
-    @Transactional
+	private MandalDao mandalDao;
+
+	@Transactional
 	public void addMandal(MandalEntity mandal) {
-    	mandalDao.addMandal(mandal);
+		mandalDao.addMandal(mandal);
 	}
-    
-    
-    @Transactional
+
+	@Transactional
 	public List<MandalEntity> getAllMandals() {
-    	System.out.println("inside getAllMandals() method of AdminServiceImpl class");
-		List<MandalEntity> mandals=mandalDao.getAllMandals();
+		System.out
+				.println("inside getAllMandals() method of AdminServiceImpl class");
+		List<MandalEntity> mandals = mandalDao.getAllMandals();
 		return mandals;
 	}
 
@@ -90,9 +81,14 @@ public class AdminServiceImpl implements AdminService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
-	/*srihari **************date 12/03/2014 **************** ended*/
-	
+
+	@Transactional
+	public void addDistrict(DistrictEntity district, long statecode)
+
+	{
+		stateDao.addDistrict(district, statecode);
+	}
+
+	/* srihari **************date 12/03/2014 **************** ended */
 
 }

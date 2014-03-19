@@ -13,7 +13,7 @@ public interface AdminService {
 	public StateEntity getState(Long stateCode);
 	
 	
-	public void addDistrict(DistrictEntity district);
+	public void addDistrict(DistrictEntity district, long statecode);
 	public List<DistrictEntity> getAllDistricts();
 	public DistrictEntity getDistrict(Long districtCode);
 	

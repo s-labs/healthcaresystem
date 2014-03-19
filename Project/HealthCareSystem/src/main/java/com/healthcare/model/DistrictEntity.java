@@ -1,28 +1,31 @@
 package com.healthcare.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "district")
 public class DistrictEntity {
-	
+
 	@Id
 	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long code;
-	
+
 	@Column(name = "name")
 	private String name;
-	
-	@Column(name = "statecode")
-	private long stateCode;
-	
-	
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "statecode", insertable = false, updatable = false, nullable = false)
+	private StateEntity state;
 
 	public long getCode() {
 		return code;
@@ -32,20 +35,20 @@ public class DistrictEntity {
 		this.code = code;
 	}
 
-	public long getStateCode() {
-		return stateCode;
-	}
-
-	public void setStateCode(long stateCode) {
-		this.stateCode = stateCode;
-	}
-
 	public String getName() {
 		return name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public StateEntity getState() {
+		return state;
+	}
+
+	public void setState(StateEntity state) {
+		this.state = state;
 	}
 
 }
