@@ -10,7 +10,7 @@
 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<c:set var="title">Health care System :: Admin Home Page</c:set>
+<c:set var="pageTitle">Health care System :: Admin Home Page</c:set>
  <template:page pageTitle="${pageTitle}" bodyCss="home"> 
 	<div class="content">
 
@@ -55,7 +55,7 @@
 						
 						<c:forEach var="state" items="${states}" varStatus="status">
 						
-							<option value="${state.code}">${state.name}
+							<option value="state">${state.name}
 					</c:forEach>
 						</select>
 						</td>

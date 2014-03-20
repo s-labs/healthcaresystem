@@ -77,7 +77,9 @@ public class AdminServiceController {
 				BindingResult result) {
 
 			ModelAndView model = new ModelAndView();
-			adminService.addDistrict(district,new Long(1));
+			long statecode = 1;
+			adminService.addDistrict(district,statecode
+					);
 			List<DistrictEntity> districts = adminService.getAllDistricts();
 			model.addObject("districts", districts);
 			List<StateEntity> states = adminService.getAllStates();

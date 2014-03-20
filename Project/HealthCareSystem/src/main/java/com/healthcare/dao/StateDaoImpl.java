@@ -47,6 +47,7 @@ public class StateDaoImpl implements StateDao {
 	@Override
 	public void addDistrict(DistrictEntity district,long statecode) {
 		StateEntity state = getState(statecode);
+		district.setState(state);
 		state.getDistricts().add(district);
 		 this.sessionFactory.getCurrentSession().save(state);
 		

@@ -10,8 +10,12 @@
 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<c:set var="pageTitle">Health care System</c:set>
+<c:set var="pageTitle">Health care System :: Admin Home Page</c:set>
 <template:page pageTitle="${pageTitle}" bodyCss="home">
-	
-...	This the Welcome page 
+	<div class="leftSection">
+	<jsp:include page="/common/dhs/leftnavigation.jsp"></jsp:include>
+	</div>
+	<div class="right">
+	this is department of health service center
+	</div>
 </template:page>

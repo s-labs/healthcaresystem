@@ -43,6 +43,7 @@ public class HealthCenterAuthenticationSuccessHandler implements AuthenticationS
     protected String determineTargetUrl(Authentication authentication) {
         boolean isUser = false;
         boolean isAdmin = false;
+        boolean isdhs = false;
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         for (GrantedAuthority grantedAuthority : authorities) {
             if (grantedAuthority.getAuthority().equals("ROLE_USER")) {
@@ -52,12 +53,18 @@ public class HealthCenterAuthenticationSuccessHandler implements AuthenticationS
                 isAdmin = true;
                 break;
             }
+            else if (grantedAuthority.getAuthority().equals("ROLE_DHS")) {
+                isdhs = true;
+                break;
+            }
         }
  
         if (isUser) {
             return "/healthCenter/";
         } else if (isAdmin) {
             return "/admin/";
+        }  else if (isdhs) {
+            return "/dhs/";
         } else {
             throw new IllegalStateException();
         }

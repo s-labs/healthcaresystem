@@ -24,7 +24,7 @@ public class DistrictEntity {
 	private String name;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "statecode", insertable = false, updatable = false, nullable = false)
+	@JoinColumn(name = "statecode",nullable = false)
 	private StateEntity state;
 
 	public long getCode() {

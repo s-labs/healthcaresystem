@@ -12,6 +12,7 @@
 		<intercept-url pattern="/home.htm" access="hasRole('ROLE_USER')" />
 		<intercept-url pattern="/admin/*" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/healthcenter/*" access="hasRole('ROLE_HEALTHCENTER')" />
+		<intercept-url pattern="/dhs/*" access="hasRole('ROLE_DHS')" />
 		<intercept-url pattern="/accessdenied" access="permitAll" />
 		 <intercept-url pattern="/**" access="permitAll" />
  
@@ -30,6 +31,7 @@
 			<user-service>
 				<user name="admin" password="admin" authorities="ROLE_USER,ROLE_ADMIN" />
 				<user name="healthcenter" password="healthcenter" authorities="ROLE_USER,ROLE_HEALTHCENTER" />
+				<user name="dhs" password="dhs" authorities="ROLE_USER,ROLE_DHS" />
 
 			</user-service>
 		</authentication-provider>
