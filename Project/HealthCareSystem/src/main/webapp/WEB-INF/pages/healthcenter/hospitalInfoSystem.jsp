@@ -6,20 +6,16 @@
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 
-<%@ taglib prefix="template" tagdir="/WEB-INF/tags/template"%>
+<%@ taglib prefix="template" tagdir="/WEB-INF/tags/template" %>
 
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <c:set var="pageTitle">Health care System :: Admin Home Page</c:set>
 <template:page pageTitle="${pageTitle}" bodyCss="home">
-
-	<div class="main-container container-fluid">
-		<jsp:include page="/common/leftnavigation.jsp"></jsp:include>
-		<div class="main-content">
-			<div class="page-content">
-				<div class="page-header position-relative">this is admin home
-					page</div>
-			</div>
-		</div>
+	<%-- <div class="leftSection">
+	<jsp:include page="/common/healthcenter/leftnavigation.jsp"></jsp:include>
+	</div> --%>
+	<div class="right">
+	this is hospitalInfoSystem.jsp page
 	</div>
 </template:page>

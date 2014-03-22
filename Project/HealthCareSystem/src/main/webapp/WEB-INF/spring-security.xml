@@ -14,26 +14,33 @@
 		<intercept-url pattern="/healthcenter/*" access="hasRole('ROLE_HEALTHCENTER')" />
 		<intercept-url pattern="/dhs/*" access="hasRole('ROLE_DHS')" />
 		<intercept-url pattern="/accessdenied" access="permitAll" />
-		 <intercept-url pattern="/**" access="permitAll" />
- 
+		<intercept-url pattern="/**" access="permitAll" />
+
 
 		<form-login login-page="/login.htm" default-target-url="/home.htm"
-			authentication-failure-url="/accessdenied" 
-			authentication-success-handler-ref="healthCenterAuthenticationSuccessHandler"/>
+			authentication-failure-url="/accessdenied"
+			authentication-success-handler-ref="healthCenterAuthenticationSuccessHandler" />
 		<!-- <logout logout-success-url="/logout.htm" /> -->
 		<logout logout-success-url="/login.htm" />
 	</http>
-	<beans:bean id="healthCenterAuthenticationSuccessHandler" class="com.healthcare.security.HealthCenterAuthenticationSuccessHandler"/>
-	
+	<beans:bean id="healthCenterAuthenticationSuccessHandler"
+		class="com.healthcare.security.HealthCenterAuthenticationSuccessHandler" />
+
 
 	<authentication-manager alias="authenticationManager">
 		<authentication-provider>
-			<user-service>
-				<user name="admin" password="admin" authorities="ROLE_USER,ROLE_ADMIN" />
-				<user name="healthcenter" password="healthcenter" authorities="ROLE_USER,ROLE_HEALTHCENTER" />
-				<user name="dhs" password="dhs" authorities="ROLE_USER,ROLE_DHS" />
+			<!-- <user-service> <user name="admin" password="admin" authorities="ROLE_USER,ROLE_ADMIN" 
+				/> <user name="healthcenter" password="healthcenter" authorities="ROLE_USER,ROLE_HEALTHCENTER" 
+				/> <user name="dhs" password="dhs" authorities="ROLE_USER,ROLE_DHS" /> </user-service> -->
+			<jdbc-user-service data-source-ref="dataSource"
 
-			</user-service>
+				users-by-username-query="
+		      select username,password, enabled 
+		      from users where username=?"
+
+				authorities-by-username-query="
+		      select u.username, ur.authority from users u, user_roles ur 
+		      where u.user_id = ur.usercode and u.username =?  " />
 		</authentication-provider>
 	</authentication-manager>
 

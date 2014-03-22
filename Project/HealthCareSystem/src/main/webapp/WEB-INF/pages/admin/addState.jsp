@@ -12,12 +12,10 @@
 
 <c:set var="pageTitle">Health care System :: Admin Home Page</c:set>
 <template:page pageTitle="${pageTitle}" bodyCss="home">
-	<div class="content">
-
-		<div class="leftSection">
-			<jsp:include page="/common/admin/leftnavigation.jsp"></jsp:include>
-		</div>
-		<div class="rightSection">
+	<div class="main-container container-fluid">
+		<jsp:include page="/common/admin/leftnavigation.jsp"></jsp:include>
+		<div class="main-content">
+			<div class="page-content">
 
 			<table>
 				<thead>
@@ -52,5 +50,6 @@
 				</table>
 			</form:form>
 		</div>
+	</div>
 	</div>
 </template:page>

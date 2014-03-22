@@ -12,9 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.healthcare.form.UserForm;
 import com.healthcare.model.PatientEntity;
-import com.healthcare.model.StateEntity;
-import com.healthcare.services.AdminService;
 import com.healthcare.services.HealthCenterService;
 
 @Controller
@@ -33,6 +32,16 @@ public class HealthCenterController {
 	@RequestMapping(value = "/addPatient", method = RequestMethod.GET)
 	public String addStateFrom(ModelMap map) {
 		map.addAttribute("patient", new PatientEntity());
+		
+		return "healthcenter/addPatient";
+	}
+	
+	@RequestMapping(value = "/addDoctor", method = RequestMethod.GET)
+	public String addDoctorFrom(ModelMap map) {
+		UserForm userform = new UserForm();
+		//long healthcenterId;
+		//userform.setHealthcenterId(healthcenterId);
+		map.addAttribute("userform", userform);
 		
 		return "healthcenter/addPatient";
 	}

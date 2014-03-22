@@ -11,7 +11,10 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <c:set var="pageTitle">Health care System :: Login</c:set>
-<template:page pageTitle="${pageTitle}" bodyCss="home">
+<template:page pageTitle="${pageTitle}" bodyCss="login-layout">
+<div class="login-container">
+<center>
+<div class="position-relative">
 	<div class="row-fluid">
 		<div class="position-relative">
 			<div id="login-box" class="login-box visible widget-box no-border">
@@ -37,9 +40,7 @@
 								<div class="space"></div>
 
 								<div class="clearfix">
-									<label class="inline"> <input type="checkbox" /> <span
-										class="lbl"> Remember Me</span>
-									</label>
+									
 
 									<button onclick="return true;"
 										class="width-35 pull-right btn btn-small btn-primary">
@@ -54,5 +55,8 @@
 				</div>
 			</div>
 		</div>
+		</div>
+		</div>
+		</center>
 		</div>
 </template:page>

@@ -21,51 +21,50 @@
 					<thead>
 						<tr>
 							<th>S.No</th>
-							<th>Code</th>
+
 							<th>Name</th>
-							<th>State Code</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="district" items="${districts}" varStatus="status">
+						<c:forEach var="healthcenter" items="${healthcenters}"
+							varStatus="status">
 							<tr>
 								<td>${status.count}</td>
-								<td>${district.code }</td>
-								<td>${district.name }</td>
-								<td>${district.state.name}</td>
-							</tr>
+								<td>${healthcenter.name }</td>
 						</c:forEach>
 					</tbody>
 				</table>
 
-				<form:form method="post" action="addDistrict"
-					commandName="districtform">
+				<form:form method="post" action="addHealthCenter"
+					commandName="healthcenterform">
 
 					<table>
 
 						<tr>
-							<td>District Name</td>
-							<td><form:input path="district.name" /></td>
+							<td>Health Center Name</td>
+							<td><form:input path="healthcenter.name" /></td>
+						</tr>
+						<tr>
+							<td>level</td>
+							<td><form:input path="healthcenter.level" /></td>
+						</tr>
+						<tr>
+							<td>Next HealthCenter</td>
+							<td><select name="next">
 
+									<c:forEach var="healthcenter" items="${healthcenters}"
+										varStatus="status">
 
-							<td>State Code</td>
-							<td><select name="stateId">
-
-									<c:forEach var="state" items="${states}" varStatus="status">
-
-										<option value="${state.code}">${state.name}
+										<option value="${healthcenter.id}">${healthcenter.name}
 									</c:forEach>
 							</select></td>
 						</tr>
-
-						</tr>
 						<tr>
-							<td colspan="2"><input type="submit" value="add District" /></td>
+							<td colspan="2"><input type="submit" value="add Health Center" /></td>
 						</tr>
 					</table>
 				</form:form>
 			</div>
 		</div>
 	</div>
-
 </template:page>

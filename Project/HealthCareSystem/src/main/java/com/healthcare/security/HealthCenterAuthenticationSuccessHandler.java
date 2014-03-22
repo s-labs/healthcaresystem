@@ -29,6 +29,12 @@ public class HealthCenterAuthenticationSuccessHandler implements AuthenticationS
  
     protected void handle(HttpServletRequest request, 
       HttpServletResponse response, Authentication authentication) throws IOException {
+    	
+    	String name = authentication.getName();
+    	Object detials = authentication.getDetails();
+    	System.out.println(" --------------name ::: "+name);
+    	request.getSession().setAttribute("username", name);
+    	System.out.println(" detila "+ detials.getClass().getCanonicalName());
         String targetUrl = determineTargetUrl(authentication);
  
         if (response.isCommitted()) {
@@ -41,13 +47,13 @@ public class HealthCenterAuthenticationSuccessHandler implements AuthenticationS
  
     /** Builds the target URL according to the logic defined in the main class Javadoc. */
     protected String determineTargetUrl(Authentication authentication) {
-        boolean isUser = false;
+        boolean isHealthcenter = false;
         boolean isAdmin = false;
         boolean isdhs = false;
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         for (GrantedAuthority grantedAuthority : authorities) {
-            if (grantedAuthority.getAuthority().equals("ROLE_USER")) {
-                isUser = true;
+            if (grantedAuthority.getAuthority().equals("ROLE_HEALTHCENTER")) {
+                isHealthcenter = true;
                 break;
             } else if (grantedAuthority.getAuthority().equals("ROLE_ADMIN")) {
                 isAdmin = true;
@@ -59,7 +65,7 @@ public class HealthCenterAuthenticationSuccessHandler implements AuthenticationS
             }
         }
  
-        if (isUser) {
+        if (isHealthcenter) {
             return "/healthCenter/";
         } else if (isAdmin) {
             return "/admin/";

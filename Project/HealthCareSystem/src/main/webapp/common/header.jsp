@@ -19,7 +19,7 @@
 <div class="logoutSection" style="float:left">
 <sec:authorize ifAnyGranted="ROLE_USER">
 		
-		<td><a href="<c:url value="/j_spring_security_logout"/>">Logout</a>
+		<td>Hello, ${username} <a href="<c:url value="/j_spring_security_logout"/>">1Logout</a>
 		</td>
 	</sec:authorize>
 	<sec:authorize ifNotGranted="ROLE_USER">
