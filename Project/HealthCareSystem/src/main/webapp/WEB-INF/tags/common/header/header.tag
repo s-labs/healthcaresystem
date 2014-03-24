@@ -12,8 +12,7 @@
 			<a href="#" class="brand"> <small> <i class=""></i>Health
 					care System
 			</small></a>
-			<ul class="nav ace-nav pull-right">
-			Hello, ${username}
+			<ul class="nav ace-nav pull-right">			
 				<li class="light-blue"><sec:authorize ifAnyGranted="ROLE_USER">
 						<a class="dropdown-toggle" href="#" data-toggle="dropdown">
 								

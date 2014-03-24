@@ -42,8 +42,8 @@ public class UserEntity {
 	private Set<UserRolesEntity> roles = new HashSet<UserRolesEntity>(
 			0);
 	
-	@ManyToOne(fetch = FetchType.EAGER,cascade={CascadeType.ALL})
-	@JoinColumn(name = "healthcentercode",nullable = false)
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "healthcentercode",nullable = true)
 	private HealthCenterEntity healthcenter;
 	
 	public long getUSER_ID() {

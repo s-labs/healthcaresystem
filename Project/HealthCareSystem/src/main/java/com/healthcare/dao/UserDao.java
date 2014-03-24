@@ -8,6 +8,7 @@ public interface UserDao {
 	
 	public void addUser(UserEntity user);
 	public UserEntity getUser(long userId);
+	public UserEntity getUserByUsername(String userName);
 	public List<UserEntity> getAllUsers();
 
 }

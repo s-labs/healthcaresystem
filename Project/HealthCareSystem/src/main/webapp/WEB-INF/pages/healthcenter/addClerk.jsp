@@ -10,20 +10,21 @@
 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<c:set var="pageTitle">Health care System :: Admin Home Page</c:set>
+<c:set var="pageTitle">Health care System :: HC Admin Add clerk</c:set>
+<c:set var="action" scope="request">addClerk</c:set>
 <template:page pageTitle="${pageTitle}" bodyCss="home">
 	<div class="main-container container-fluid">
-		<jsp:include page="/common/admin/leftnavigation.jsp"></jsp:include>
+		<jsp:include page="/common/leftnavigation.jsp"></jsp:include>
 		<div class="main-content">
 			<div class="page-content">
+				${SUCESS_MESSAGE }
 
-
-				<form:form method="post" action="addHCAdmin" commandName="userform">
+				<form:form method="post" action="addClerk" commandName="userform">
 
 					<table>
 
 						<tr>
-							<td>HC admin user Name</td>
+							<td>Clerk user Name</td>
 							<td><form:input path="username" /></td>
 						</tr>
 						<tr>
@@ -31,16 +32,16 @@
 							<td><form:password path="password" /></td>
 						</tr>
 						<tr>
-							<td>healthcenter id</td>
-							<td><form:input	path="healthcenterId" /></td>
-					</tr>
-					
-					<tr>
-						<td colspan="2"><input type="submit" value="add State" /></td>
-					</tr>
-				</table>
-			</form:form>
+							<td>Role</td>
+							<td><form:input path="role" disabled="disabled" /></td>
+						</tr>
+						<tr>
+						<tr>
+							<td colspan="2"><input type="submit" value="add Clerk" /></td>
+						</tr>
+					</table>
+				</form:form>
+			</div>
 		</div>
-	</div>
 	</div>
 </template:page>
