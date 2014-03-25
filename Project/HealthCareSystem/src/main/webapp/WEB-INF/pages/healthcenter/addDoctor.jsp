@@ -31,7 +31,10 @@
 							<td>password</td>
 							<td><form:password path="password" /></td>
 						</tr>
-						
+						<tr>
+							<td>healthc center Id</td>
+							<td><form:input path="healthcenterId" disabled="disabled"/></td>
+						</tr>
 					<tr>
 							<td>Role</td>
 							<td><form:input path="role" disabled="disabled"/></td>

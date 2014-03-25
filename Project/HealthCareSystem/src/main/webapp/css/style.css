@@ -26,3 +26,12 @@
 	padding:20px;
 	height : 100%;
 }
+.nav-list > li {
+	float:left;
+	width: 100%;
+	text-align:left;
+}
+
+.btn-group > .btn, .btn-group + .btn {
+	padding:0px;
+}
