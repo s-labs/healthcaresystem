@@ -16,16 +16,54 @@
 		<jsp:include page="/common/healthcenter/leftnavigation.jsp"></jsp:include>
 		<div class="main-content">
 			<div class="page-content"></div>
-			<table>
+			<table id="sample-table-1"
+				class="table table-striped table-bordered table-hover">
+				<thead>
+					<tr>
+
+						<th>Column</th>
+						<th>Details</th>
+
+					</tr>
+				</thead>
 				<tr>
-					<td>UHID : ${patient.uhid }</td>
+					<td>UHID</td>
+					<td>${patient.uhid }</td>
 				</tr>
 				<tr>
-					<td>First Name : ${patient.firstName }</td>
+					<td>First Name</td>
+					<td>${patient.firstName }</td>
 				</tr>
 				<tr>
-					<td>Last Name : ${patient.lastName }</td>
+					<td>Last Name</td>
+					<td>${patient.lastName }</td>
 				</tr>
+			</table>
+
+			Medical History :
+			<table id="sample-table-1"
+				class="table table-striped table-bordered table-hover">
+				<thead>
+					<tr>
+
+						<th>Column</th>
+						<th>Details</th>
+
+					</tr>
+				</thead>
+				<c:forEach var="medicalhistory" items="${patient.medicalhistory}"
+					varStatus="status">
+					<tr> <td colspan="2"> This record ${status.count} </td></tr>
+					<tr>
+						<td>In patient</td>
+						<td>${medicalhistory.ip}</td>
+					</tr>
+					<tr>
+						<td>Out patient</td>
+						<td>${medicalhistory.op}</td>
+					</tr>
+
+				</c:forEach>
 			</table>
 		</div>
 	</div>

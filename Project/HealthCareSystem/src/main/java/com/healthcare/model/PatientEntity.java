@@ -1,22 +1,38 @@
 package com.healthcare.model;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.IndexColumn;
+
+import com.healthcare.util.GenericEntity;
 
 @Entity
 @Table(name = "PATIENT")
-public class PatientEntity {
+public class PatientEntity implements GenericEntity<Long>{
 	
 	@Id
 	@Column
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long uhid;
+	
+	@OneToMany(fetch = FetchType.EAGER,cascade={CascadeType.ALL})
+    @JoinColumn(name="uhid")
+    @IndexColumn(name="code")
+	private Set<MedicalHistoryEntity> medicalhistory = new HashSet<MedicalHistoryEntity>(
+			0);
 	
 	@Column
 	private String lastName;
@@ -106,6 +122,13 @@ public class PatientEntity {
 		this.uhid = uhid;
 	}
 
+	
+	public Set<MedicalHistoryEntity> getMedicalhistory() {
+		return medicalhistory;
+	}
+	public void setMedicalhistory(Set<MedicalHistoryEntity> medicalhistory) {
+		this.medicalhistory = medicalhistory;
+	}
 	public String getLastName() {
 		return this.lastName;
 	}
@@ -344,6 +367,10 @@ public class PatientEntity {
 
 	public void setEmerContactPerEmail(String emerContactPerEmail) {
 		this.emerContactPerEmail = emerContactPerEmail;
+	}
+	@Override
+	public long getId() {
+		return this.uhid;
 	}
 
 

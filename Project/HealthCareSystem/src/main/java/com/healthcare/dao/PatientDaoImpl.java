@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.healthcare.model.MedicalHistoryEntity;
 import com.healthcare.model.PatientEntity;
 import com.healthcare.model.StateEntity;
 
@@ -45,6 +46,17 @@ public class PatientDaoImpl implements PatientDao{
 			patientEntity = (PatientEntity) results.get(0);
 		}
 		return patientEntity;
+	}
+
+	@Override
+	public void addMedicalHistory(MedicalHistoryEntity medicalHistory) {
+		this.sessionFactory.getCurrentSession().save(medicalHistory);
+		
+	}
+
+	@Override
+	public Object findById(Long valueOf) {
+		return getPatient(valueOf);
 	}
 
 }

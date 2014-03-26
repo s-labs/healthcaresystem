@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.healthcare.form.UserForm;
+import com.healthcare.model.MedicalHistoryEntity;
 import com.healthcare.model.PatientEntity;
 import com.healthcare.model.UserEntity;
 import com.healthcare.services.HealthCenterService;
@@ -78,6 +79,19 @@ public class HealthCenterController {
 		model.setViewName("healthcenter/patient");
 		return model;
 	}
+	
+	@RequestMapping("/switchTopatient/{patientCode}")
+	public ModelAndView switchTopatient(
+			@PathVariable("patientCode") Long patientCode,HttpSession session) {
+		
+		ModelAndView model = new ModelAndView();
+		PatientEntity patient = healthCenterService.getPatient(patientCode);
+		
+		session.setAttribute("currentPatient", patient);
+		model.addObject("patient", patient);
+		model.setViewName("healthcenter/patient");
+		return model;
+	}
 
 	@RequestMapping("/viewAllPatients")
 	public ModelAndView viewAllPatients() {
@@ -134,5 +148,34 @@ public class HealthCenterController {
 		model.setViewName("healthcenter/addPatient");
 		return model;
 	}
+	
+	// medical History
+
+		@RequestMapping(value = "/medicalHistory", method = RequestMethod.GET)
+		public String addMedicalHistoryFrom(ModelMap map, HttpSession session) {
+			MedicalHistoryEntity medicalHistory = new MedicalHistoryEntity();
+			PatientEntity patient = (PatientEntity) session.getAttribute("currentPatient");			
+			medicalHistory.setPatient(patient);
+			map.addAttribute("medicalHistory", medicalHistory);
+			return "healthcenter/medicalHistory";
+		}
+
+		@RequestMapping(value = "/medicalHistory", method = RequestMethod.POST)
+		public ModelAndView addMedicalHistory(
+				@ModelAttribute(value = "medicalHistory") MedicalHistoryEntity medicalHistory, 
+				BindingResult result, HttpSession session) {
+
+			ModelAndView model = new ModelAndView();
+			//System.out.println("patient uhid"+medicalHistory.getPatient().getUhid());
+			PatientEntity patient = (PatientEntity) session.getAttribute("currentPatient");			
+			medicalHistory.setPatient(patient);
+			healthCenterService.addMedicalHistory(medicalHistory);
+			model.setViewName("healthcenter/medicalHistory");
+			return model;
+		}
+
+		// end of medical History
+	
+	
 
 }

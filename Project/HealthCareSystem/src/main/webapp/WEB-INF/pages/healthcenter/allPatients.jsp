@@ -16,14 +16,30 @@
 		<jsp:include page="/common/healthcenter/leftnavigation.jsp"></jsp:include>
 		<div class="main-content">
 			<div class="page-content"></div>
-			<table>
-			<c:forEach var="patient" items="${patients}" varStatus="status">
-						<tr>
-							<td>${status.count}</td>
-							
-							<td>${patient.lastName}</td>
-							<td> <a href="${pageContext.request.contextPath}/healthCenter/patient/${patient.uhid}">details </a></td>
-					</c:forEach>
+			<table id="sample-table-1"
+				class="table table-striped table-bordered table-hover">
+				<thead>
+					<tr>
+						
+						<th>S.No</th>
+						<th>UHID</th>
+						<th>Last Name</th>
+						<th class="hidden-480">Details</th>						
+						<th class="hidden-480">Switch</th>
+					</tr>
+				</thead>
+				<c:forEach var="patient" items="${patients}" varStatus="status">
+					<tr>
+						<td>${status.count}</td>
+						<td>${patient.uhid}</td>
+						<td>${patient.lastName}</td>
+						<td><a
+							href="${pageContext.request.contextPath}/healthCenter/patient/${patient.uhid}">details
+						</a></td>
+						<td><a
+							href="${pageContext.request.contextPath}/healthCenter/switchTopatient/${patient.uhid}">switch
+								to this patient </a></td>
+				</c:forEach>
 			</table>
 		</div>
 	</div>

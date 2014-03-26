@@ -1,0 +1,21 @@
+create table MEDICAL_HISTORY (
+id int(11) NOT NULL AUTO_INCREMENT,
+uhid int(11) NOT NULL,
+ip varchar(15),
+op varchar(15),
+accPatient varchar(15),
+emerPatient varchar(15),
+reasonForVisit varchar(15),
+presentHistory varchar(15),
+pastHistory varchar(15),
+personalHistory varchar(15),
+familyHistory varchar(15),
+problemForm date,
+doctorName varchar(15),
+notes varchar(15),
+fromDate date,
+toDate date,
+progress varchar(15),
+advice varchar(15),
+PRIMARY KEY (`id`)
+);

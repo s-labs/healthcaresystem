@@ -12,10 +12,13 @@
 
 <c:set var="pageTitle">Health care System :: Admin Home Page</c:set>
 <template:page pageTitle="${pageTitle}" bodyCss="home">
-	<div class="leftSection">
-	<jsp:include page="/common/healthcenter/leftnavigation.jsp"></jsp:include>
-	</div>
-	<div class="right">
-	this is health center home page
+
+	<div class="main-container container-fluid">
+		<jsp:include page="/common/leftnavigation.jsp"></jsp:include>
+		<div class="main-content">
+			<div class="page-content">
+				<div class="page-header position-relative">this is healthcenter page</div>
+			</div>
+		</div>
 	</div>
 </template:page>

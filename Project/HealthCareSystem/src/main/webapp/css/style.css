@@ -35,3 +35,6 @@
 .btn-group > .btn, .btn-group + .btn {
 	padding:0px;
 }
+.nav-list a .badge, .nav-list a .label {
+	width: 100px;
+}

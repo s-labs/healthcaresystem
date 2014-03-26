@@ -3,6 +3,7 @@ package com.healthcare.services;
 import java.util.List;
 
 import com.healthcare.form.UserForm;
+import com.healthcare.model.MedicalHistoryEntity;
 import com.healthcare.model.PatientEntity;
 
 public interface HealthCenterService {
@@ -11,5 +12,6 @@ public interface HealthCenterService {
 	public void addUser(UserForm userform);
 	public List<PatientEntity> getAllPatients();
 	public PatientEntity getPatient(Long PatientCode);
+	public void addMedicalHistory(MedicalHistoryEntity medicalHistory);
 
 }

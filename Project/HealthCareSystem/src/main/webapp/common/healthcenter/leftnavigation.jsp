@@ -37,11 +37,10 @@
 			</sec:authorize>
 			<sec:authorize ifAnyGranted="ROLE_CLERK">
 Role : Clerk
-				<li>
-					<a class="dropdown-toggle" href="#"> <i
+				<li><a class="dropdown-toggle" href="#"> <i
 						class="icon-desktop"></i> <span class="menu-text"> HIS </span> <b
 						class="arrow icon-angle-down"></b>
-					</a>
+				</a>
 					<ul class="submenu">
 						<li><a href="viewHospitalDetails"> <i
 								class="icon-double-angle-right"></i> Hospital Details
@@ -49,84 +48,95 @@ Role : Clerk
 						<li><a href="viewHospitalizationHistory"> <i
 								class="icon-double-angle-right"></i> Hospitalization History
 						</a></li>
-					</ul>
-				</li>
-				<li>
-					<a class="dropdown-toggle" href="${pageContext.request.contextPath}/healthCenter/addPatient"> <i
-						class="icon-desktop"></i> <span class="menu-text"> Add Patient </span> 
-					</a>
-					
-				</li>
-				<li>
-					<a class="dropdown-toggle" href="${pageContext.request.contextPath}/healthCenter/viewAllPatients"> <i
-						class="icon-desktop"></i> <span class="menu-text"> View All Patients </span> 
-					</a>
-					
-				</li>
-				
+					</ul></li>
+				<li><a class="dropdown-toggle"
+					href="${pageContext.request.contextPath}/healthCenter/addPatient">
+						<i class="icon-desktop"></i> <span class="menu-text"> Add
+							Patient </span>
+				</a></li>
+				<li><a class="dropdown-toggle"
+					href="${pageContext.request.contextPath}/healthCenter/viewAllPatients">
+						<i class="icon-desktop"></i> <span class="menu-text"> View
+							All Patients </span>
+				</a></li>
+
 			</sec:authorize>
 			<sec:authorize ifAnyGranted="ROLE_DOCTOR">
-					<li> Role : Doctor </li>
-					<li>
-					<a class="dropdown-toggle" href="#"> <i
+				<li>Role : Doctor</li>
+				<li><a class="dropdown-toggle" href="#"> <i
 						class="icon-desktop"></i> <span class="menu-text"> PIS </span> <b
 						class="arrow icon-angle-down"></b>
-					</a>
+				</a>
 					<ul class="submenu">
-						<li><a href="${pageContext.request.contextPath}/healthCenter/viewPatients"> <i
-								class="icon-double-angle-right"></i> Patient Master Index
+						<c:choose>
+							<c:when test="${currentPatient != null}">
+								<li><a
+									href="${pageContext.request.contextPath}/healthCenter/patient/${currentPatient.uhid}">
+										<i class="icon-double-angle-right"></i> Patient Master Index
+								</a></li>
+							</c:when>
+							<c:otherwise>
+								<li><a
+									href="#">
+										<i class="icon-double-angle-right"></i> No patient Selected
+								</a></li>
+							</c:otherwise>
+						</c:choose>
+
+						<li><a
+							href="${pageContext.request.contextPath}/healthCenter/viewAllPatients">
+								<i class="icon-double-angle-right"></i> All Patients
 						</a></li>
-						
-					</ul>
-				</li>
-					<li>
-					<a class="dropdown-toggle" href="#"> 
-						<i class="icon-desktop"></i> <span class="menu-text"> MIS </span> <b class="arrow icon-angle-down"></b>
-					</a>
+
+					</ul></li>
+				<li><a class="dropdown-toggle" href="#"> <i
+						class="icon-desktop"></i> <span class="menu-text"> MIS </span> <b
+						class="arrow icon-angle-down"></b>
+				</a>
 					<ul class="submenu">
-						<li>
-						
-							<a href="po"> <i class="icon-double-angle-right"></i> PO </a>
-						</li>
-						<li>
-						
-							<a href="po"> <i class="icon-double-angle-right"></i> PD </a>
-						</li>
-						<li>
-						
-							<a href="po"> <i class="icon-double-angle-right"></i> CI </a>
-						</li>
-						<li>
-						
-							<a href="po"> <i class="icon-double-angle-right"></i> ID </a>
-						</li>
-						<li>
-						
-							<a href="po"> <i class="icon-double-angle-right"></i> MH </a>
-						</li>
-						<li>
-						
-							<a href="po"> <i class="icon-double-angle-right"></i> SH </a>
-						</li>
-						<li>
-						
-							<a href="po"> <i class="icon-double-angle-right"></i> AH </a>
-						</li>
-						<li>
-						
-							<a href="po"> <i class="icon-double-angle-right"></i> MD </a>
-						</li>
-						<li>						
-							<a href="po"> <i class="icon-double-angle-right"></i> MT </a>
-						</li>
-						<li>						
-							<a href="po"> <i class="icon-double-angle-right"></i> DPL </a>
-						</li>
-						
-					</ul>
-				</li>
-				<li>
-					<a href="tng"> <i class="icon-desktop"></i> <span class="menu-text"> TNG </span> </a>					
+						<li><a href="po"> <i class="icon-double-angle-right"></i>
+								PO
+						</a></li>
+						<li><a href="po"> <i class="icon-double-angle-right"></i>
+								PD
+						</a></li>
+						<li><a href="po"> <i class="icon-double-angle-right"></i>
+								CI
+						</a></li>
+						<li><a href="po"> <i class="icon-double-angle-right"></i>
+								ID
+						</a></li>
+						<li><a href="${pageContext.request.contextPath}/healthCenter/medicalHistory"> <i
+								class="icon-double-angle-right"></i> Medical History
+						</a></li>
+						<li><a href="po"> <i class="icon-double-angle-right"></i>
+								SH
+						</a></li>
+						<li><a href="po"> <i class="icon-double-angle-right"></i>
+								AH
+						</a></li>
+						<li><a href="po"> <i class="icon-double-angle-right"></i>
+								MD
+						</a></li>
+						<li><a href="po"> <i class="icon-double-angle-right"></i>
+								MT
+						</a></li>
+						<li><a href="po"> <i class="icon-double-angle-right"></i>
+								DPL
+						</a></li>
+
+					</ul></li>
+				<li><a href="tng"> <i class="icon-desktop"></i> <span
+						class="menu-text"> TNG </span>
+				</a></li>
+				<li>Patient Information <br /> <c:choose>
+						<c:when test="${currentPatient != null}">
+					${currentPatient.firstName}
+					</c:when>
+						<c:otherwise>
+					no patient selected
+					</c:otherwise>
+					</c:choose>
 				</li>
 
 			</sec:authorize>
