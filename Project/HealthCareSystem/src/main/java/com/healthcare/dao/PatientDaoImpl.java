@@ -2,11 +2,14 @@ package com.healthcare.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.healthcare.model.PatientEntity;
+import com.healthcare.model.StateEntity;
 
 @Repository
 public class PatientDaoImpl implements PatientDao{
@@ -22,8 +25,7 @@ public class PatientDaoImpl implements PatientDao{
 
 	@Override
 	public List<PatientEntity> getAllPatients() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.sessionFactory.getCurrentSession().createQuery("from PatientEntity").list();
 	}
 
 	@Override
@@ -33,9 +35,16 @@ public class PatientDaoImpl implements PatientDao{
 	}
 
 	@Override
-	public PatientEntity getPatient(Long code) {
-		// TODO Auto-generated method stub
-		return null;
+	public PatientEntity getPatient(Long uhid) {
+		String hql = "FROM PatientEntity P WHERE P.uhid = "+uhid;
+		Session session = this.sessionFactory.getCurrentSession();
+		Query query = session .createQuery(hql);
+		List results = query.list();
+		PatientEntity patientEntity = null;
+		if(results!= null && results.size() > 0) {
+			patientEntity = (PatientEntity) results.get(0);
+		}
+		return patientEntity;
 	}
 
 }

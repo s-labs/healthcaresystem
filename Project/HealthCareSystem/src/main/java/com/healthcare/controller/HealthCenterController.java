@@ -22,41 +22,41 @@ import com.healthcare.services.HealthCenterService;
 @Controller
 @RequestMapping("/healthCenter")
 public class HealthCenterController {
-	
+
 	@Autowired
 	private HealthCenterService healthCenterService;
-	
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String homepage(ModelMap map) {
-		
+
 		return "healthcenter/homepage";
 	}
 
 	@RequestMapping(value = "/addPatient", method = RequestMethod.GET)
 	public String addStateFrom(ModelMap map) {
 		map.addAttribute("patient", new PatientEntity());
-		
+
 		return "healthcenter/addPatient";
 	}
-	
+
 	@RequestMapping(value = "/addDoctor", method = RequestMethod.GET)
-	public String addDoctorFrom(ModelMap map,HttpSession session) {
+	public String addDoctorFrom(ModelMap map, HttpSession session) {
 		UserForm userform = new UserForm();
-		
+
 		long healthcenterid;
 		UserEntity user = (UserEntity) session.getAttribute("user");
-		if(user!=null) {
+		if (user != null) {
 			healthcenterid = user.getHealthcenter().getId();
 			userform.setHealthcenterId(healthcenterid);
 		}
-		//userform.setHealthcenterId(healthcenterId);
+		// userform.setHealthcenterId(healthcenterId);
 		userform.setRole("ROLE_DOCTOR");
-		
+
 		map.addAttribute("userform", userform);
-		
+
 		return "healthcenter/addDoctor";
 	}
-	
+
 	@RequestMapping(value = "/addDoctor", method = RequestMethod.POST)
 	public ModelAndView addDoctor(
 			@ModelAttribute(value = "userform") UserForm userform,
@@ -64,40 +64,49 @@ public class HealthCenterController {
 
 		ModelAndView model = new ModelAndView();
 		healthCenterService.addUser(userform);
-		
+
 		model.setViewName("healthcenter/addDoctor");
 		return model;
 	}
-	
+
 	@RequestMapping("/patient/{patientCode}")
-	 public ModelAndView stateDetails(@PathVariable("patientCode") Long patientCode) {
-		 ModelAndView model = new ModelAndView();
-		
-			
-			model.setViewName("healthcenter/patient");
-			return model; 
-	 }
-	
-	//clerk
-	
+	public ModelAndView patientDetails(
+			@PathVariable("patientCode") Long patientCode) {
+		ModelAndView model = new ModelAndView();
+		PatientEntity patient = healthCenterService.getPatient(patientCode);
+		model.addObject("patient", patient);
+		model.setViewName("healthcenter/patient");
+		return model;
+	}
+
+	@RequestMapping("/viewAllPatients")
+	public ModelAndView viewAllPatients() {
+		ModelAndView model = new ModelAndView();
+		List<PatientEntity> patients = healthCenterService.getAllPatients();
+		model.addObject("patients", patients);
+		model.setViewName("healthcenter/allPatients");
+		return model;
+	}
+	// clerk
+
 	@RequestMapping(value = "/addClerk", method = RequestMethod.GET)
-	public String addClerkFrom(ModelMap map,HttpSession session) {
+	public String addClerkFrom(ModelMap map, HttpSession session) {
 		UserForm userform = new UserForm();
-		
+
 		long healthcenterid;
 		UserEntity user = (UserEntity) session.getAttribute("user");
-		if(user!=null) {
+		if (user != null) {
 			healthcenterid = user.getHealthcenter().getId();
 			userform.setHealthcenterId(healthcenterid);
 		}
-		//userform.setHealthcenterId(healthcenterId);
+		// userform.setHealthcenterId(healthcenterId);
 		userform.setRole("ROLE_CLERK");
-		
+
 		map.addAttribute("userform", userform);
-		
+
 		return "healthcenter/addClerk";
 	}
-	
+
 	@RequestMapping(value = "/addClerk", method = RequestMethod.POST)
 	public ModelAndView addClerk(
 			@ModelAttribute(value = "userform") UserForm userform,
@@ -106,16 +115,16 @@ public class HealthCenterController {
 		ModelAndView model = new ModelAndView();
 		healthCenterService.addUser(userform);
 		model.addObject("SUCESS_MESSAGE", "clerk added successfully");
-		
+
 		model.setViewName("healthcenter/addClerk");
 		return model;
 	}
-	
-	
-	//end of clerk
+
+	// end of clerk
 
 	@RequestMapping(value = "/addPatient", method = RequestMethod.POST)
-	public ModelAndView addState(@ModelAttribute(value = "patient") PatientEntity patient,
+	public ModelAndView addState(
+			@ModelAttribute(value = "patient") PatientEntity patient,
 			BindingResult result) {
 
 		ModelAndView model = new ModelAndView();

@@ -37,16 +37,14 @@ public class HealthCenterServiceImpl implements HealthCenterService{
 		
 	}
 
-	@Override
+	@Transactional
 	public List<PatientEntity> getAllPatients() {
-		// TODO Auto-generated method stub
-		return null;
+		return patientDao.getAllPatients();
 	}
 
-	@Override
+	@Transactional
 	public PatientEntity getPatient(Long PatientCode) {
-		// TODO Auto-generated method stub
-		return null;
+		return patientDao.getPatient(PatientCode);
 	}
 
 	@Transactional
