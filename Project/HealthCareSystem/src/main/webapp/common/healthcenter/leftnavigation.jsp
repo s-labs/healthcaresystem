@@ -21,8 +21,7 @@
 			<sec:authorize ifAnyGranted="ROLE_HC_ADMIN">
 				<li>Role : HC Admin</li>
 				<li>
-				<li><a href="addDoctor"> <i
-						class="icon-hand-right icon-animated-hand-pointer blue"></i><span
+				<li><a href="addDoctor"> <i class="icon-hand-right icon-animated-hand-pointer blue"></i><span
 						class="label label-large label-pink ${action=='addDoctor'?'arrowed-right':'' }">
 							Add Doctor </span></a></li>
 				<li><a href="addClerk"> <i
@@ -89,7 +88,7 @@ Role : Clerk
 						</a></li>
 
 					</ul></li>
-				<li><a class="dropdown-toggle" href="#"> <i
+				<li id="MIS"><a class="dropdown-toggle" href="#"> <i
 						class="icon-desktop"></i> <span class="menu-text"> MIS </span> <b
 						class="arrow icon-angle-down"></b>
 				</a>
@@ -106,7 +105,7 @@ Role : Clerk
 						<li><a href="po"> <i class="icon-double-angle-right"></i>
 								ID
 						</a></li>
-						<li><a href="${pageContext.request.contextPath}/healthCenter/medicalHistory"> <i
+						<li id="medicalhistory"><a href="${pageContext.request.contextPath}/healthCenter/medicalHistory"> <i
 								class="icon-double-angle-right"></i> Medical History
 						</a></li>
 						<li><a href="po"> <i class="icon-double-angle-right"></i>
@@ -115,8 +114,8 @@ Role : Clerk
 						<li><a href="po"> <i class="icon-double-angle-right"></i>
 								AH
 						</a></li>
-						<li><a href="po"> <i class="icon-double-angle-right"></i>
-								MD
+						<li id="medicationDetails"><a href="${pageContext.request.contextPath}/healthCenter/medicationDetails"> <i class="icon-double-angle-right"></i>
+								Medication Details
 						</a></li>
 						<li><a href="po"> <i class="icon-double-angle-right"></i>
 								MT

@@ -1,0 +1,14 @@
+create table MEDICATION_DETAILS (
+id int(11) NOT NULL AUTO_INCREMENT,
+uhid int(11) NOT NULL,
+medication_name varchar(15),
+drug_code varchar(15),
+strength varchar(15),
+dose varchar(15),
+route varchar(15),
+frequency varchar(15),
+from_date date,
+to_date date,
+next_check_up date,
+PRIMARY KEY (`id`)
+);

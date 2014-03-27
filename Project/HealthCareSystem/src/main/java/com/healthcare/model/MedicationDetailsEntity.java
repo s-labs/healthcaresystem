@@ -2,20 +2,28 @@ package com.healthcare.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 import java.util.Date;
 
 @Entity
-@Table(name = "medical_details")
+@Table(name = "MEDICATION_DETAILS")
 public class MedicationDetailsEntity {
 	
 	@Id
-	@Column
+	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long uhid;
+	private long code;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "uhid",nullable = false)
+	private PatientEntity patient;
 	
 	@Column
 	private String medication_name;
@@ -48,16 +56,26 @@ public class MedicationDetailsEntity {
 	
 	//setters & getters
 
-	public Long getUhid() {
-		return uhid;
-	}
-
-	public void setUhid(Long uhid) {
-		this.uhid = uhid;
-	}
+	
 
 	public String getMedication_name() {
 		return medication_name;
+	}
+
+	public long getCode() {
+		return code;
+	}
+
+	public void setCode(long code) {
+		this.code = code;
+	}
+
+	public PatientEntity getPatient() {
+		return patient;
+	}
+
+	public void setPatient(PatientEntity patient) {
+		this.patient = patient;
 	}
 
 	public void setMedication_name(String medication_name) {

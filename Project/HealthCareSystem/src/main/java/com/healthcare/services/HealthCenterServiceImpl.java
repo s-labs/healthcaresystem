@@ -14,6 +14,7 @@ import com.healthcare.dao.UserDao;
 import com.healthcare.form.UserForm;
 import com.healthcare.model.HealthCenterEntity;
 import com.healthcare.model.MedicalHistoryEntity;
+import com.healthcare.model.MedicationDetailsEntity;
 import com.healthcare.model.PatientEntity;
 import com.healthcare.model.UserEntity;
 import com.healthcare.model.UserRolesEntity;
@@ -79,6 +80,11 @@ public class HealthCenterServiceImpl implements HealthCenterService{
 	public void addMedicalHistory(MedicalHistoryEntity medicalHistory) {
 		patientDao.addMedicalHistory(medicalHistory);
 		
+	}
+
+	@Transactional
+	public void addMedicationDetails(MedicationDetailsEntity medicationDetails) {
+		patientDao.addMedicalHistory(medicationDetails);
 	}
 
 }

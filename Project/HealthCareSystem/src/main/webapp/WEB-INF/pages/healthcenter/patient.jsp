@@ -65,6 +65,62 @@
 
 				</c:forEach>
 			</table>
+			Medication Details :
+			<table id="sample-table-1"
+				class="table table-striped table-bordered table-hover">
+				<thead>
+					<tr>
+
+						<th>Column</th>
+						<th>Details</th>
+
+					</tr>
+				</thead>
+				<c:forEach var="medicationDetails" items="${patient.medicationDetails}"
+					varStatus="status">
+					<tr> <td colspan="2"> This record ${status.count} </td></tr>
+					<tr>
+						<td>medication name</td>
+						<td>${medicationDetails.medication_name}</td>
+					</tr>
+					<tr>
+						<td>drug code</td>
+						<td>${medicationDetails.drug_code}</td>
+					</tr>
+					<tr>
+						<td>strength</td>
+						<td>${medicationDetails.strength}</td>
+					</tr>
+					
+					<tr>
+						<td>dose</td>
+						<td>${medicationDetails.dose}</td>
+					</tr>
+					
+					<tr>
+						<td>route</td>
+						<td>${medicationDetails.route}</td>
+					</tr>
+					<tr>
+						<td>frequency</td>
+						<td>${medicationDetails.frequency}</td>
+					</tr>
+					<tr>
+						<td>from_date</td>
+						<td>${medicationDetails.from_date}</td>
+					</tr>
+					<tr>
+						<td>to_date</td>
+						<td>${medicationDetails.to_date}</td>
+					</tr>
+					<tr>
+						<td>next_check_up</td>
+						<td>${medicationDetails.next_check_up}</td>
+					</tr>
+					
+
+				</c:forEach>
+			</table>
 		</div>
 	</div>
 </template:page>

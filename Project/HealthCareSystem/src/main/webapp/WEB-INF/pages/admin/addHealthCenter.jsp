@@ -14,6 +14,9 @@
 <template:page pageTitle="${pageTitle}" bodyCss="home">
 	<div class="main-container container-fluid">
 		<jsp:include page="/common/admin/leftnavigation.jsp"></jsp:include>
+		<script>
+			$("#addHealthCenter").addClass("active");
+			</script>
 		<div class="main-content">
 			<div class="page-content">
 

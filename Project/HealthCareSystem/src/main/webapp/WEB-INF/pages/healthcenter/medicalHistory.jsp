@@ -10,11 +10,17 @@
 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<c:set var="pageTitle">Health care System :: Admin Home Page</c:set>
+<c:set var="pageTitle">Health care System :: Medical History Page</c:set>
+<c:set var="action" scope="request">medicalhistory</c:set>
 <template:page pageTitle="${pageTitle}" bodyCss="home">
 
 	<div class="main-container container-fluid">
 		<jsp:include page="/common/leftnavigation.jsp"></jsp:include>
+		<script>
+			$("#MIS").addClass("active");
+			$("#MIS").addClass("open");
+			$("#medicalhistory").addClass("active");
+		</script>
 		<div class="main-content">
 			<div class="page-content">
 

@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.healthcare.form.UserForm;
 import com.healthcare.model.MedicalHistoryEntity;
+import com.healthcare.model.MedicationDetailsEntity;
 import com.healthcare.model.PatientEntity;
 import com.healthcare.model.UserEntity;
 import com.healthcare.services.HealthCenterService;
@@ -176,6 +177,32 @@ public class HealthCenterController {
 
 		// end of medical History
 	
+		// medication Details 
+
+			@RequestMapping(value = "/medicationDetails", method = RequestMethod.GET)
+			public String addMedicationDetailsFrom(ModelMap map, HttpSession session) {
+				MedicationDetailsEntity medicationDetails = new MedicationDetailsEntity();
+				PatientEntity patient = (PatientEntity) session.getAttribute("currentPatient");			
+				medicationDetails.setPatient(patient);
+				map.addAttribute("medicationDetails", medicationDetails);
+				return "healthcenter/medicationDetails";
+			}
+	
+			@RequestMapping(value = "/medicationDetails", method = RequestMethod.POST)
+			public ModelAndView addMedicationDetails(
+					@ModelAttribute(value = "medicationDetails") MedicationDetailsEntity medicationDetails, 
+					BindingResult result, HttpSession session) {
+	
+				ModelAndView model = new ModelAndView();
+				//System.out.println("patient uhid"+medicalHistory.getPatient().getUhid());
+				PatientEntity patient = (PatientEntity) session.getAttribute("currentPatient");			
+				medicationDetails.setPatient(patient);
+				healthCenterService.addMedicationDetails(medicationDetails);
+				model.setViewName("healthcenter/medicationDetails");
+				return model;
+			}
+	
+			// end of medical History
 	
 
 }

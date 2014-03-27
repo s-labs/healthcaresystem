@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.healthcare.model.MedicalHistoryEntity;
+import com.healthcare.model.MedicationDetailsEntity;
 import com.healthcare.model.PatientEntity;
 import com.healthcare.model.StateEntity;
 
@@ -57,6 +58,12 @@ public class PatientDaoImpl implements PatientDao{
 	@Override
 	public Object findById(Long valueOf) {
 		return getPatient(valueOf);
+	}
+
+	@Override
+	public void addMedicalHistory(MedicationDetailsEntity medicationDetails) {
+		this.sessionFactory.getCurrentSession().save(medicationDetails);
+		
 	}
 
 }

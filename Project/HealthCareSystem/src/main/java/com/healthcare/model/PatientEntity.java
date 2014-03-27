@@ -34,6 +34,12 @@ public class PatientEntity implements GenericEntity<Long>{
 	private Set<MedicalHistoryEntity> medicalhistory = new HashSet<MedicalHistoryEntity>(
 			0);
 	
+	@OneToMany(fetch = FetchType.EAGER,cascade={CascadeType.ALL})
+    @JoinColumn(name="uhid")
+    @IndexColumn(name="code")
+	private Set<MedicationDetailsEntity> medicationDetails = new HashSet<MedicationDetailsEntity>(
+			0);
+	
 	@Column
 	private String lastName;
 	private String middleName;
@@ -128,6 +134,14 @@ public class PatientEntity implements GenericEntity<Long>{
 	}
 	public void setMedicalhistory(Set<MedicalHistoryEntity> medicalhistory) {
 		this.medicalhistory = medicalhistory;
+	}
+	
+	
+	public Set<MedicationDetailsEntity> getMedicationDetails() {
+		return medicationDetails;
+	}
+	public void setMedicationDetails(Set<MedicationDetailsEntity> medicationDetails) {
+		this.medicationDetails = medicationDetails;
 	}
 	public String getLastName() {
 		return this.lastName;
