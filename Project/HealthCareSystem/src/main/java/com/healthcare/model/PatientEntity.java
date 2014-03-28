@@ -40,6 +40,20 @@ public class PatientEntity implements GenericEntity<Long>{
 	private Set<MedicationDetailsEntity> medicationDetails = new HashSet<MedicationDetailsEntity>(
 			0);
 	
+	@OneToMany(fetch = FetchType.EAGER,cascade={CascadeType.ALL})
+    @JoinColumn(name="uhid")
+    @IndexColumn(name="code")
+	private Set<PregnancyHistoryEntity> pregnancyHistory = new HashSet<PregnancyHistoryEntity>(
+			0);
+
+	
+	
+	public Set<PregnancyHistoryEntity> getPregnancyHistory() {
+		return pregnancyHistory;
+	}
+	public void setPregnancyHistory(Set<PregnancyHistoryEntity> pregnancyHistory) {
+		this.pregnancyHistory = pregnancyHistory;
+	}
 	@Column
 	private String lastName;
 	private String middleName;

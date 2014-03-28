@@ -14,17 +14,22 @@
 <template:page pageTitle="${pageTitle}" bodyCss="home">
 	<div class="main-container container-fluid">
 		<jsp:include page="/common/healthcenter/leftnavigation.jsp"></jsp:include>
+		<script>
+			$("#PIS").addClass("active");
+			$("#PIS").addClass("open");
+			$("#allPatients").addClass("active");
+		</script>
 		<div class="main-content">
 			<div class="page-content"></div>
 			<table id="sample-table-1"
 				class="table table-striped table-bordered table-hover">
 				<thead>
 					<tr>
-						
+
 						<th>S.No</th>
 						<th>UHID</th>
 						<th>Last Name</th>
-						<th class="hidden-480">Details</th>						
+						<th class="hidden-480">Details</th>
 						<th class="hidden-480">Switch</th>
 					</tr>
 				</thead>

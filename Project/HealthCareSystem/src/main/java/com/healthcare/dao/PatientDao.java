@@ -5,6 +5,7 @@ import java.util.List;
 import com.healthcare.model.MedicalHistoryEntity;
 import com.healthcare.model.MedicationDetailsEntity;
 import com.healthcare.model.PatientEntity;
+import com.healthcare.model.PregnancyHistoryEntity;
 import com.healthcare.util.GenericDao;
 
 public interface PatientDao extends GenericDao<PatientEntity, Long> {
@@ -15,5 +16,6 @@ public interface PatientDao extends GenericDao<PatientEntity, Long> {
 	    public PatientEntity getPatient(Long code);
 		public void addMedicalHistory(MedicalHistoryEntity medicalHistory);
 		public void addMedicalHistory(MedicationDetailsEntity medicationDetails);
+		public void addPregnancyHistory(PregnancyHistoryEntity pregnancyHistory);
 
 }

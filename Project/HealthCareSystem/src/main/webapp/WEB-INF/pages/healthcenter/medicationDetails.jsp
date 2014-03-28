@@ -87,5 +87,6 @@
 					</form:form>
 				</div>
 			</div>
+			</div>
 		</div>
 </template:page>

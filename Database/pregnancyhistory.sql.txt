@@ -1,0 +1,17 @@
+create table pregnancy_history (
+	id int(11) NOT NULL AUTO_INCREMENT,
+	uhid int(11) NOT NULL,
+	lmp date,
+	first_anc date,
+	second_anc date,
+	third_anc date,
+	fourth_anc date,
+	tt1 date,
+	tt2 date,
+	ttbooster date,
+	complication varchar(15),
+	rti_sti varchar(15),
+	ifa_tablets_given date,
+	anaemia_hb_level varchar(15),
+	PRIMARY KEY (`id`)
+)

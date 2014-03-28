@@ -121,6 +121,71 @@
 
 				</c:forEach>
 			</table>
+			
+			Pregnancy  History :
+			<table id="sample-table-1"
+				class="table table-striped table-bordered table-hover">
+				<thead>
+					<tr>
+
+						<th>Column</th>
+						<th>Details</th>
+
+					</tr>
+				</thead>
+				<c:forEach var="pregnancyHistory" items="${patient.pregnancyHistory}"
+					varStatus="status">
+					<tr> <td colspan="2"> This record ${status.count} </td></tr>
+					<tr>
+						<td>first_anc</td>
+						<td>${pregnancyHistory.first_anc}</td>
+					</tr>
+					<tr>
+						<td>second_anc</td>
+						<td>${pregnancyHistory.second_anc}</td>
+					</tr>
+					<tr>
+						<td>strength</td>
+						<td>${pregnancyHistory.third_anc}</td>
+					</tr>
+					
+					<tr>
+						<td>fourth anc</td>
+						<td>${pregnancyHistory.fourth_anc}</td>
+					</tr>
+					<tr>
+						<td>tt1</td>
+						<td>${pregnancyHistory.tt1}</td>
+					</tr>
+					<tr>
+						<td>tt2</td>
+						<td>${pregnancyHistory.tt2}</td>
+					</tr>
+					<tr>
+						<td>ttbooster</td>
+						<td>${pregnancyHistory.ttbooster}</td>
+					</tr>
+					<tr>
+						<td>complication</td>
+						<td>${pregnancyHistory.complication}</td>
+					</tr>
+					
+					<tr>
+						<td>rtis sti</td>
+						<td>${pregnancyHistory.rti_sti}</td>
+					</tr>
+					<tr>
+						<td>ifa tablets given</td>
+						
+						<td>${pregnancyHistory.ifa_tablets_given}</td>
+					</tr>
+					<tr>
+						<td>anaemia hb level</td>
+						<td>${pregnancyHistory.anaemia_hb_level}</td>
+						
+					</tr>
+					</c:forEach>
+					</table>
 		</div>
 	</div>
 </template:page>

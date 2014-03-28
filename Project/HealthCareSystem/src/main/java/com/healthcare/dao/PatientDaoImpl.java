@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.healthcare.model.MedicalHistoryEntity;
 import com.healthcare.model.MedicationDetailsEntity;
 import com.healthcare.model.PatientEntity;
+import com.healthcare.model.PregnancyHistoryEntity;
 import com.healthcare.model.StateEntity;
 
 @Repository
@@ -62,8 +63,12 @@ public class PatientDaoImpl implements PatientDao{
 
 	@Override
 	public void addMedicalHistory(MedicationDetailsEntity medicationDetails) {
-		this.sessionFactory.getCurrentSession().save(medicationDetails);
-		
+		this.sessionFactory.getCurrentSession().save(medicationDetails);		
+	}
+
+	@Override
+	public void addPregnancyHistory(PregnancyHistoryEntity pregnancyHistory) {
+		this.sessionFactory.getCurrentSession().save(pregnancyHistory);		
 	}
 
 }

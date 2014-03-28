@@ -6,6 +6,7 @@ import com.healthcare.form.UserForm;
 import com.healthcare.model.MedicalHistoryEntity;
 import com.healthcare.model.MedicationDetailsEntity;
 import com.healthcare.model.PatientEntity;
+import com.healthcare.model.PregnancyHistoryEntity;
 
 public interface HealthCenterService {
 	
@@ -15,5 +16,6 @@ public interface HealthCenterService {
 	public PatientEntity getPatient(Long PatientCode);
 	public void addMedicalHistory(MedicalHistoryEntity medicalHistory);
 	public void addMedicationDetails(MedicationDetailsEntity medicationDetails);
+	public void addPregnancyHistory(PregnancyHistoryEntity pregnancyHistory);
 
 }

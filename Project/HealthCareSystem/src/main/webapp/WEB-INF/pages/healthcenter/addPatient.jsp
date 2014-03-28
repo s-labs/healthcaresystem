@@ -13,11 +13,15 @@
 <c:set var="pageTitle">Health care System :: Admin Home Page</c:set>
 <template:page pageTitle="${pageTitle}" bodyCss="home">
 	<div class="content">
-		
-		<div class="leftSection">
-			<jsp:include page="/common/healthcenter/leftnavigation.jsp"></jsp:include>
-		</div>
-		<div class="rightSection">
+
+		<div class="main-container container-fluid">
+			<jsp:include page="/common/leftnavigation.jsp"></jsp:include>
+			<script>
+			
+			$("#addPatient").addClass("active");
+		</script>
+			<div class="main-content">
+				<div class="page-content">
 			<table>
 				<!-- <thead>
 					<tr>
@@ -199,6 +203,7 @@
 					
 				</table>
 			</form:form>
+		</div>
 		</div>
 	</div>
 </template:page>

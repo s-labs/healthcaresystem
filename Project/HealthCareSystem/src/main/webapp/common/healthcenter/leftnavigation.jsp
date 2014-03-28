@@ -48,12 +48,12 @@ Role : Clerk
 								class="icon-double-angle-right"></i> Hospitalization History
 						</a></li>
 					</ul></li>
-				<li><a class="dropdown-toggle"
+				<li id="addPatient"><a class="dropdown-toggle"
 					href="${pageContext.request.contextPath}/healthCenter/addPatient">
 						<i class="icon-desktop"></i> <span class="menu-text"> Add
 							Patient </span>
 				</a></li>
-				<li><a class="dropdown-toggle"
+				<li id="allPatients"><a class="dropdown-toggle"
 					href="${pageContext.request.contextPath}/healthCenter/viewAllPatients">
 						<i class="icon-desktop"></i> <span class="menu-text"> View
 							All Patients </span>
@@ -62,7 +62,7 @@ Role : Clerk
 			</sec:authorize>
 			<sec:authorize ifAnyGranted="ROLE_DOCTOR">
 				<li>Role : Doctor</li>
-				<li><a class="dropdown-toggle" href="#"> <i
+				<li id="PIS"><a class="dropdown-toggle" href="#"> <i
 						class="icon-desktop"></i> <span class="menu-text"> PIS </span> <b
 						class="arrow icon-angle-down"></b>
 				</a>
@@ -82,7 +82,7 @@ Role : Clerk
 							</c:otherwise>
 						</c:choose>
 
-						<li><a
+						<li id="allPatients"><a
 							href="${pageContext.request.contextPath}/healthCenter/viewAllPatients">
 								<i class="icon-double-angle-right"></i> All Patients
 						</a></li>
@@ -116,6 +116,9 @@ Role : Clerk
 						</a></li>
 						<li id="medicationDetails"><a href="${pageContext.request.contextPath}/healthCenter/medicationDetails"> <i class="icon-double-angle-right"></i>
 								Medication Details
+						</a></li>
+						<li id="pregnancyHistory"><a href="${pageContext.request.contextPath}/healthCenter/pregnancyHistory"> <i class="icon-double-angle-right"></i>
+								Pregnancy History
 						</a></li>
 						<li><a href="po"> <i class="icon-double-angle-right"></i>
 								MT

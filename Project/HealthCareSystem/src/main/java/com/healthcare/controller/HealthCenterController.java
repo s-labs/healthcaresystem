@@ -18,6 +18,7 @@ import com.healthcare.form.UserForm;
 import com.healthcare.model.MedicalHistoryEntity;
 import com.healthcare.model.MedicationDetailsEntity;
 import com.healthcare.model.PatientEntity;
+import com.healthcare.model.PregnancyHistoryEntity;
 import com.healthcare.model.UserEntity;
 import com.healthcare.services.HealthCenterService;
 
@@ -203,6 +204,33 @@ public class HealthCenterController {
 			}
 	
 			// end of medical History
+			
+			// pegnancyhistory Details 
+
+						@RequestMapping(value = "/pregnancyHistory", method = RequestMethod.GET)
+						public String addPregnancyHistoryFrom(ModelMap map, HttpSession session) {
+							PregnancyHistoryEntity pregnancyHistory = new PregnancyHistoryEntity();
+							PatientEntity patient = (PatientEntity) session.getAttribute("currentPatient");			
+							pregnancyHistory.setPatient(patient);
+							map.addAttribute("pregnancyHistory", pregnancyHistory);
+							return "healthcenter/pregnancyHistory";
+						}
+				
+						@RequestMapping(value = "/pregnancyHistory", method = RequestMethod.POST)
+						public ModelAndView addPregnancyHistory(
+								@ModelAttribute(value = "pregnancyHistory") PregnancyHistoryEntity pregnancyHistory, 
+								BindingResult result, HttpSession session) {
+				
+							ModelAndView model = new ModelAndView();
+							//System.out.println("patient uhid"+medicalHistory.getPatient().getUhid());
+							PatientEntity patient = (PatientEntity) session.getAttribute("currentPatient");			
+							pregnancyHistory.setPatient(patient);
+							healthCenterService.addPregnancyHistory(pregnancyHistory);
+							model.setViewName("healthcenter/pregnancyHistory");
+							return model;
+						}
+				
+						// end of pregnancy History
 	
 
 }
