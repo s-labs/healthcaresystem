@@ -1,0 +1,11 @@
+create table ALLERGY_HISTORY (
+id int(11) NOT NULL AUTO_INCREMENT,
+uhid int(11) NOT NULL,
+AllergicTO	Varchar(50),
+ReactionDate	Date,
+ReactionType	Varchar(50),
+Prescription	Varchar(50),
+Notes	Varchar(100),
+DoctorName	Varchar(30),
+PRIMARY KEY (`id`)
+);

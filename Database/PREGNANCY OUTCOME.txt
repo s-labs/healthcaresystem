@@ -1,0 +1,11 @@
+create table PREGNANCY_OUTCOME (
+id int(11) NOT NULL AUTO_INCREMENT,
+uhid int(11) NOT NULL,
+PlaceofDelivery varchar(40),
+DeliveryType varchar(40),
+complications varchar(40),
+DateofDelivery date,
+DateofDischarge date,
+abortion varchar(30),
+PRIMARY KEY (`id`)
+);

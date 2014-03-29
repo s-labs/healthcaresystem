@@ -1,0 +1,7 @@
+create table DRUG_PRESCIPTION_LOOKUP (
+id int(11) NOT NULL AUTO_INCREMENT,
+DiseaseCode	int(20),
+DrugPrescription	Varchar(100),
+Notes	Varchar(100),
+PRIMARY KEY (`id`)
+);

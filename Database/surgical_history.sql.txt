@@ -1,0 +1,12 @@
+create table SURGICAL_HISTORY (
+id int(11) NOT NULL AUTO_INCREMENT,
+uhid int(11) NOT NULL,
+Surgery varchar(40),
+SurgeryDate date,
+doctorName varchar(45),
+PlaceofSurgery varchar(100),
+SurgeryProcedure varchar(250),
+Status varchar(50),
+Notes varchar(250),
+PRIMARY KEY (`id`)
+);

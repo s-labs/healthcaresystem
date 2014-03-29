@@ -8,11 +8,18 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.healthcare.model.AllergyHistoryEntity;
+import com.healthcare.model.ChildImmunisationEntity;
+import com.healthcare.model.InfantDetailsEntity;
 import com.healthcare.model.MedicalHistoryEntity;
 import com.healthcare.model.MedicationDetailsEntity;
+import com.healthcare.model.MedicationTreatmentEntity;
 import com.healthcare.model.PatientEntity;
+import com.healthcare.model.PncDetailsEntity;
 import com.healthcare.model.PregnancyHistoryEntity;
+import com.healthcare.model.PregnancyOutcomeEntity;
 import com.healthcare.model.StateEntity;
+import com.healthcare.model.SurgicalHistoryEntity;
 
 @Repository
 public class PatientDaoImpl implements PatientDao{
@@ -56,10 +63,7 @@ public class PatientDaoImpl implements PatientDao{
 		
 	}
 
-	@Override
-	public Object findById(Long valueOf) {
-		return getPatient(valueOf);
-	}
+
 
 	@Override
 	public void addMedicalHistory(MedicationDetailsEntity medicationDetails) {
@@ -69,6 +73,55 @@ public class PatientDaoImpl implements PatientDao{
 	@Override
 	public void addPregnancyHistory(PregnancyHistoryEntity pregnancyHistory) {
 		this.sessionFactory.getCurrentSession().save(pregnancyHistory);		
+	}
+
+	@Override
+	public void addPregnancyHistory(
+			MedicationTreatmentEntity medicationTreatment) {
+		this.sessionFactory.getCurrentSession().save(medicationTreatment);		
+		
+	}
+
+	@Override
+	public void addSurgicalHistory(SurgicalHistoryEntity surgicalHistory) {
+		this.sessionFactory.getCurrentSession().save(surgicalHistory);		
+		
+	}
+
+	@Override
+	public void addPregnancyOutcome(PregnancyOutcomeEntity pregnancyOutcome) {
+		this.sessionFactory.getCurrentSession().save(pregnancyOutcome);		
+		
+	}
+
+	@Override
+	public void addInfantDetails(PregnancyOutcomeEntity pregnancyOutcome) {
+		this.sessionFactory.getCurrentSession().save(pregnancyOutcome);	
+		
+	}
+
+	@Override
+	public void addChildImmunisation(ChildImmunisationEntity childImmunisation) {
+		this.sessionFactory.getCurrentSession().save(childImmunisation);	
+		
+	}
+
+	@Override
+	public void addInfantDetails(InfantDetailsEntity infantDetails) {
+		this.sessionFactory.getCurrentSession().save(infantDetails);	
+		
+	}
+
+	@Override
+	public void addallergyHistory(AllergyHistoryEntity allergyHistory) {
+		this.sessionFactory.getCurrentSession().save(allergyHistory);	
+		
+	}
+
+	@Override
+	public void addPncDetails(PncDetailsEntity pncDetails) {
+		this.sessionFactory.getCurrentSession().save(pncDetails);	
+		
 	}
 
 }

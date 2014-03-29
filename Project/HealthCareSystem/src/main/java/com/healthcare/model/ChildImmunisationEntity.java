@@ -2,22 +2,31 @@ package com.healthcare.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 import java.util.Date;
 
 @Entity
 @Table(name = "child_immunisation")
-public class ChildImmunisation {
+public class ChildImmunisationEntity{
 	
 	@Id
 	@Column
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long uhid;
+	private Long code;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "uhid",nullable = false)
+	private PatientEntity patient;
 	
 	@Column
+	private long childId;
 	private String child_last_name;
 	private String child_middle_name;
 	private String child_first_name;
@@ -27,7 +36,7 @@ public class ChildImmunisation {
 	private Date dob;
 	private Long age;
 	private Date bcg_at_birth;
-	private Date opvo_at_birth;
+	private Date opv0_at_birth;
 	private Date hepatatisb1_at_birth;
 	private Date dpt1_at_6weeks;
 	private Date opv1_at_6weeks;
@@ -52,11 +61,19 @@ public class ChildImmunisation {
 	private String remarks;
 	
 	
-	public ChildImmunisation() {
+	public long getChildId() {
+		return childId;
+	}
+
+	public void setChildId(long childId) {
+		this.childId = childId;
+	}
+
+	public ChildImmunisationEntity() {
 		
 	}//default constructor
 	
-	public ChildImmunisation(String child_last_name,String child_middle_name,String child_first_name,
+	public ChildImmunisationEntity(String child_last_name,String child_middle_name,String child_first_name,
 			String gender,String mother_name,String father_name,Date dob,Long age,Date bcg_at_birth,
 			Date opvo_at_birth,Date hepatatisb1_at_birth,Date dpt1_at_6weeks,Date opv1_at_6weeks,
 			Date hepatatisb2_at_6weeks,Date dpt2_at_10weeks,Date opv2_at_10weeks,Date hepatatisb3_at_10weeks,
@@ -74,7 +91,7 @@ public class ChildImmunisation {
 		this.dob=dob;
 		this.age=age;
 		this.bcg_at_birth=bcg_at_birth;
-		this.opvo_at_birth=opvo_at_birth;
+		this.opv0_at_birth=opvo_at_birth;
 		this.hepatatisb1_at_birth=hepatatisb1_at_birth;
 		this.dpt1_at_6weeks=dpt1_at_6weeks;
 		this.opv1_at_6weeks=opv1_at_6weeks;
@@ -99,13 +116,24 @@ public class ChildImmunisation {
 		this.remarks=remarks;
 		
 	}// full constructor
+	
+	
 
-	public Long getUhid() {
-		return uhid;
+	public PatientEntity getPatient() {
+		return patient;
 	}
 
-	public void setUhid(Long uhid) {
-		this.uhid = uhid;
+	public void setPatient(PatientEntity patient) {
+		this.patient = patient;
+	}
+
+	
+	public Long getCode() {
+		return code;
+	}
+
+	public void setCode(Long code) {
+		this.code = code;
 	}
 
 	public String getChild_last_name() {
@@ -151,6 +179,7 @@ public class ChildImmunisation {
 	public String getFather_name() {
 		return father_name;
 	}
+	
 
 	public void setFather_name(String father_name) {
 		this.father_name = father_name;
@@ -180,12 +209,12 @@ public class ChildImmunisation {
 		this.bcg_at_birth = bcg_at_birth;
 	}
 
-	public Date getOpvo_at_birth() {
-		return opvo_at_birth;
+	public Date getOpv0_at_birth() {
+		return opv0_at_birth;
 	}
 
-	public void setOpvo_at_birth(Date opvo_at_birth) {
-		this.opvo_at_birth = opvo_at_birth;
+	public void setOpv0_at_birth(Date opv0_at_birth) {
+		this.opv0_at_birth = opv0_at_birth;
 	}
 
 	public Date getHepatatisb1_at_birth() {

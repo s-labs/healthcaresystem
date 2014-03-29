@@ -12,11 +12,18 @@ import com.healthcare.dao.HealthCenterDao;
 import com.healthcare.dao.PatientDao;
 import com.healthcare.dao.UserDao;
 import com.healthcare.form.UserForm;
+import com.healthcare.model.AllergyHistoryEntity;
+import com.healthcare.model.ChildImmunisationEntity;
 import com.healthcare.model.HealthCenterEntity;
+import com.healthcare.model.InfantDetailsEntity;
 import com.healthcare.model.MedicalHistoryEntity;
 import com.healthcare.model.MedicationDetailsEntity;
+import com.healthcare.model.MedicationTreatmentEntity;
 import com.healthcare.model.PatientEntity;
+import com.healthcare.model.PncDetailsEntity;
 import com.healthcare.model.PregnancyHistoryEntity;
+import com.healthcare.model.PregnancyOutcomeEntity;
+import com.healthcare.model.SurgicalHistoryEntity;
 import com.healthcare.model.UserEntity;
 import com.healthcare.model.UserRolesEntity;
 
@@ -91,6 +98,49 @@ public class HealthCenterServiceImpl implements HealthCenterService{
 	@Transactional
 	public void addPregnancyHistory(PregnancyHistoryEntity pregnancyHistory) {
 		patientDao.addPregnancyHistory(pregnancyHistory);
+		
+	}
+
+	@Transactional
+	public void addMedicationTreatment(
+			MedicationTreatmentEntity medicationTreatment) {
+		patientDao.addPregnancyHistory(medicationTreatment);
+		
+	}
+
+	@Transactional
+	public void addSurgicalHistory(SurgicalHistoryEntity surgicalHistory) {
+		patientDao.addSurgicalHistory(surgicalHistory);
+		
+	}
+
+	@Transactional
+	public void addPregnancyOutcome(PregnancyOutcomeEntity pregnancyOutcome) {
+		patientDao.addPregnancyOutcome(pregnancyOutcome);
+		
+	}
+
+	@Transactional
+	public void addChildImmunisation(ChildImmunisationEntity childImmunisation) {
+		patientDao.addChildImmunisation(childImmunisation);
+		
+	}
+
+	@Transactional
+	public void addInfantDetails(InfantDetailsEntity infantDetails) {
+		patientDao.addInfantDetails(infantDetails);
+		
+	}
+
+	@Transactional
+	public void addallergyHistory(AllergyHistoryEntity allergyHistory) {
+		patientDao.addallergyHistory(allergyHistory);
+		
+	}
+
+	@Transactional
+	public void addPncDetails(PncDetailsEntity pncDetails) {
+		patientDao.addPncDetails(pncDetails);
 		
 	}
 

@@ -20,8 +20,8 @@ public class GlobalBindingInitializer {
   @InitBinder
   public void binder(WebDataBinder binder) {
 	  
-	GenericEntityEditor<PatientEntity> patienteditor = new GenericEntityEditor<PatientEntity>(patientDao);
+	//GenericEntityEditor<PatientEntity> patienteditor = new GenericEntityEditor<PatientEntity>(patientDao);
     binder.registerCustomEditor(Date.class, new DateEditor());   
-	binder.registerCustomEditor(PatientEntity.class,"patient",patienteditor );
+	//binder.registerCustomEditor(PatientEntity.class,"patient",patienteditor );
   }
 }

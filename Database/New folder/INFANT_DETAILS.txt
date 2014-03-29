@@ -1,0 +1,15 @@
+
+create table INFANT_DETAILS (
+id int(11) NOT NULL AUTO_INCREMENT,
+uhid int(11) NOT NULL,
+OutcomeNumber	varchar(5),
+LastName	Varchar(30),
+MiddleName 	Varchar(30),
+FirstName 	Varchar(30),
+Gender	varchar(5),
+DateTimeofBirth	DateTime,
+Weight	Decimal(2,2),
+Initiatedbreastfeedingwithinonehour	Char(1),
+Remarks	Varchar(25),
+PRIMARY KEY (`id`)
+);

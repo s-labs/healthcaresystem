@@ -21,39 +21,45 @@ import com.healthcare.util.GenericEntity;
 
 @Entity
 @Table(name = "PATIENT")
-public class PatientEntity implements GenericEntity<Long>{
-	
+public class PatientEntity implements GenericEntity<Long> {
+
 	@Id
 	@Column
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long uhid;
-	
-	@OneToMany(fetch = FetchType.EAGER,cascade={CascadeType.ALL})
-    @JoinColumn(name="uhid")
-    @IndexColumn(name="code")
+
+	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "uhid")
+	@IndexColumn(name = "code")
 	private Set<MedicalHistoryEntity> medicalhistory = new HashSet<MedicalHistoryEntity>(
 			0);
-	
-	@OneToMany(fetch = FetchType.EAGER,cascade={CascadeType.ALL})
-    @JoinColumn(name="uhid")
-    @IndexColumn(name="code")
+
+	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "uhid")
+	@IndexColumn(name = "code")
 	private Set<MedicationDetailsEntity> medicationDetails = new HashSet<MedicationDetailsEntity>(
 			0);
-	
-	@OneToMany(fetch = FetchType.EAGER,cascade={CascadeType.ALL})
-    @JoinColumn(name="uhid")
-    @IndexColumn(name="code")
+
+	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "uhid")
+	@IndexColumn(name = "code")
 	private Set<PregnancyHistoryEntity> pregnancyHistory = new HashSet<PregnancyHistoryEntity>(
 			0);
 
-	
-	
+	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "uhid")
+	@IndexColumn(name = "code")
+	private Set<MedicationTreatmentEntity> medicationTreatmentEntity = new HashSet<MedicationTreatmentEntity>(
+			0);
+
 	public Set<PregnancyHistoryEntity> getPregnancyHistory() {
 		return pregnancyHistory;
 	}
+
 	public void setPregnancyHistory(Set<PregnancyHistoryEntity> pregnancyHistory) {
 		this.pregnancyHistory = pregnancyHistory;
 	}
+
 	@Column
 	private String lastName;
 	private String middleName;
@@ -87,8 +93,9 @@ public class PatientEntity implements GenericEntity<Long>{
 	private String emerContactPerEmail;
 
 	public PatientEntity() {
-	
+
 	}
+
 	public PatientEntity(String lastName, String middleName, String firstName,
 			Date dob, Integer age, Character gender, String occupation,
 			String fatherHusbandName, String motherName, String addressLine1,
@@ -142,21 +149,32 @@ public class PatientEntity implements GenericEntity<Long>{
 		this.uhid = uhid;
 	}
 
-	
 	public Set<MedicalHistoryEntity> getMedicalhistory() {
 		return medicalhistory;
 	}
+
 	public void setMedicalhistory(Set<MedicalHistoryEntity> medicalhistory) {
 		this.medicalhistory = medicalhistory;
 	}
-	
-	
+
 	public Set<MedicationDetailsEntity> getMedicationDetails() {
 		return medicationDetails;
 	}
-	public void setMedicationDetails(Set<MedicationDetailsEntity> medicationDetails) {
+
+	public void setMedicationDetails(
+			Set<MedicationDetailsEntity> medicationDetails) {
 		this.medicationDetails = medicationDetails;
 	}
+
+	public Set<MedicationTreatmentEntity> getMedicationTreatmentEntity() {
+		return medicationTreatmentEntity;
+	}
+
+	public void setMedicationTreatmentEntity(
+			Set<MedicationTreatmentEntity> medicationTreatmentEntity) {
+		this.medicationTreatmentEntity = medicationTreatmentEntity;
+	}
+
 	public String getLastName() {
 		return this.lastName;
 	}
@@ -396,10 +414,10 @@ public class PatientEntity implements GenericEntity<Long>{
 	public void setEmerContactPerEmail(String emerContactPerEmail) {
 		this.emerContactPerEmail = emerContactPerEmail;
 	}
+
 	@Override
 	public long getId() {
 		return this.uhid;
 	}
-
 
 }

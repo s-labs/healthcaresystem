@@ -1,0 +1,9 @@
+create table PNC_DETAILS (
+id int(11) NOT NULL AUTO_INCREMENT,
+uhid int(11) NOT NULL,
+PNCHomevisit varchar(40),
+PNCComplications varchar(40),
+POST_PARTUM_CONTRACEPTION_METHOD varchar(40),
+PNCCheckup date,
+PRIMARY KEY (`id`)
+);

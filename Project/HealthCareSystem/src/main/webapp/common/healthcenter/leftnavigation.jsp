@@ -93,26 +93,26 @@ Role : Clerk
 						class="arrow icon-angle-down"></b>
 				</a>
 					<ul class="submenu">
-						<li><a href="po"> <i class="icon-double-angle-right"></i>
-								PO
+						<li id="pregnancyOutcome"><a href="${pageContext.request.contextPath}/healthCenter/pregnancyOutcome"> <i class="icon-double-angle-right"></i>
+								pregnancy Outcome
 						</a></li>
-						<li><a href="po"> <i class="icon-double-angle-right"></i>
-								PD
+						<li id="pncDetails" ><a href="${pageContext.request.contextPath}/healthCenter/pncDetails"> <i class="icon-double-angle-right"></i>
+								PNC DETAILS **
 						</a></li>
-						<li><a href="po"> <i class="icon-double-angle-right"></i>
-								CI
+						<li id="childImmunisation"><a href="${pageContext.request.contextPath}/healthCenter/childImmunisation"> <i class="icon-double-angle-right"></i>
+								CHILD IMMUNISATION **
 						</a></li>
-						<li><a href="po"> <i class="icon-double-angle-right"></i>
-								ID
+						<li id="infantDetails"><a href="${pageContext.request.contextPath}/healthCenter/infantDetails"> <i class="icon-double-angle-right"></i>
+								INFANT DETAILS **
 						</a></li>
 						<li id="medicalhistory"><a href="${pageContext.request.contextPath}/healthCenter/medicalHistory"> <i
 								class="icon-double-angle-right"></i> Medical History
 						</a></li>
-						<li><a href="po"> <i class="icon-double-angle-right"></i>
-								SH
+						<li id="surgicalHistory"><a href="${pageContext.request.contextPath}/healthCenter/surgicalHistory"> <i class="icon-double-angle-right"></i>
+								Surgical History
 						</a></li>
-						<li><a href="po"> <i class="icon-double-angle-right"></i>
-								AH
+						<li id="allergyHistory"><a href="${pageContext.request.contextPath}/healthCenter/allergyHistory"> <i class="icon-double-angle-right"></i>
+								ALLERGY HISTORY **
 						</a></li>
 						<li id="medicationDetails"><a href="${pageContext.request.contextPath}/healthCenter/medicationDetails"> <i class="icon-double-angle-right"></i>
 								Medication Details
@@ -120,11 +120,14 @@ Role : Clerk
 						<li id="pregnancyHistory"><a href="${pageContext.request.contextPath}/healthCenter/pregnancyHistory"> <i class="icon-double-angle-right"></i>
 								Pregnancy History
 						</a></li>
-						<li><a href="po"> <i class="icon-double-angle-right"></i>
-								MT
+						<li id="medicationTreatment"><a href="${pageContext.request.contextPath}/healthCenter/medicationTreatment"> <i class="icon-double-angle-right"></i>
+								Medication Treatment 
 						</a></li>
-						<li><a href="po"> <i class="icon-double-angle-right"></i>
-								DPL
+						<li id="drugPrescriptionLookup"><a href="${pageContext.request.contextPath}/healthCenter/drugPrescriptionLookup"> <i class="icon-double-angle-right"></i>
+								DRUG PRESCIPTION LOOKUP TABLE**
+						</a></li>
+						<li id="diseaseInformationLookup"><a href="${pageContext.request.contextPath}/healthCenter/diseaseInformationLookup"> <i class="icon-double-angle-right"></i>
+								DISEASE INFORMATION LOOKUP TABLE**
 						</a></li>
 
 					</ul></li>

@@ -1,0 +1,6 @@
+create table DISEASE_INFORMATION_LOOKUP (
+DiseaseCode int(11) NOT NULL AUTO_INCREMENT,
+DiseaseName varchar(40),
+DiseaseDescription	Varchar(100),
+PRIMARY KEY (`DiseaseCode`)
+);
