@@ -43,6 +43,11 @@ public class HealthCenterEntity {
 	@IndexColumn(name="USER_ID")
 	private Set<UserEntity> users;
 	
+	@OneToMany(fetch = FetchType.EAGER)	
+	@JoinColumn(name = "healthcentercode")
+	@IndexColumn(name="UHID")
+	private Set<PatientEntity> patients;
+	
 	
 	public Long getId() {
 		return id;
@@ -82,6 +87,14 @@ public class HealthCenterEntity {
 
 	public void setUsers(Set<UserEntity> users) {
 		this.users = users;
+	}
+
+	public Set<PatientEntity> getPatients() {
+		return patients;
+	}
+
+	public void setPatients(Set<PatientEntity> patients) {
+		this.patients = patients;
 	}
 
 

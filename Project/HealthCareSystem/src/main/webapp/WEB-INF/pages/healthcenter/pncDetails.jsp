@@ -23,7 +23,7 @@
 			</script>
 			<div class="main-content">
 				<div class="page-content">
-
+					<h2>PNC Details</h2>
 
 					<form:form method="post" action="pncDetails"
 						commandName="pncDetails">

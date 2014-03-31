@@ -4,6 +4,9 @@ import java.util.List;
 
 import com.healthcare.model.AllergyHistoryEntity;
 import com.healthcare.model.ChildImmunisationEntity;
+import com.healthcare.model.DiseaseEntity;
+import com.healthcare.model.DrugPrescriptionEntity;
+import com.healthcare.model.HospitalisationHistoryEntity;
 import com.healthcare.model.InfantDetailsEntity;
 import com.healthcare.model.MedicalHistoryEntity;
 import com.healthcare.model.MedicationDetailsEntity;
@@ -33,5 +36,11 @@ public interface PatientDao  {
 		public void addInfantDetails(InfantDetailsEntity infantDetails);
 		public void addallergyHistory(AllergyHistoryEntity allergyHistory);
 		public void addPncDetails(PncDetailsEntity pncDetails);
+		public void addDrugPrescription(DrugPrescriptionEntity drugPrescription);
+		public List<DiseaseEntity> getAllDiseases();
+		public void addDisease(DiseaseEntity disease);
+		public void addHospitalisationHistory(
+				HospitalisationHistoryEntity hospitalizationHistory);
+		public void update(PatientEntity patient);
 
 }

@@ -1,7 +1,6 @@
 create table CHILD_IMMUNISATION (
 id int(11) NOT NULL AUTO_INCREMENT,
 uhid int(11) NOT NULL,
-CHILDID	int(12) NOT NULL,
 child_last_name	Varchar(15),
 child_middle_name	Varchar(15),
 child_first_name	Varchar(15),

@@ -16,38 +16,24 @@
 	<div class="main-container container-fluid">
 		<jsp:include page="/common/leftnavigation.jsp"></jsp:include>
 		<script>
-			$("#addDoctor").addClass("active");
+			$("#tng").addClass("active");
 		</script>
 		<div class="main-content">
 			<div class="page-content">
 
 
-				<h2>Add Doctor</h2>
-				<form:form method="post" action="addDoctor" commandName="userform">
-
-					<table>
-
-						<tr>
-							<td>Doctor user Name</td>
-							<td><form:input path="username" /></td>
-						</tr>
-						<tr>
-							<td>password</td>
-							<td><form:password path="password" /></td>
-						</tr>
-						<tr>
-							<td>healthc center Id</td>
-							<td><form:input path="healthcenterId" disabled="disabled" /></td>
-						</tr>
-						<tr>
-							<td>Role</td>
-							<td><form:input path="role" disabled="disabled" /></td>
-						</tr>
-						<tr>
-							<td colspan="2"><input type="submit" value="add Doctor" /></td>
-						</tr>
-					</table>
-				</form:form>
+				<h2>Move to Next grid</h2>
+				<form method="post" action="tng" class="form-horizontal">
+					<div class="controls">
+					<label>
+						<input type="radio" name="tng" value="move"><span class="lbl"> Move to next grid  </span>
+						</label>
+						<label>
+						<input type="radio" name="tng" value="cancel" /> <span class="lbl"> Continue
+						to the current grid </span></label>
+					</div>
+					<input type="submit" value="update" />
+				</form>
 			</div>
 		</div>
 	</div>

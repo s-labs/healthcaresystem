@@ -8,6 +8,7 @@ import com.healthcare.model.DistrictEntity;
 import com.healthcare.model.HealthCenterEntity;
 import com.healthcare.model.MandalEntity;
 import com.healthcare.model.StateEntity;
+import com.healthcare.model.UserEntity;
 
 public interface AdminService {
 	
@@ -25,6 +26,9 @@ public interface AdminService {
 	public MandalEntity getMandal(Long mandalCode);
 	public List<HealthCenterEntity> getAllHealthCenters();
 	public void addHealthCenter(HealthCenterForm healthcenterform);
-	public void addHCAdmin(UserForm userform);
+	public void addHCAdmin(UserEntity user);
+	public HealthCenterEntity getHealthCenter(Long healthcentercode);
+	public void updateHealthCenter(HealthCenterForm healthcenterform);
+	public void addDHSAdmin(UserEntity user);
 
 }

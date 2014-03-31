@@ -9,44 +9,44 @@
 <div class="navbar">
 	<div class="navbar-inner">
 		<div class="container-fluid">
-			<a href="#" class="brand"> <small> <i class=""></i>Health
+			<a href="${pageContext.request.contextPath}" class="brand"> <small> <i class=""></i>Health
 					care System
 			</small></a>
-			<ul class="nav ace-nav pull-right">			
+			<ul class="nav ace-nav pull-right">
 				<li class="light-blue"><sec:authorize ifAnyGranted="ROLE_USER">
-						<a class="dropdown-toggle" href="#" data-toggle="dropdown">
-								
-								<span class="user-info">
-									<small>Welcome,</small>
-									${username}
-								</span>
+						<a class="dropdown-toggle" href="#" data-toggle="dropdown"> <span
+							class="user-info"> <small>Welcome,</small> ${username}
+						</span> <i class="icon-caret-down"></i>
+						</a>
+						<ul
+							class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer">
+							<li><sec:authorize ifAnyGranted="ROLE_ADMIN">
 
-								<i class="icon-caret-down"></i>
-							</a>
-							<ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer">
-								<li>
-									<a href="#">
-										<i class="icon-cog"></i>
-										Settings
+									<a href="${pageContext.request.contextPath}/admin/"> <i
+										class="icon-cog"></i> Home
 									</a>
-								</li>
+								</sec:authorize> <sec:authorize ifAnyGranted="ROLE_HEALTHCENTER">
 
-								<li>
-									<a href="#">
-										<i class="icon-user"></i>
-										Profile
+									<a href="${pageContext.request.contextPath}/healthCenter/">
+										<i class="icon-cog"></i> Home
 									</a>
-								</li>
+								</sec:authorize>
+								<sec:authorize ifAnyGranted="ROLE_DHS">
 
-								<li class="divider"></li>
+									<a href="${pageContext.request.contextPath}/dhs/">
+										<i class="icon-cog"></i> Home
+									</a>
+								</sec:authorize></li>
 
-								<li>
-									
-									<a href="<c:url value="/j_spring_security_logout"/>"><i class="icon-off"></i>
-										Logout</a>
-								</li>
-							</ul>
-						
+							<li><a href="#"> <i class="icon-user"></i> Profile
+							</a></li>
+
+							<li class="divider"></li>
+
+							<li><a href="<c:url value="/j_spring_security_logout"/>"><i
+									class="icon-off"></i> Logout</a></li>
+						</ul>
+
 
 					</sec:authorize> <sec:authorize ifNotGranted="ROLE_USER">
 						<a href=" <c:url value="/login.htm"/>">Login</a>

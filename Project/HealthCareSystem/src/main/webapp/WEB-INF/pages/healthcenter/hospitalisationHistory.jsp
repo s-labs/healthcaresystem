@@ -13,16 +13,30 @@
 <c:set var="pageTitle">Health care System :: Admin Home Page</c:set>
 <template:page pageTitle="${pageTitle}" bodyCss="home">
 	<div class="content">
-		
-		<div class="leftSection">
-			<jsp:include page="/common/healthcenter/leftnavigation.jsp"></jsp:include>
-		</div>
-		<div class="rightSection">
+
+		<div class="main-container container-fluid">
+			<jsp:include page="/common/leftnavigation.jsp"></jsp:include>
+			<script>
+			$("#HIS").addClass("active");
+			$("#HIS").addClass("open");
+			$("#hospitalisationHistory").addClass("active");
+		</script>
+			<div class="main-content">
+				<div class="page-content">
 			
 
 			<form:form method="post" action="hospitalisationHistory" commandName="hospitalisationHistory">
 
 				<table>
+				
+				<tr>
+						<td>Patient</td>
+						<td><form:select path="patient">
+									<form:option value="" label="-- Choose one--" />
+									<form:options items="${patients}" itemValue="uhid"
+										itemLabel="fullName" />
+								</form:select></td>
+					</tr>
 
 					<tr>
 						<td>care_provider_name</td>
@@ -117,6 +131,7 @@
 					
 				</table>
 			</form:form>
+			</div>
 		</div>
 	</div>
 </template:page>

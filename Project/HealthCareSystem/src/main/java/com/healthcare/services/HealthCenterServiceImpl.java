@@ -14,7 +14,10 @@ import com.healthcare.dao.UserDao;
 import com.healthcare.form.UserForm;
 import com.healthcare.model.AllergyHistoryEntity;
 import com.healthcare.model.ChildImmunisationEntity;
+import com.healthcare.model.DiseaseEntity;
+import com.healthcare.model.DrugPrescriptionEntity;
 import com.healthcare.model.HealthCenterEntity;
+import com.healthcare.model.HospitalisationHistoryEntity;
 import com.healthcare.model.InfantDetailsEntity;
 import com.healthcare.model.MedicalHistoryEntity;
 import com.healthcare.model.MedicationDetailsEntity;
@@ -80,6 +83,7 @@ public class HealthCenterServiceImpl implements HealthCenterService{
 		roles.add(role2);
 		user.setRoles(roles);
 		user.setHealthcenter(healthcenter);
+		user.setEnabled(true);
 		userDao.addUser(user );
 		
 	}
@@ -122,25 +126,76 @@ public class HealthCenterServiceImpl implements HealthCenterService{
 
 	@Transactional
 	public void addChildImmunisation(ChildImmunisationEntity childImmunisation) {
-		patientDao.addChildImmunisation(childImmunisation);
-		
+		patientDao.addChildImmunisation(childImmunisation);		
 	}
 
 	@Transactional
 	public void addInfantDetails(InfantDetailsEntity infantDetails) {
-		patientDao.addInfantDetails(infantDetails);
-		
+		patientDao.addInfantDetails(infantDetails);		
 	}
 
 	@Transactional
 	public void addallergyHistory(AllergyHistoryEntity allergyHistory) {
-		patientDao.addallergyHistory(allergyHistory);
-		
+		patientDao.addallergyHistory(allergyHistory);		
 	}
 
 	@Transactional
 	public void addPncDetails(PncDetailsEntity pncDetails) {
-		patientDao.addPncDetails(pncDetails);
+		patientDao.addPncDetails(pncDetails);		
+	}
+
+	@Transactional
+	public void addDrugPrescription(DrugPrescriptionEntity drugPrescription) {
+		patientDao.addDrugPrescription(drugPrescription);		
+	}
+
+	@Transactional
+	public List<DiseaseEntity> getAllDiseases() {
+		return patientDao.getAllDiseases();
+	}
+
+	@Transactional
+	public void addDisease(DiseaseEntity disease) {
+		patientDao.addDisease(disease);
+	}
+
+	@Transactional
+	public Set<UserEntity> getAllUsersOfHealthCenter(long healthcenterid) {
+		return healthCenterDao.getAllUsersOfHealthCenter(healthcenterid);
+	}
+
+	@Transactional
+	public Set<PatientEntity> getAllPatientsOfHealthCenter(long healthcenterid) {
+		return healthCenterDao.getAllPatientsOfHealthCenter(healthcenterid);
+	}
+
+	@Transactional
+	public void addHospitalisationHistory(
+			HospitalisationHistoryEntity hospitalizationHistory) {
+		patientDao.addHospitalisationHistory(hospitalizationHistory);
+		
+	}
+	
+	@Transactional
+	public List<HealthCenterEntity> getAllHealthCentersOfLevel(int level) {
+		return healthCenterDao.getAllHealthCentersOfLevel(level);
+	}
+
+	@Transactional
+	public HealthCenterEntity getHealthCenter(long healthCenterCode) {
+		return healthCenterDao.getHealthCenter(healthCenterCode);
+		
+	}
+
+	@Transactional
+	public void updatePatient(PatientEntity patient, String tng) {
+		
+		HealthCenterEntity current = patient.getHealthCenter();
+		HealthCenterEntity next = current.getNext();
+		if(tng.equalsIgnoreCase("move") && next!=null) {
+			patient.setHealthCenter(next);
+		}
+		patientDao.update(patient);
 		
 	}
 

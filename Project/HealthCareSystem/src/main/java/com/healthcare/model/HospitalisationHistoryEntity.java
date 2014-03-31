@@ -2,10 +2,14 @@ package com.healthcare.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 import java.util.Date;
 
 @Entity
@@ -15,7 +19,11 @@ public class HospitalisationHistoryEntity {
 	@Id
 	@Column
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long uhid;
+	private Long id;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "uhid",nullable = false)
+	private PatientEntity patient;
 	
 	@Column
 	private String care_provider_name;
@@ -67,12 +75,20 @@ public class HospitalisationHistoryEntity {
 		
 	}
 
-	public Long getUhid() {
-		return uhid;
+	public Long getId() {
+		return id;
 	}
 
-	public void setUhid(Long uhid) {
-		this.uhid = uhid;
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public PatientEntity getPatient() {
+		return patient;
+	}
+
+	public void setPatient(PatientEntity patient) {
+		this.patient = patient;
 	}
 
 	public String getCare_provider_name() {

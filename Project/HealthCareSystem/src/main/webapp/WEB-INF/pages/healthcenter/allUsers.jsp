@@ -17,7 +17,7 @@
 		<script>
 			$("#PIS").addClass("active");
 			$("#PIS").addClass("open");
-			$("#allPatients").addClass("active");
+			$("#allUsers").addClass("active");
 		</script>
 		<div class="main-content">
 			<div class="page-content"></div>
@@ -27,27 +27,21 @@
 					<tr>
 
 						<th>S.No</th>
-						<th>UHID</th>
-						<th>Last Name</th>
-						<th class="hidden-480">Details</th>
-						<sec:authorize ifAnyGranted="ROLE_DOCTOR">
-							<th class="hidden-480">Switch</th>
-						</sec:authorize>
+						<th>User Name</th>
+						<th>Role</th>
+						
 					</tr>
 				</thead>
-				<c:forEach var="patient" items="${patients}" varStatus="status">
+				<c:forEach var="user" items="${users}" varStatus="status">
 					<tr>
 						<td>${status.count}</td>
-						<td>${patient.uhid}</td>
-						<td>${patient.lastName}</td>
-						<td><a
-							href="${pageContext.request.contextPath}/healthCenter/patient/${patient.uhid}">details
-						</a></td>
-						<sec:authorize ifAnyGranted="ROLE_DOCTOR">
-							<td><a
-								href="${pageContext.request.contextPath}/healthCenter/switchTopatient/${patient.uhid}">switch
-									to this patient </a></td>
-						</sec:authorize>
+						<td>${user.username}</td>
+						<td><c:forEach var="role" items="${user.roles}" varStatus="status">
+						${role.authority} &nbsp; &nbsp;
+						
+						</c:forEach>
+						</td>
+						
 				</c:forEach>
 			</table>
 		</div>

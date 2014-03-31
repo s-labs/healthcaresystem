@@ -24,14 +24,16 @@
 		<div class="main-content">
 			<div class="page-content">
 
-
+				<h2>Medical History</h2>
 				<form:form method="post" action="medicalHistory"
 					commandName="medicalHistory">
 
 					<table>
-						uhid : ${medicalHistory.patient.uhid}
-						<form:input path="patient" value="${medicalHistory.patient.uhid}" />
-
+						<tr>
+							<td>uhid :</td>
+							<td><form:input path="patient"
+									value="${medicalHistory.patient.uhid}" /></td>
+						</tr>
 						<tr>
 							<td>ip</td>
 							<td><form:input path="ip" /></td>

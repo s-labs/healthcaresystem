@@ -16,43 +16,50 @@
 		<jsp:include page="/common/admin/leftnavigation.jsp"></jsp:include>
 		<script>
 			$("#addState").addClass("active");
-			</script>
+		</script>
 		<div class="main-content">
 			<div class="page-content">
+				<c:choose>
+					<c:when test="${not empty SUCCESS_MESSAGE}">
+					${SUCCESS_MESSAGE}	</br>
+						<a href="${pageContext.request.contextPath}/admin/addState">Add
+							new other State</a>
+					</c:when>
+					<c:otherwise>
+						<table>
+							<thead>
+								<tr>
+									<th>S.No</th>
+									<th>Code</th>
+									<th>Name</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach var="state" items="${states}" varStatus="status">
+									<tr>
+										<td>${status.count}</td>
+										<td>${state.code }</td>
+										<td>${state.name}</td>
+								</c:forEach>
+							</tbody>
+						</table>
 
-			<table>
-				<thead>
-					<tr>
-						<th>S.No</th>
-						<th>Code</th>
-						<th>Name</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="state" items="${states}" varStatus="status">
-						<tr>
-							<td>${status.count}</td>
-							<td>${state.code }</td>
-							<td>${state.name}</td>
-					</c:forEach>
-				</tbody>
-			</table>
+						<form:form method="post" action="addState" commandName="state">
 
-			<form:form method="post" action="addState" commandName="state">
+							<table>
 
-				<table>
-
-					<tr>
-						<td>State Name</td>
-						<td><form:input path="name" />
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2"><input type="submit" value="add State" /></td>
-					</tr>
-				</table>
-			</form:form>
+								<tr>
+									<td>State Name</td>
+									<td><form:input path="name" /></td>
+								</tr>
+								<tr>
+									<td colspan="2"><input type="submit" value="add State" /></td>
+								</tr>
+							</table>
+						</form:form>
+					</c:otherwise>
+				</c:choose>
+			</div>
 		</div>
-	</div>
 	</div>
 </template:page>

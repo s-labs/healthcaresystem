@@ -10,42 +10,42 @@
 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<c:set var="pageTitle">Health care System :: HC Admin Add Doctor Page</c:set>
-<c:set var="action" scope="request">addDoctor</c:set>
+<c:set var="pageTitle">Health care System :: Medical History Page</c:set>
+<c:set var="action" scope="request">medicalhistory</c:set>
 <template:page pageTitle="${pageTitle}" bodyCss="home">
+
 	<div class="main-container container-fluid">
 		<jsp:include page="/common/leftnavigation.jsp"></jsp:include>
 		<script>
-			$("#addDoctor").addClass("active");
+			$("#MIS").addClass("active");
+			$("#MIS").addClass("open");
+			$("#disease").addClass("active");
 		</script>
 		<div class="main-content">
 			<div class="page-content">
 
 
-				<h2>Add Doctor</h2>
-				<form:form method="post" action="addDoctor" commandName="userform">
+				<form:form method="post" action="disease"
+					commandName="disease">
 
 					<table>
+						
+						<tr>
+							<td>diseaseName</td>
+							<td><form:input path="diseaseName" /></td>
+						</tr>
 
 						<tr>
-							<td>Doctor user Name</td>
-							<td><form:input path="username" /></td>
+							<td>diseaseDescription</td>
+							<td><form:input path="diseaseDescription" /></td>
 						</tr>
+
+						
 						<tr>
-							<td>password</td>
-							<td><form:password path="password" /></td>
+							<td colspan="2"><input type="submit"
+								value="Add Disease Information" /></td>
 						</tr>
-						<tr>
-							<td>healthc center Id</td>
-							<td><form:input path="healthcenterId" disabled="disabled" /></td>
-						</tr>
-						<tr>
-							<td>Role</td>
-							<td><form:input path="role" disabled="disabled" /></td>
-						</tr>
-						<tr>
-							<td colspan="2"><input type="submit" value="add Doctor" /></td>
-						</tr>
+
 					</table>
 				</form:form>
 			</div>

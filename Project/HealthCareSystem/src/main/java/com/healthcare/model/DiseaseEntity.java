@@ -19,6 +19,7 @@ public class DiseaseEntity {
 	@Column
 	private String diseaseName;
 	private String diseaseDescription;
+	
 	public long getDiseaseCode() {
 		return diseaseCode;
 	}

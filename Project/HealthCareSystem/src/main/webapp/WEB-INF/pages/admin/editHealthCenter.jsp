@@ -45,10 +45,15 @@
 				
 				<h2> Add New Health center </h2>
 
-				<form:form method="post" action="addHealthCenter"
+				<form:form method="post" action="${pageContext.request.contextPath}/admin/editHealthCenter/"
 					commandName="healthcenterform">
 
 					<table>
+					
+					<tr>
+							<td>id</td>
+							<td><form:input path="healthcenter.id" /></td>
+						</tr>
 
 						<tr>
 							<td>Health Center Name</td>

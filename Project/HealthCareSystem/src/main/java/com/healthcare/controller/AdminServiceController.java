@@ -19,6 +19,7 @@ import com.healthcare.model.DistrictEntity;
 import com.healthcare.model.HealthCenterEntity;
 import com.healthcare.model.MandalEntity;
 import com.healthcare.model.StateEntity;
+import com.healthcare.model.UserEntity;
 import com.healthcare.services.AdminService;
 
 @Controller
@@ -62,6 +63,7 @@ public class AdminServiceController {
 		List<StateEntity> states = adminService.getAllStates();
 		model.addObject("states", states);
 		model.setViewName("admin/addState");
+		model.addObject("SUCCESS_MESSAGE","successfull added the State");
 		return model;
 	}
 
@@ -140,24 +142,75 @@ public class AdminServiceController {
 		return model;
 	}
 	
+	@RequestMapping(value = "/editHealthCenter/{healthcentercode}", method = RequestMethod.GET)
+	public String editHealthCenterForm(
+			@PathVariable("healthcentercode") Long healthcentercode,ModelMap map) {
+
+		HealthCenterEntity healthcenter = adminService.getHealthCenter(healthcentercode);
+		HealthCenterForm healthcenterform = new HealthCenterForm();
+		healthcenterform.setHealthcenter(healthcenter);
+		map.addAttribute("healthcenterform", healthcenterform);
+		List<HealthCenterEntity> healthcenters = adminService.getAllHealthCenters();
+		map.addAttribute("healthcenters", healthcenters);
+	
+		return "admin/editHealthCenter";
+	}
+	
+	@RequestMapping(value = "/editHealthCenter", method = RequestMethod.POST)
+	public ModelAndView editHealthCenter(
+			@ModelAttribute(value = "healthcenterform") HealthCenterForm healthcenterform,
+			BindingResult result) {
+
+		ModelAndView model = new ModelAndView();
+		adminService.updateHealthCenter(healthcenterform);
+		List<HealthCenterEntity> healthcenters = adminService.getAllHealthCenters();
+		model.addObject("healthcenters", healthcenters);
+		model.setViewName("admin/addHealthCenter");
+		return model;
+	}
+	
 	@RequestMapping(value = "/addHCAdmin", method = RequestMethod.GET)
 	public String addHCAdminFrom(ModelMap map) {
-		map.addAttribute("userform", new UserForm());
+		List<HealthCenterEntity> healthcenters = adminService.getAllHealthCenters();
+		map.addAttribute("healthcenters", healthcenters);
+		map.addAttribute("user", new UserEntity());
 		
 		return "admin/addHCAdmin";
 	}
 
 	@RequestMapping(value = "/addHCAdmin", method = RequestMethod.POST)
 	public ModelAndView addHCAdmin(
-			@ModelAttribute(value = "userform") UserForm userform,
+			@ModelAttribute(value = "user") UserEntity user,
 			BindingResult result) {
 
 		ModelAndView model = new ModelAndView();
-		adminService.addHCAdmin(userform);
+		adminService.addHCAdmin(user);
 		
+		model.addObject("SUCCESS_MESSAGE","successfull added the Healthcenter Admin user");
 		model.setViewName("admin/addHCAdmin");
 		return model;
 	}
 
+	///add ROLE_DHS
+	@RequestMapping(value = "/addDHSAdmin", method = RequestMethod.GET)
+	public String addDHSFrom(ModelMap map) {
+		
+		map.addAttribute("user", new UserEntity());
+		
+		return "admin/addDHS";
+	}
+
+	@RequestMapping(value = "/addDHSAdmin", method = RequestMethod.POST)
+	public ModelAndView addHHS(
+			@ModelAttribute(value = "user") UserEntity user,
+			BindingResult result) {
+
+		ModelAndView model = new ModelAndView();
+		adminService.addDHSAdmin(user);
+		
+		model.addObject("SUCCESS_MESSAGE","successfull added the DHS user");
+		model.setViewName("admin/addDHS");
+		return model;
+	}
 
 }

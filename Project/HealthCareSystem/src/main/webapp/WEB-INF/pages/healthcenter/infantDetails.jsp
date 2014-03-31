@@ -24,13 +24,16 @@
 			<div class="main-content">
 				<div class="page-content">
 
-
+					<h2>Infant details</h2>
 					<form:form method="post" action="infantDetails"
 						commandName="infantDetails">
 
 						<table>
-							uhid : ${infantDetails.patient.uhid}
-							<form:input path="patient" value="${pncDetails.patient.uhid}" />
+							<tr>
+								<td>uhid</td>
+								<td><form:input path="patient"
+										value="${pncDetails.patient.uhid}" /></td>
+							</tr>
 							<tr>
 								<td>OutcomeNumber</td>
 								<td><form:input path="OutcomeNumber" /></td>

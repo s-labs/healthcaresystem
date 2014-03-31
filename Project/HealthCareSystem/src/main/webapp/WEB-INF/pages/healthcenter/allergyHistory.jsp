@@ -10,7 +10,7 @@
 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<c:set var="pageTitle">Health care System :: Surgical History</c:set>
+<c:set var="pageTitle">Health care System :: Admin Home Page</c:set>
 <template:page pageTitle="${pageTitle}" bodyCss="home">
 	<div class="content">
 
@@ -19,55 +19,51 @@
 			<script>
 				$("#MIS").addClass("active");
 				$("#MIS").addClass("open");
-				$("#pregnancyOutcome").addClass("active");
+				$("#allergyHistory").addClass("active");
 			</script>
 			<div class="main-content">
 				<div class="page-content">
 
-					<h2>Pregnancy outcome</h2>
-					<form:form method="post" action="pregnancyOutcome"
-						commandName="pregnancyOutcome">
+
+					<form:form method="post" action="allergyHistory"
+						commandName="allergyHistory">
 
 						<table>
-							uhid : ${pregnancyOutcome.patient.uhid}
-							<form:input path="patient"
-								value="${pregnancyOutcome.patient.uhid}" />
+
+							uhid : ${allergyHistory.patient.uhid}
+							<form:input path="patient" value="${allergyHistory.patient.uhid}" />
 							<tr>
-								<td>PlaceofDelivery</td>
-								<td><form:input path="PlaceofDelivery" /></td>
+								<td>allergicTO</td>
+								<td><form:input path="allergicTO" /></td>
 							</tr>
 
 							<tr>
-								<td>DeliveryType</td>
-								<td><form:input path="DeliveryType" /></td>
+								<td>reactionDate</td>
+								<td><form:input path="reactionDate" /></td>
 							</tr>
 
 							<tr>
-								<td>complications</td>
-								<td><form:input path="complications" /></td>
+								<td>reactionType</td>
+								<td><form:input path="reactionType" /></td>
 							</tr>
 
 							<tr>
-								<td>DateofDelivery</td>
-								<td><form:input path="DateofDelivery" /></td>
+								<td>prescription</td>
+								<td><form:input path="prescription" /></td>
 							</tr>
 
 							<tr>
-								<td>DateofDischarge</td>
-								<td><form:input path="DateofDischarge" /></td>
+								<td>notes</td>
+								<td><form:input path="notes" /></td>
 							</tr>
 
 							<tr>
-								<td>abortion</td>
-								<td><form:input path="abortion" /></td>
+								<td>doctorName</td>
+								<td><form:input path="doctorName" /></td>
 							</tr>
-
-
-
-
 							<tr>
 								<td colspan="2"><input type="submit"
-									value="SubmitmedicationDetails" /></td>
+									value="submit allergy history" /></td>
 							</tr>
 
 						</table>
@@ -75,5 +71,6 @@
 				</div>
 			</div>
 		</div>
+
 	</div>
 </template:page>

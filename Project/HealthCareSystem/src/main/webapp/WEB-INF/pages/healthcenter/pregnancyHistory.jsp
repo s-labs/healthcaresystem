@@ -22,7 +22,7 @@
 		</script>
 		<div class="main-content">
 			<div class="page-content">
-
+				<h2>Pregnancy History</h2>
 				<form:form method="post" action="pregnancyHistory"
 					commandName="pregnancyHistory">
 

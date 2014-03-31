@@ -1,0 +1,22 @@
+create table hospitalisation_history (
+id int(11) NOT NULL AUTO_INCREMENT,
+uhid int(11) NOT NULL,
+care_provider_name varchar(20),
+care_provider_add_line1 varchar(20),
+care_provider_add_line2 varchar(20),
+care_provider_city varchar(20),
+care_provider_mandal varchar(20),
+care_provider_district varchar(20),
+care_provider_state varchar(20),
+care_provider_pin_num varchar(20),
+care_provider_phone_num int(20),
+care_provider_email varchar(20),
+insurance_status varchar(20),
+insurance_id varchar(20),
+episode_type varchar(20),
+episode_num varchar(20),
+encounter_type varchar(20),
+encounter_num varchar(20),
+encounter_date_time date,
+PRIMARY KEY (`id`)
+);

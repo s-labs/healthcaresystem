@@ -10,6 +10,9 @@ import org.springframework.stereotype.Repository;
 
 import com.healthcare.model.AllergyHistoryEntity;
 import com.healthcare.model.ChildImmunisationEntity;
+import com.healthcare.model.DiseaseEntity;
+import com.healthcare.model.DrugPrescriptionEntity;
+import com.healthcare.model.HospitalisationHistoryEntity;
 import com.healthcare.model.InfantDetailsEntity;
 import com.healthcare.model.MedicalHistoryEntity;
 import com.healthcare.model.MedicationDetailsEntity;
@@ -102,25 +105,49 @@ public class PatientDaoImpl implements PatientDao{
 
 	@Override
 	public void addChildImmunisation(ChildImmunisationEntity childImmunisation) {
-		this.sessionFactory.getCurrentSession().save(childImmunisation);	
-		
+		this.sessionFactory.getCurrentSession().save(childImmunisation);			
 	}
 
 	@Override
 	public void addInfantDetails(InfantDetailsEntity infantDetails) {
-		this.sessionFactory.getCurrentSession().save(infantDetails);	
-		
+		this.sessionFactory.getCurrentSession().save(infantDetails);		
 	}
 
 	@Override
 	public void addallergyHistory(AllergyHistoryEntity allergyHistory) {
-		this.sessionFactory.getCurrentSession().save(allergyHistory);	
-		
+		this.sessionFactory.getCurrentSession().save(allergyHistory);			
 	}
 
 	@Override
 	public void addPncDetails(PncDetailsEntity pncDetails) {
-		this.sessionFactory.getCurrentSession().save(pncDetails);	
+		this.sessionFactory.getCurrentSession().save(pncDetails);			
+	}
+
+	@Override
+	public void addDrugPrescription(DrugPrescriptionEntity drugPrescription) {
+		this.sessionFactory.getCurrentSession().save(drugPrescription);		
+	}
+
+	@Override
+	public List<DiseaseEntity> getAllDiseases() {
+		return this.sessionFactory.getCurrentSession().createQuery("from DiseaseEntity").list();
+	}
+
+	@Override
+	public void addDisease(DiseaseEntity disease) {
+		this.sessionFactory.getCurrentSession().save(disease);	
+	}
+
+	@Override
+	public void addHospitalisationHistory(
+			HospitalisationHistoryEntity hospitalizationHistory) {
+		this.sessionFactory.getCurrentSession().save(hospitalizationHistory);	
+		
+	}
+
+	@Override
+	public void update(PatientEntity patient) {
+		this.sessionFactory.getCurrentSession().update(patient);	
 		
 	}
 

@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -27,6 +28,10 @@ public class PatientEntity implements GenericEntity<Long> {
 	@Column
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long uhid;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "healthcentercode",nullable = false)
+	private HealthCenterEntity healthCenter;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "uhid")
@@ -51,6 +56,14 @@ public class PatientEntity implements GenericEntity<Long> {
 	@IndexColumn(name = "code")
 	private Set<MedicationTreatmentEntity> medicationTreatmentEntity = new HashSet<MedicationTreatmentEntity>(
 			0);
+	
+	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "uhid")
+	@IndexColumn(name = "code")
+	private Set<ChildImmunisationEntity> childImmunisation = new HashSet<ChildImmunisationEntity>(
+			0);
+	
+	
 
 	public Set<PregnancyHistoryEntity> getPregnancyHistory() {
 		return pregnancyHistory;
@@ -159,6 +172,14 @@ public class PatientEntity implements GenericEntity<Long> {
 
 	public Set<MedicationDetailsEntity> getMedicationDetails() {
 		return medicationDetails;
+	}
+
+	public Set<ChildImmunisationEntity> getChildImmunisation() {
+		return childImmunisation;
+	}
+
+	public void setChildImmunisation(Set<ChildImmunisationEntity> childImmunisation) {
+		this.childImmunisation = childImmunisation;
 	}
 
 	public void setMedicationDetails(
@@ -420,4 +441,18 @@ public class PatientEntity implements GenericEntity<Long> {
 		return this.uhid;
 	}
 
+	public HealthCenterEntity getHealthCenter() {
+		return healthCenter;
+	}
+
+	public void setHealthCenter(HealthCenterEntity healthCenter) {
+		this.healthCenter = healthCenter;
+	}
+	
+	public String getFullName() {
+		
+		return this.firstName+" "+this.lastName;
+	}
+
+	
 }

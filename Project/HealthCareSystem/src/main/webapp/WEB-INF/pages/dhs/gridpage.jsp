@@ -15,9 +15,35 @@
 
 	<div class="main-container container-fluid">
 		<jsp:include page="/common/leftnavigation.jsp"></jsp:include>
+		<script>
+			$("#Grid${level}").addClass("active");
+		</script>
 		<div class="main-content">
 			<div class="page-content">
-				<div class="page-header position-relative">Department of health Center Service</div>
+				<div class="page-header position-relative">Grid ${level}</div>
+				
+				<table border=1>
+					<thead>
+						<tr>
+							<th>S.No</th>
+							<th>Name</th>
+							<th>Level</th>
+							<th>Next Center </th>
+							<th> Details </th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="healthcenter" items="${healthcenters}"
+							varStatus="status">
+							<tr>
+								<td>${status.count}</td>
+								<td>${healthcenter.name }</td>
+								<td>${healthcenter.level }</td>
+								<td>${healthcenter.next.name }</td>
+								<td> <a href="${pageContext.request.contextPath}/dhs/healthcenter/${healthcenter.id}">Details</a>
+						</c:forEach>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>

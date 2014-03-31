@@ -15,7 +15,7 @@
 	<div class="main-container container-fluid">
 		<jsp:include page="/common/admin/leftnavigation.jsp"></jsp:include>
 		<script>
-			$("#addHCAdmin").addClass("active");
+			$("#addDHSAdmin").addClass("active");
 		</script>
 		<div class="main-content">
 			<div class="page-content">
@@ -23,31 +23,24 @@
 				<c:choose>
 					<c:when test="${not empty SUCCESS_MESSAGE}">
 					${SUCCESS_MESSAGE}	</br>
-							<a href="${pageContext.request.contextPath}/admin/addHCAdmin">Add
-							new other HealthCenter Admin</a>
+							<a href="${pageContext.request.contextPath}/admin/addDHSAdmin">Add
+							new other DHS Admin</a>
 					</c:when>
 					<c:otherwise>
 						<h2>Add Health Center Admin</h2>
-						<form:form method="post" action="addHCAdmin" commandName="user">
+						<form:form method="post" action="addDHSAdmin" commandName="user">
 
 							<table>
 
 								<tr>
-									<td>HC admin user Name</td>
+									<td>DHS admin user Name</td>
 									<td><form:input path="username" /></td>
 								</tr>
 								<tr>
 									<td>password</td>
 									<td><form:password path="password" /></td>
 								</tr>
-								<tr>
-									<td>healthcenter</td>
-									<td><form:select path="healthcenter">
-											<form:option value="" label="-- Choose one--" />
-											<form:options items="${healthcenters}" itemValue="id"
-												itemLabel="name" />
-										</form:select></td>
-								</tr>
+							
 
 								<tr>
 									<td colspan="2"><input type="submit" value="add HC Admin" /></td>

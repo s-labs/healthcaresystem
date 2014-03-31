@@ -24,16 +24,13 @@
 			<div class="main-content">
 				<div class="page-content">
 
-
+					<h2>child immunisation</h2>
 					<form:form method="post" action="childImmunisation"
 						commandName="childImmunisation">
 
 						<table>
 
-							<tr>
-								<td>CHILDID</td>
-								<td><form:input path="childId" /></td>
-							</tr>
+
 
 							<tr>
 								<td>child_last_name</td>
@@ -201,6 +198,6 @@
 				</div>
 			</div>
 		</div>
-	
+
 	</div>
 </template:page>

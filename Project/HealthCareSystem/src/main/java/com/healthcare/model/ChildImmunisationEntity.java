@@ -19,14 +19,13 @@ public class ChildImmunisationEntity{
 	@Id
 	@Column
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long code;
+	private Long id;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "uhid",nullable = false)
 	private PatientEntity patient;
 	
-	@Column
-	private long childId;
+	@Column	
 	private String child_last_name;
 	private String child_middle_name;
 	private String child_first_name;
@@ -60,14 +59,6 @@ public class ChildImmunisationEntity{
 	private Date tt16;
 	private String remarks;
 	
-	
-	public long getChildId() {
-		return childId;
-	}
-
-	public void setChildId(long childId) {
-		this.childId = childId;
-	}
 
 	public ChildImmunisationEntity() {
 		
@@ -128,12 +119,14 @@ public class ChildImmunisationEntity{
 	}
 
 	
-	public Long getCode() {
-		return code;
+	
+
+	public Long getId() {
+		return id;
 	}
 
-	public void setCode(Long code) {
-		this.code = code;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getChild_last_name() {

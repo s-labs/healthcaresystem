@@ -118,14 +118,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Transactional
-	public void addHCAdmin(UserForm userform) {
-		UserEntity user = new UserEntity();
-		user.setUsername(userform.getUsername());
-		user.setPassword(userform.getPassword());
-		HealthCenterEntity healthcenter = healthCenterDao.getHealthCenter(userform.getHealthcenterId());
-		System.out.println("healthcenter" +healthcenter);
-		
-		user.setHealthcenter(healthcenter);
+	public void addHCAdmin(UserEntity user) {
 		
 		
 		UserRolesEntity role = new UserRolesEntity("ROLE_USER");
@@ -139,7 +132,35 @@ public class AdminServiceImpl implements AdminService {
 		roles.add(role1);
 		roles.add(role2);
 		user.setRoles(roles);
-		user.setHealthcenter(healthcenter);
+		
+		user.setEnabled(true);
+		userDao.addUser(user );
+		
+	}
+
+	@Transactional
+	public HealthCenterEntity getHealthCenter(Long healthcentercode) {
+		return healthCenterDao.getHealthCenter(healthcentercode);
+	}
+
+	@Transactional
+	public void updateHealthCenter(HealthCenterForm healthcenterform) {
+		healthCenterDao.updateHealthCenter(healthcenterform.getHealthcenter(),healthcenterform.getNext());
+		
+	}
+
+	@Transactional
+	public void addDHSAdmin(UserEntity user) {
+		UserRolesEntity role = new UserRolesEntity("ROLE_USER");
+		role.setUser(user);
+		UserRolesEntity role1 = new UserRolesEntity("ROLE_DHS");
+		role1.setUser(user);
+		Set<UserRolesEntity> roles = new HashSet<UserRolesEntity>();
+		roles.add(role);
+		roles.add(role1);
+		user.setRoles(roles);
+		
+		user.setEnabled(true);
 		userDao.addUser(user );
 		
 	}
