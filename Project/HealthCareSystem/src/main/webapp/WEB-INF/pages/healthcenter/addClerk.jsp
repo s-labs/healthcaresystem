@@ -10,7 +10,7 @@
 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<c:set var="pageTitle">Health care System :: HC Admin Add clerk</c:set>
+<c:set var="pageTitle">A grid based indian rural healthcare system :: HC Admin Add clerk</c:set>
 <c:set var="action" scope="request">addClerk</c:set>
 <template:page pageTitle="${pageTitle}" bodyCss="home">
 	<div class="main-container container-fluid">
@@ -20,34 +20,43 @@
 		</script>
 		<div class="main-content">
 			<div class="page-content">
-				${SUCESS_MESSAGE }
+			
+				<c:choose>
+					<c:when test="${not empty SUCCESS_MESSAGE}">
+					${SUCCESS_MESSAGE}	</br>
+						<a href="${pageContext.request.contextPath}/healthCenter/addClerk">Add
+							new other clerk</a>
+					</c:when>
+					<c:otherwise>
 
-				<form:form method="post" action="addClerk" commandName="userform">
+						<form:form method="post" action="addClerk" commandName="userform">
+							<h2>Add Clerk</h2>
+							<table>
 
-					<table>
-
-						<tr>
-							<td>Clerk user Name</td>
-							<td><form:input path="username" /></td>
-						</tr>
-						<tr>
-							<td>password</td>
-							<td><form:password path="password" /></td>
-						</tr>
-						<tr>
-							<td>healthc center Id</td>
-							<td><form:input path="healthcenterId" disabled="disabled"/></td>
-						</tr>
-						<tr>
-							<td>Role</td>
-							<td><form:input path="role" disabled="disabled" /></td>
-						</tr>
-						<tr>
-						<tr>
-							<td colspan="2"><input type="submit" value="add Clerk" /></td>
-						</tr>
-					</table>
-				</form:form>
+								<tr>
+									<td>Clerk user Name</td>
+									<td><form:input path="username" /></td>
+								</tr>
+								<tr>
+									<td>password</td>
+									<td><form:password path="password" /></td>
+								</tr>
+								<tr>
+									<td>healthc center Id</td>
+									<td><form:input path="healthcenterId" disabled="disabled" /></td>
+								</tr>
+								<tr>
+									<td>Role</td>
+									<td><form:input path="role" disabled="disabled" /></td>
+								</tr>
+								<tr>
+								<tr>
+									<td colspan="2"><input type="submit" value="add Clerk" /></td>
+								</tr>
+							</table>
+						</form:form>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 	</div>

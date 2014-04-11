@@ -9,12 +9,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Health Care System</title>
+<title>A grid based indian rural healthcare system</title>
 </head>
 <body>
 <div >
 <div class="headtitle" style="width:500px;float:left">
-<center> <h2> Health care System </h2> </center>
+<center> <h2> A grid based indian rural healthcare system </h2> </center>
 </div>
 <div class="logoutSection" style="float:left">
 <sec:authorize ifAnyGranted="ROLE_USER">

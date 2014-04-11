@@ -14,14 +14,15 @@ import com.healthcare.dao.HealthCenterDao;
 import com.healthcare.dao.MandalDao;
 import com.healthcare.dao.StateDao;
 import com.healthcare.dao.UserDao;
+import com.healthcare.dao.VillageDao;
 import com.healthcare.form.HealthCenterForm;
-import com.healthcare.form.UserForm;
 import com.healthcare.model.DistrictEntity;
 import com.healthcare.model.HealthCenterEntity;
 import com.healthcare.model.MandalEntity;
 import com.healthcare.model.StateEntity;
 import com.healthcare.model.UserEntity;
 import com.healthcare.model.UserRolesEntity;
+import com.healthcare.model.VillageEntity;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -76,6 +77,9 @@ public class AdminServiceImpl implements AdminService {
 
 	@Autowired
 	private MandalDao mandalDao;
+	
+	@Autowired
+	private VillageDao villageDao;
 
 	@Transactional
 	public void addMandal(MandalEntity mandal) {
@@ -90,10 +94,9 @@ public class AdminServiceImpl implements AdminService {
 		return mandals;
 	}
 
-	@Override
+	@Transactional
 	public MandalEntity getMandal(Long mandalCode) {
-		// TODO Auto-generated method stub
-		return null;
+		return mandalDao.getMandal(mandalCode);
 	}
 
 	@Transactional
@@ -163,6 +166,34 @@ public class AdminServiceImpl implements AdminService {
 		user.setEnabled(true);
 		userDao.addUser(user );
 		
+	}
+
+	@Transactional
+	public void associateHealthCenterto(long healthcenterid,
+			long associateto, String level) {
+		if(level.equalsIgnoreCase("district")) {
+			DistrictEntity district = districtDao.getDistrict(associateto);
+			HealthCenterEntity healthCenter = healthCenterDao.getHealthCenter(healthcenterid);
+			district.setHealthCenter(healthCenter);
+			districtDao.update(district);
+		}
+		
+	}
+
+	@Transactional
+	public void addVillage(VillageEntity village) {
+		villageDao.addVillage(village);
+		
+	}
+
+	@Transactional
+	public List<VillageEntity> getAllVillages() {
+		return villageDao.getAllVillages();
+	}
+
+	@Transactional
+	public VillageEntity getVillage(Long villageCode) {
+		return villageDao.getVillage(villageCode);
 	}
 
 }

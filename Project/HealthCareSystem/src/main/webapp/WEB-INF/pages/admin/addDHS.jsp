@@ -10,7 +10,7 @@
 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<c:set var="pageTitle">Health care System :: Admin Home Page</c:set>
+<c:set var="pageTitle">A grid based indian rural healthcare system :: Admin Home Page</c:set>
 <template:page pageTitle="${pageTitle}" bodyCss="home">
 	<div class="main-container container-fluid">
 		<jsp:include page="/common/admin/leftnavigation.jsp"></jsp:include>
@@ -27,7 +27,7 @@
 							new other DHS Admin</a>
 					</c:when>
 					<c:otherwise>
-						<h2>Add Health Center Admin</h2>
+						<h2>Add DHS</h2>
 						<form:form method="post" action="addDHSAdmin" commandName="user">
 
 							<table>

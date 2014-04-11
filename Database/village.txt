@@ -1,0 +1,11 @@
+ CREATE TABLE  village(
+`id` int(11) NOT NULL AUTO_INCREMENT,
+Name	Varchar(50),
+Village_BlockPHC_CHC_Code	int(2),
+`healthcentercode` int(11) DEFAULT NULL,
+`mandalcode` int(11) NOT NULL,
+Distance_0_5_KMS	TINYINT(1),
+Distance_5_10_KMS	TINYINT(1),
+Distance_More_Than10_KMS	TINYINT(1),
+PRIMARY KEY (`id`)
+);

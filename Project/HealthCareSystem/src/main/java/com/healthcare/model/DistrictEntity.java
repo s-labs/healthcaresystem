@@ -1,6 +1,9 @@
 package com.healthcare.model;
 
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,7 +12,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.IndexColumn;
 
 @Entity
 @Table(name = "district")
@@ -24,8 +30,17 @@ public class DistrictEntity {
 	private String name;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "statecode",nullable = false)
+	@JoinColumn(name = "statecode", nullable = false)
 	private StateEntity state;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "healthcentercode", nullable = true)
+	private HealthCenterEntity healthCenter;
+
+	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "districtcode")
+	@IndexColumn(name = "code")
+	private Set<MandalEntity> mandals = new HashSet<MandalEntity>(0);
 
 	public long getCode() {
 		return code;
@@ -49,6 +64,22 @@ public class DistrictEntity {
 
 	public void setState(StateEntity state) {
 		this.state = state;
+	}
+
+	public HealthCenterEntity getHealthCenter() {
+		return healthCenter;
+	}
+
+	public void setHealthCenter(HealthCenterEntity healthCenter) {
+		this.healthCenter = healthCenter;
+	}
+
+	public Set<MandalEntity> getMandals() {
+		return mandals;
+	}
+
+	public void setMandals(Set<MandalEntity> mandals) {
+		this.mandals = mandals;
 	}
 
 }

@@ -80,6 +80,7 @@ public class HealthCenterController {
 			BindingResult result) {
 
 		ModelAndView model = new ModelAndView();
+		model.addObject("SUCCESS_MESSAGE", "doctor added successfully");
 		healthCenterService.addUser(userform);
 
 		model.setViewName("healthcenter/addDoctor");
@@ -94,6 +95,7 @@ public class HealthCenterController {
 		Set<UserEntity> users = new HashSet<UserEntity>();
 		if (user != null) {
 			healthcenterid = user.getHealthcenter().getId();
+			System.out.println("healthcenterid: "+healthcenterid);
 			users = healthCenterService
 					.getAllUsersOfHealthCenter(healthcenterid);
 
@@ -172,7 +174,7 @@ public class HealthCenterController {
 
 		ModelAndView model = new ModelAndView();
 		healthCenterService.addUser(userform);
-		model.addObject("SUCESS_MESSAGE", "clerk added successfully");
+		model.addObject("SUCCESS_MESSAGE", "clerk added successfully");
 
 		model.setViewName("healthcenter/addClerk");
 		return model;

@@ -10,7 +10,7 @@
 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<c:set var="pageTitle">Health care System :: HC Admin Add Doctor Page</c:set>
+<c:set var="pageTitle">A grid based indian rural healthcare system :: HC Admin Add Doctor Page</c:set>
 <c:set var="action" scope="request">addDoctor</c:set>
 <template:page pageTitle="${pageTitle}" bodyCss="home">
 	<div class="main-container container-fluid">

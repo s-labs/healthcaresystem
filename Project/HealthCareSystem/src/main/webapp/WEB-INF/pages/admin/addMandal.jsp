@@ -10,66 +10,80 @@
 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<c:set var="pageTitle">Health care System :: Admin Home Page</c:set>
- <template:page pageTitle="${pageTitle}" bodyCss="home"> 
-	<div class="content">
-
-		<div class="leftSection">
-			<jsp:include page="/common/admin/leftnavigation.jsp"></jsp:include>
-		</div>
-		<div class="rightSection">
-			<h3>List Of Mandals......</h3>
-			<table border="1">
-				<thead>
-					<tr>
-						<th>S.No</th><th/>
-						<th>Code</th><th/>
-						<th>Name</th><th/>
-						 <th>District Code</th><th/>
-					</tr>
-				</thead>
-				<tbody>
-					
-					<c:forEach var="mandal" items="${mandals}" varStatus="status">
-						<tr>
-							<td>${status.count}</td><td/>
-							<td>${mandal.code }</td><td/>
-							<td>${mandal.name }</td><td/>
-							<td>${mandal.districtCode}</td><td/>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-			<br/>
-
-			<form:form method="post" action="addMandal" commandName="mandal">
-
+<c:set var="pageTitle">A grid based indian rural healthcare system :: Admin Home Page</c:set>
+<template:page pageTitle="${pageTitle}" bodyCss="home">
+	<div class="main-container container-fluid">
+		<jsp:include page="/common/admin/leftnavigation.jsp"></jsp:include>
+		<script>
+			$("#addMandal").addClass("active");
+		</script>
+		<div class="main-content">
+			<div class="page-content">
+				<h2>List of All Mandals</h2>
 				<table>
+					<thead>
+						<tr>
+							<th>S.No</th>
 
-					<td>Select District</td>
-						<td><form:select path="districtCode" >
-						
-						<c:forEach var="district" items="${districts}" varStatus="status">
-						
-							<form:option value="${district.code}">${district.name}</form:option>
-					</c:forEach>
-						</form:select>
-						</td>
-					
-					<tr>
-						<td>Mandal Name</td>
-						<td><form:input path="name" />
-						</td>	
-					
-						
-					</tr>
-					
-				
-					<tr>
-						<td><td colspan="2"><input type="submit" value="add Mandal" /></td></td>
-					</tr>
+							<th>Code</th>
+
+							<th>Name</th>
+
+							<th>District Code</th>
+
+							<th>Details</th>
+
+						</tr>
+					</thead>
+					<tbody>
+
+						<c:forEach var="mandal" items="${mandals}" varStatus="status">
+							<tr>
+								<td>${status.count}</td>
+
+								<td>${mandal.code }</td>
+
+								<td>${mandal.name }</td>
+
+								<td>${mandal.district.name}</td>
+
+								<td><a href="mandal/${mandal.code}">Detail</a></td>
+							</tr>
+						</c:forEach>
+					</tbody>
 				</table>
-			</form:form>
+				<br />
+				<h2>Add new Mandal</h2>
+				<form:form method="post" action="addMandal" commandName="mandal">
+
+					<table>
+
+						<td>Select District</td>
+						<td><form:select path="district">
+
+								<c:forEach var="district" items="${districts}"
+									varStatus="status">
+
+									<form:option value="${district.code}">${district.name}</form:option>
+								</c:forEach>
+							</form:select></td>
+
+						<tr>
+							<td>Mandal Name</td>
+							<td><form:input path="name" /></td>
+
+
+						</tr>
+
+
+						<tr>
+							<td>
+							<td colspan="2"><input type="submit" value="add Mandal" /></td>
+							</td>
+						</tr>
+					</table>
+				</form:form>
+			</div>
 		</div>
 	</div>
 </template:page>

@@ -10,7 +10,7 @@
 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<c:set var="pageTitle">Health care System :: infant Details</c:set>
+<c:set var="pageTitle">A grid based indian rural healthcare system :: infant Details</c:set>
 <template:page pageTitle="${pageTitle}" bodyCss="home">
 	<div class="content">
 

@@ -10,16 +10,17 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.healthcare.form.DistrictForm;
 import com.healthcare.form.HealthCenterForm;
-import com.healthcare.form.UserForm;
 import com.healthcare.model.DistrictEntity;
 import com.healthcare.model.HealthCenterEntity;
 import com.healthcare.model.MandalEntity;
 import com.healthcare.model.StateEntity;
 import com.healthcare.model.UserEntity;
+import com.healthcare.model.VillageEntity;
 import com.healthcare.services.AdminService;
 
 @Controller
@@ -66,11 +67,34 @@ public class AdminServiceController {
 		model.addObject("SUCCESS_MESSAGE","successfull added the State");
 		return model;
 	}
+	
+	@RequestMapping(value = "/allDistricts", method = RequestMethod.GET)
+	public String allDistricts(ModelMap map) {
+		
+		List<DistrictEntity> districts = adminService.getAllDistricts();
+		map.addAttribute("districts", districts);
+		return "admin/allDistricts";
+	}
+	
+	@RequestMapping("/district/{districtCode}")
+	public ModelAndView districtDetails(@PathVariable("districtCode") Long districtCode) {
+		ModelAndView model = new ModelAndView();
+
+		DistrictEntity district = adminService.getDistrict(districtCode);
+		model.addObject("district", district);
+		List<HealthCenterEntity> healthcenters = adminService.getAllHealthCenters();
+		model.addObject("healthcenters", healthcenters);
+		model.addObject("mandal", new MandalEntity());
+		model.setViewName("admin/district");
+		return model;
+	}
 
 	@RequestMapping(value = "/addDistrict", method = RequestMethod.GET)
 	public String addDistrictFrom(ModelMap map) {
 		map.addAttribute("districtform", new DistrictForm());
 		List<StateEntity> states = adminService.getAllStates();
+		List<DistrictEntity> districts = adminService.getAllDistricts();
+		map.addAttribute("districts", districts);
 		map.addAttribute("states", states);
 		return "admin/addDistrict";
 	}
@@ -81,7 +105,6 @@ public class AdminServiceController {
 			BindingResult result) {
 
 		ModelAndView model = new ModelAndView();
-		long statecode = 1;
 		adminService.addDistrict(districtform.getDistrict(),
 				districtform.getStateId());
 		List<DistrictEntity> districts = adminService.getAllDistricts();
@@ -119,6 +142,62 @@ public class AdminServiceController {
 		return model;
 	}
 	
+	@RequestMapping("/mandal/{mandalCode}")
+	public ModelAndView mandalDetails(@PathVariable("mandalCode") Long mandalCode) {
+		ModelAndView model = new ModelAndView();
+
+		MandalEntity mandal = adminService.getMandal(mandalCode);
+		model.addObject("mandal", mandal);
+		List<HealthCenterEntity> healthcenters = adminService.getAllHealthCenters();
+		model.addObject("healthcenters", healthcenters);
+		model.setViewName("admin/mandal");
+		return model;
+	}
+
+	
+	//village
+	
+	@RequestMapping(value = "/addVillage", method = RequestMethod.GET)
+	public String addVillageFrom(ModelMap map) {
+		map.addAttribute("village", new VillageEntity());
+		List<MandalEntity> mandals = adminService.getAllMandals();
+		map.addAttribute("mandals", mandals);
+
+		List<VillageEntity> villages = adminService.getAllVillages();
+		map.addAttribute("villages", villages);
+
+		return "admin/addVillage";
+	}
+
+	@RequestMapping(value = "/addVillage", method = RequestMethod.POST)
+	public ModelAndView addVillage(
+			@ModelAttribute(value = "village") VillageEntity village,
+			BindingResult result) {
+
+		ModelAndView model = new ModelAndView();
+		adminService.addVillage(village);
+		List<VillageEntity> villages = adminService.getAllVillages();
+		model.addObject("villages", villages);
+		
+		model.setViewName("admin/addVillage");
+		return model;
+	}
+	
+	@RequestMapping("/village/{villageCode}")
+	public ModelAndView villageDetails(@PathVariable("villageCode") Long villageCode) {
+		ModelAndView model = new ModelAndView();
+
+		VillageEntity village = adminService.getVillage(villageCode);
+		model.addObject("village", village);
+		List<HealthCenterEntity> healthcenters = adminService.getAllHealthCenters();
+		model.addObject("healthcenters", healthcenters);
+		model.setViewName("admin/village");
+		return model;
+	}
+
+	
+	//End of village
+	
 	@RequestMapping(value = "/addHealthCenter", method = RequestMethod.GET)
 	public String addHealthCenterFrom(ModelMap map) {
 		map.addAttribute("healthcenterform", new HealthCenterForm());
@@ -127,6 +206,19 @@ public class AdminServiceController {
 
 
 		return "admin/addHealthCenter";
+	}
+	
+	@RequestMapping(value = "/associateHealthCenter", method = RequestMethod.POST)
+	public String associateHealthCenter(
+			@RequestParam(value="level", required=true) String level, 
+	        @RequestParam(value="healthcenterid", required=true) long healthcenterid, 
+	        @RequestParam(value="associateto", required=true) long associateto) {
+
+	
+		adminService.associateHealthCenterto(healthcenterid,associateto,level);
+		
+		return "redirect:"+level+"/"+associateto;
+		
 	}
 
 	@RequestMapping(value = "/addHealthCenter", method = RequestMethod.POST)

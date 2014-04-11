@@ -3,12 +3,12 @@ package com.healthcare.services;
 import java.util.List;
 
 import com.healthcare.form.HealthCenterForm;
-import com.healthcare.form.UserForm;
 import com.healthcare.model.DistrictEntity;
 import com.healthcare.model.HealthCenterEntity;
 import com.healthcare.model.MandalEntity;
 import com.healthcare.model.StateEntity;
 import com.healthcare.model.UserEntity;
+import com.healthcare.model.VillageEntity;
 
 public interface AdminService {
 	
@@ -30,5 +30,10 @@ public interface AdminService {
 	public HealthCenterEntity getHealthCenter(Long healthcentercode);
 	public void updateHealthCenter(HealthCenterForm healthcenterform);
 	public void addDHSAdmin(UserEntity user);
+	public void associateHealthCenterto(long healthcenterid,
+			long associateto, String level);
+	public void addVillage(VillageEntity village);
+	public List<VillageEntity> getAllVillages();
+	public VillageEntity getVillage(Long villageCode);
 
 }

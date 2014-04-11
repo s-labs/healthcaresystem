@@ -18,7 +18,7 @@
 
 
 		<form-login login-page="/login.htm" default-target-url="/home.htm"
-			authentication-failure-url="/accessdenied"
+			authentication-failure-url="/accessdenied.htm"
 			authentication-success-handler-ref="healthCenterAuthenticationSuccessHandler" />
 		<!-- <logout logout-success-url="/logout.htm" /> -->
 		<logout logout-success-url="/login.htm" />

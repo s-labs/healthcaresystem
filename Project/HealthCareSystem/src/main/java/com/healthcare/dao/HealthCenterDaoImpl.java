@@ -45,6 +45,7 @@ public class HealthCenterDaoImpl implements HealthCenterDao {
 		if (results != null && results.size() > 0) {
 			healthCenterEntity = (HealthCenterEntity) results.get(0);
 		}
+		System.out.println(" gethealthCenterEntity healthcenter id : "+healthCenterEntity.getId());
 		return healthCenterEntity;
 	}
 

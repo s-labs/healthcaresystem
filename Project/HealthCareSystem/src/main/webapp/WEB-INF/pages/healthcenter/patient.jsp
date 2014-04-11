@@ -10,7 +10,7 @@
 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<c:set var="pageTitle">Health care System :: Patient Master Index</c:set>
+<c:set var="pageTitle">A grid based indian rural healthcare system :: Patient Master Index</c:set>
 <template:page pageTitle="${pageTitle}" bodyCss="home">
 	<div class="main-container container-fluid">
 		<jsp:include page="/common/healthcenter/leftnavigation.jsp"></jsp:include>

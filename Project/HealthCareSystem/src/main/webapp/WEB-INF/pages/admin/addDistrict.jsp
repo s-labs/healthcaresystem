@@ -10,13 +10,13 @@
 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<c:set var="pageTitle">Health care System :: Admin Home Page</c:set>
+<c:set var="pageTitle">A grid based indian rural healthcare system :: Admin Home Page</c:set>
 <template:page pageTitle="${pageTitle}" bodyCss="home">
 	<div class="main-container container-fluid">
 		<jsp:include page="/common/admin/leftnavigation.jsp"></jsp:include>
 		<script>
 			$("#addDistrict").addClass("active");
-			</script>
+		</script>
 		<div class="main-content">
 			<div class="page-content">
 
@@ -27,6 +27,7 @@
 							<th>Code</th>
 							<th>Name</th>
 							<th>State Code</th>
+							<th>Details</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -36,22 +37,24 @@
 								<td>${district.code }</td>
 								<td>${district.name }</td>
 								<td>${district.state.name}</td>
+								<td><a href="district/${district.code}">Detail</a></td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
-
+				<h2>Add District</h2>
 				<form:form method="post" action="addDistrict"
 					commandName="districtform">
 
 					<table>
 
 						<tr>
-							<td>District Name</td>
+							<td>District Name : </td>
 							<td><form:input path="district.name" /></td>
 
-
-							<td>State Code</td>
+						</tr>
+						<tr>
+							<td>State : </td>
 							<td><select name="stateId">
 
 									<c:forEach var="state" items="${states}" varStatus="status">

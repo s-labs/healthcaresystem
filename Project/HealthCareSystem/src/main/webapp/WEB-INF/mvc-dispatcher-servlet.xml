@@ -26,6 +26,8 @@
 				<ref bean="healthCenterFormater"/>
 				<ref bean="diseaseFormatter" />
 				<ref bean="patientFormatter"/>
+				<ref bean="districtFormatter"/>
+				<ref bean="mandalFormatter"/>
 			</set>
 		</property>
 	</bean>
@@ -49,6 +51,7 @@
 				<prop key="/home.htm">homePageController</prop>
 				<prop key="/adminWelcome.htm">adminWelcomeController</prop>
 				<prop key="/logout.htm">logoutController</prop>
+				<prop key="/accessdenied.htm">accessDeniedController</prop>
 
 			</props>
 		</property>
@@ -61,6 +64,10 @@
 	<bean name="loginController"
 		class="org.springframework.web.servlet.mvc.ParameterizableViewController">
 		<property name="viewName" value="login" />
+	</bean>
+	<bean name="accessDeniedController"
+		class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="accessDenied" />
 	</bean>
 	<bean name="logoutController"
 		class="org.springframework.web.servlet.mvc.ParameterizableViewController">

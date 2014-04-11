@@ -10,7 +10,7 @@
 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<c:set var="pageTitle">Health care System :: HC Admin Add Doctor Page</c:set>
+<c:set var="pageTitle">A grid based indian rural healthcare system :: HC Admin Add Doctor Page</c:set>
 <c:set var="action" scope="request">addDoctor</c:set>
 <template:page pageTitle="${pageTitle}" bodyCss="home">
 	<div class="main-container container-fluid">
@@ -21,33 +21,42 @@
 		<div class="main-content">
 			<div class="page-content">
 
+				<c:choose>
+					<c:when test="${not empty SUCCESS_MESSAGE}">
+					${SUCCESS_MESSAGE}	</br>
+						<a
+							href="${pageContext.request.contextPath}/healthCenter/addDoctor">Add
+							new other doctor</a>
+					</c:when>
+					<c:otherwise>
+						<h2>Add Doctor</h2>
+						<form:form method="post" action="addDoctor" commandName="userform">
 
-				<h2>Add Doctor</h2>
-				<form:form method="post" action="addDoctor" commandName="userform">
+							<table>
 
-					<table>
-
-						<tr>
-							<td>Doctor user Name</td>
-							<td><form:input path="username" /></td>
-						</tr>
-						<tr>
-							<td>password</td>
-							<td><form:password path="password" /></td>
-						</tr>
-						<tr>
-							<td>healthc center Id</td>
-							<td><form:input path="healthcenterId" disabled="disabled" /></td>
-						</tr>
-						<tr>
-							<td>Role</td>
-							<td><form:input path="role" disabled="disabled" /></td>
-						</tr>
-						<tr>
-							<td colspan="2"><input type="submit" value="add Doctor" /></td>
-						</tr>
-					</table>
-				</form:form>
+								<tr>
+									<td>Doctor user Name</td>
+									<td><form:input path="username" /></td>
+								</tr>
+								<tr>
+									<td>password</td>
+									<td><form:password path="password" /></td>
+								</tr>
+								<tr>
+									<td>healthc center Id</td>
+									<td><form:input path="healthcenterId" disabled="disabled" /></td>
+								</tr>
+								<tr>
+									<td>Role</td>
+									<td><form:input path="role" disabled="disabled" /></td>
+								</tr>
+								<tr>
+									<td colspan="2"><input type="submit" value="add Doctor" /></td>
+								</tr>
+							</table>
+						</form:form>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 	</div>
