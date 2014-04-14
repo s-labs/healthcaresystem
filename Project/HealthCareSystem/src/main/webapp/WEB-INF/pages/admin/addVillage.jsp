@@ -20,13 +20,13 @@
 		<div class="main-content">
 			<div class="page-content">
 				<h2>List of All Villages</h2>
-				<table>
+				<table border=1>
 					<thead>
 						<tr>
 							<th>S.No</th>
 							<th>Code</th>
 							<th>Name</th>
-							<th>State Code</th>
+							<th>District Sub Center Code</th>
 							<th>Details</th>
 						</tr>
 					</thead>

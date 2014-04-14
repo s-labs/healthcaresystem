@@ -20,7 +20,7 @@
 		<div class="main-content">
 			<div class="page-content">
 
-				<table>
+				<table border=1>
 					<thead>
 						<tr>
 							<th>S.No</th>

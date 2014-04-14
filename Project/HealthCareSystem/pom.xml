@@ -59,15 +59,15 @@
 
 
 		<!-- JSTL -->
-		
+
 		<dependency>
-   			 <groupId>javax.servlet</groupId>
-    		<artifactId>javax.servlet-api</artifactId>
-   			<version>3.0.1</version>
-   			<scope>provided</scope>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
 		</dependency>
-		
-		
+
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
@@ -151,8 +151,13 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.8</version>
+		</dependency>
 	</dependencies>
-	 <build>
+	<build>
 		<finalName>hospital</finalName>
 		<plugins>
 			<plugin>
@@ -168,5 +173,5 @@
 			</plugin>
 		</plugins>
 	</build>
-	
+
 </project>

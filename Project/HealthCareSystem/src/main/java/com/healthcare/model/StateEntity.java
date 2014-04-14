@@ -31,7 +31,7 @@ public class StateEntity {
 	private String name;
 	
 
-	@OneToMany(fetch = FetchType.EAGER,cascade={CascadeType.ALL})
+	@OneToMany(fetch = FetchType.LAZY,cascade={CascadeType.ALL})
     @JoinColumn(name="statecode")
     @IndexColumn(name="code")
 	private Set<DistrictEntity> districts = new HashSet<DistrictEntity>(

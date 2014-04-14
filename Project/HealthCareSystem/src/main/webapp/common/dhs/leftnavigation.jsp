@@ -1,24 +1,28 @@
 <div id="sidebar" class="sidebar">
 	<div class="sidebar-shortcuts" id="sidebar-shortcuts">
-		<ul class="nav nav-list" >
+		<ul class="nav nav-list">
 
-			<li id="Grid1"><a href="${pageContext.request.contextPath}/dhs/grid/1"> <i class="icon-desktop"></i><span
+			<li id="Grid1"><a
+				href="${pageContext.request.contextPath}/dhs/grid/1"> <span
 					class="menu-text"> Grid 1 </span>
 			</a></li>
-			
-			<li id="Grid2"><a href="${pageContext.request.contextPath}/dhs/grid/2"> <i class="icon-desktop"></i><span
-					class="menu-text"> Grid 2 </span>
+
+			<li id="Grid2"><a
+				href="${pageContext.request.contextPath}/dhs/grid/2"> <span
+					class="menu-text"> Community Health Care Centers </span>
 			</a></li>
-			
-			<li id="Grid3"><a href="${pageContext.request.contextPath}/dhs/grid/3"> <i class="icon-desktop"></i><span
-					class="menu-text"> Grid 3 </span>
+
+			<li id="Grid3"><a
+				href="${pageContext.request.contextPath}/dhs/grid/3"> <span
+					class="menu-text"> Primary HealthCare Centers </span>
 			</a></li>
-			
-			<li id="Grid4"><a href="${pageContext.request.contextPath}/dhs/grid/4"> <i class="icon-desktop"></i><span
-					class="menu-text"> Grid 4 </span>
+
+			<li id="Grid4"><a
+				href="${pageContext.request.contextPath}/dhs/grid/4"> <span
+					class="menu-text"> Sub Health Centers </span>
 			</a></li>
-			
-			
+
+
 		</ul>
 	</div>
 </div>

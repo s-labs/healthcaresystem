@@ -44,8 +44,7 @@ public class DistrictDaoImpl implements DistrictDao {
 		if (results != null && results.size() > 0) {
 			districtEntity = (DistrictEntity) results.get(0);
 		}
-		System.out.println(" getDistrict districtEntity id : "
-				+ districtEntity.getCode());
+	
 		return districtEntity;
 	}
 

@@ -41,8 +41,8 @@ public class VillageEntity {
 	@Column(name = "Distance_More_Than10_KMS")
 	private boolean Distance_More_Than10_KMS;
 	
-	@Column(name = "Village_BlockPHC_CHC_Code")
-	private int Village_BlockPHC_CHC_Code;
+	//@Column(name = "Village_BlockPHC_CHC_Code", nullable=true)
+	//private int Village_BlockPHC_CHC_Code;
 	
 
 	public long getCode() {
@@ -92,7 +92,7 @@ public class VillageEntity {
 	public void setDistance_More_Than10_KMS(boolean distance_More_Than10_KMS) {
 		Distance_More_Than10_KMS = distance_More_Than10_KMS;
 	}
-
+/*
 	public int getVillage_BlockPHC_CHC_Code() {
 		return Village_BlockPHC_CHC_Code;
 	}
@@ -100,7 +100,7 @@ public class VillageEntity {
 	public void setVillage_BlockPHC_CHC_Code(int village_BlockPHC_CHC_Code) {
 		Village_BlockPHC_CHC_Code = village_BlockPHC_CHC_Code;
 	}
-
+*/
 	public HealthCenterEntity getHealthCenter() {
 		return healthCenter;
 	}

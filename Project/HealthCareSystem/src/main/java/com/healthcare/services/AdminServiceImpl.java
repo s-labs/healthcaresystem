@@ -70,8 +70,11 @@ public class AdminServiceImpl implements AdminService {
 
 	@Transactional
 	public DistrictEntity getDistrict(Long districtCode) {
-		// TODO Auto-generated method stub
-		return districtDao.getDistrict(districtCode);
+		DistrictEntity district,district1 ;
+		district = districtDao.getDistrict(districtCode);
+		district1 = district;
+		district1.setMandals(district.getMandals());
+		return district1;
 	}
 
 
@@ -176,6 +179,12 @@ public class AdminServiceImpl implements AdminService {
 			HealthCenterEntity healthCenter = healthCenterDao.getHealthCenter(healthcenterid);
 			district.setHealthCenter(healthCenter);
 			districtDao.update(district);
+		}
+		if(level.equalsIgnoreCase("mandal")) {
+			MandalEntity mandal = mandalDao.getMandal(associateto);
+			HealthCenterEntity healthCenter = healthCenterDao.getHealthCenter(healthcenterid);
+			mandal.setHealthCenter(healthCenter);
+			mandalDao.update(mandal);
 		}
 		
 	}

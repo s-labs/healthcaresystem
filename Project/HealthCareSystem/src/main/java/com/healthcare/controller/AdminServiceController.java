@@ -82,8 +82,8 @@ public class AdminServiceController {
 
 		DistrictEntity district = adminService.getDistrict(districtCode);
 		model.addObject("district", district);
-		List<HealthCenterEntity> healthcenters = adminService.getAllHealthCenters();
-		model.addObject("healthcenters", healthcenters);
+		//List<HealthCenterEntity> healthcenters = adminService.getAllHealthCenters();
+		//model.addObject("healthcenters", healthcenters);
 		model.addObject("mandal", new MandalEntity());
 		model.setViewName("admin/district");
 		return model;
