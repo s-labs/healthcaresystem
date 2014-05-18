@@ -37,7 +37,7 @@ public class DistrictEntity {
 	@JoinColumn(name = "healthcentercode", nullable = true)
 	private HealthCenterEntity healthCenter;
 
-	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "districtcode")
 	@IndexColumn(name = "code")
 	private Set<MandalEntity> mandals = new HashSet<MandalEntity>(0);

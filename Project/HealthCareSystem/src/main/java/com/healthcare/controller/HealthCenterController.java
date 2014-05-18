@@ -241,6 +241,13 @@ public class HealthCenterController {
 		PatientEntity patient = (PatientEntity) session
 				.getAttribute("currentPatient");
 		medicalHistory.setPatient(patient);
+		if(patient == null) {
+			map.addAttribute("choosepatient",true);
+		}
+		else
+		{
+			map.addAttribute("choosepatient",false);
+		}
 		map.addAttribute("medicalHistory", medicalHistory);
 		return "healthcenter/medicalHistory";
 	}
@@ -256,6 +263,7 @@ public class HealthCenterController {
 				.getAttribute("currentPatient");
 		medicalHistory.setPatient(patient);
 		healthCenterService.addMedicalHistory(medicalHistory);
+		model.addObject("SUCCESS_MESSAGE", "Medical History added successfully");
 		model.setViewName("healthcenter/medicalHistory");
 		return model;
 	}
@@ -270,6 +278,13 @@ public class HealthCenterController {
 		PatientEntity patient = (PatientEntity) session
 				.getAttribute("currentPatient");
 		medicationDetails.setPatient(patient);
+		if(patient == null) {
+			map.addAttribute("choosepatient",true);
+		}
+		else
+		{
+			map.addAttribute("choosepatient",false);
+		}
 		map.addAttribute("medicationDetails", medicationDetails);
 		return "healthcenter/medicationDetails";
 	}
@@ -285,6 +300,7 @@ public class HealthCenterController {
 				.getAttribute("currentPatient");
 		medicationDetails.setPatient(patient);
 		healthCenterService.addMedicationDetails(medicationDetails);
+		model.addObject("SUCCESS_MESSAGE", "Medication details added successfully");
 		model.setViewName("healthcenter/medicationDetails");
 		return model;
 	}
@@ -299,6 +315,13 @@ public class HealthCenterController {
 		PatientEntity patient = (PatientEntity) session
 				.getAttribute("currentPatient");
 		pregnancyHistory.setPatient(patient);
+		if(patient == null) {
+			map.addAttribute("choosepatient",true);
+		}
+		else
+		{
+			map.addAttribute("choosepatient",false);
+		}
 		map.addAttribute("pregnancyHistory", pregnancyHistory);
 		return "healthcenter/pregnancyHistory";
 	}
@@ -314,6 +337,7 @@ public class HealthCenterController {
 				.getAttribute("currentPatient");
 		pregnancyHistory.setPatient(patient);
 		healthCenterService.addPregnancyHistory(pregnancyHistory);
+		model.addObject("SUCCESS_MESSAGE", "Pregnancy added successfully");
 		model.setViewName("healthcenter/pregnancyHistory");
 		return model;
 	}
@@ -326,7 +350,15 @@ public class HealthCenterController {
 		MedicationTreatmentEntity medicationTreatment = new MedicationTreatmentEntity();
 		PatientEntity patient = (PatientEntity) session
 				.getAttribute("currentPatient");
+		
 		medicationTreatment.setPatient(patient);
+		if(patient == null) {
+			map.addAttribute("choosepatient",true);
+		}
+		else
+		{
+			map.addAttribute("choosepatient",false);
+		}
 		map.addAttribute("medicationTreatment", medicationTreatment);
 		return "healthcenter/medicationTreatment";
 	}
@@ -342,6 +374,7 @@ public class HealthCenterController {
 				.getAttribute("currentPatient");
 		medicationTreatment.setPatient(patient);
 		healthCenterService.addMedicationTreatment(medicationTreatment);
+		model.addObject("SUCCESS_MESSAGE", "Medication Treatment added successfully");
 		model.setViewName("healthcenter/medicationTreatment");
 		return model;
 	}
@@ -354,6 +387,13 @@ public class HealthCenterController {
 		PatientEntity patient = (PatientEntity) session
 				.getAttribute("currentPatient");
 		surgicalHistory.setPatient(patient);
+		if(patient == null) {
+			map.addAttribute("choosepatient",true);
+		}
+		else
+		{
+			map.addAttribute("choosepatient",false);
+		}
 		map.addAttribute("surgicalHistory", surgicalHistory);
 		return "healthcenter/surgicalHistory";
 	}
@@ -369,6 +409,7 @@ public class HealthCenterController {
 				.getAttribute("currentPatient");
 		surgicalHistory.setPatient(patient);
 		healthCenterService.addSurgicalHistory(surgicalHistory);
+		model.addObject("SUCCESS_MESSAGE", "surgical History added successfully");
 		model.setViewName("healthcenter/surgicalHistory");
 		return model;
 	}
@@ -386,6 +427,7 @@ public class HealthCenterController {
 		return "healthcenter/pregnancyOutcome";
 	}
 
+	
 	@RequestMapping(value = "/pregnancyOutcome", method = RequestMethod.POST)
 	public ModelAndView addSurgicalHistory(
 			@ModelAttribute(value = "pregnancyOutcome") PregnancyOutcomeEntity pregnancyOutcome,
@@ -396,8 +438,9 @@ public class HealthCenterController {
 		PatientEntity patient = (PatientEntity) session
 				.getAttribute("currentPatient");
 		pregnancyOutcome.setPatient(patient);
-		healthCenterService.addPregnancyOutcome(pregnancyOutcome);
+			healthCenterService.addPregnancyOutcome(pregnancyOutcome);
 		model.setViewName("healthcenter/pregnancyOutcome");
+		model.addObject("SUCCESS_MESSAGE", "Pregnancy Outcome added successfully");
 		return model;
 	}
 
@@ -410,6 +453,13 @@ public class HealthCenterController {
 		PatientEntity patient = (PatientEntity) session
 				.getAttribute("currentPatient");
 		childImmunisation.setPatient(patient);
+		if(patient == null) {
+			map.addAttribute("choosepatient",true);
+		}
+		else
+		{
+			map.addAttribute("choosepatient",false);
+		}
 		map.addAttribute("childImmunisation", childImmunisation);
 		return "healthcenter/childImmunisation";
 	}
@@ -425,6 +475,7 @@ public class HealthCenterController {
 				.getAttribute("currentPatient");
 		childImmunisation.setPatient(patient);
 		healthCenterService.addChildImmunisation(childImmunisation);
+		model.addObject("SUCCESS_MESSAGE", "child Immunisation added successfully");
 		model.setViewName("healthcenter/childImmunisation");
 		return model;
 	}
@@ -437,6 +488,13 @@ public class HealthCenterController {
 		PatientEntity patient = (PatientEntity) session
 				.getAttribute("currentPatient");
 		infantDetails.setPatient(patient);
+		if(patient == null) {
+			map.addAttribute("choosepatient",true);
+		}
+		else
+		{
+			map.addAttribute("choosepatient",false);
+		}
 		map.addAttribute("infantDetails", infantDetails);
 		return "healthcenter/infantDetails";
 	}
@@ -452,6 +510,7 @@ public class HealthCenterController {
 				.getAttribute("currentPatient");
 		infantDetails.setPatient(patient);
 		healthCenterService.addInfantDetails(infantDetails);
+		model.addObject("SUCCESS_MESSAGE", "infant Details added successfully");
 		model.setViewName("healthcenter/infantDetails");
 		return model;
 	}
@@ -465,6 +524,13 @@ public class HealthCenterController {
 		PatientEntity patient = (PatientEntity) session
 				.getAttribute("currentPatient");
 		allergyHistory.setPatient(patient);
+		if(patient == null) {
+			map.addAttribute("choosepatient",true);
+		}
+		else
+		{
+			map.addAttribute("choosepatient",false);
+		}
 		map.addAttribute("allergyHistory", allergyHistory);
 		return "healthcenter/allergyHistory";
 	}
@@ -480,6 +546,8 @@ public class HealthCenterController {
 				.getAttribute("currentPatient");
 		allergyHistory.setPatient(patient);
 		healthCenterService.addallergyHistory(allergyHistory);
+		model.addObject("SUCCESS_MESSAGE", "allergy History added successfully");
+		
 		model.setViewName("healthcenter/allergyHistory");
 		return model;
 	}
@@ -493,6 +561,13 @@ public class HealthCenterController {
 		PatientEntity patient = (PatientEntity) session
 				.getAttribute("currentPatient");
 		pncDetails.setPatient(patient);
+		if(patient == null) {
+			map.addAttribute("choosepatient",true);
+		}
+		else
+		{
+			map.addAttribute("choosepatient",false);
+		}
 		map.addAttribute("pncDetails", pncDetails);
 		return "healthcenter/pncDetails";
 	}
@@ -508,6 +583,8 @@ public class HealthCenterController {
 				.getAttribute("currentPatient");
 		pncDetails.setPatient(patient);
 		healthCenterService.addPncDetails(pncDetails);
+		model.addObject("SUCCESS_MESSAGE", "pnc details added successfully");
+		
 		model.setViewName("healthcenter/pncDetails");
 		return model;
 	}
@@ -530,6 +607,9 @@ public class HealthCenterController {
 
 		ModelAndView model = new ModelAndView();
 		healthCenterService.addDrugPrescription(drugPrescription);
+		model.addObject("SUCCESS_MESSAGE", "drug prescription added successfully");
+		
+
 		model.setViewName("healthcenter/drugPrescription");
 		return model;
 	}

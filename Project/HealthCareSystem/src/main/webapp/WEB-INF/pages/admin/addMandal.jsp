@@ -83,6 +83,7 @@
 						</tr>
 					</table>
 				</form:form>
+				<input type="button" value="Back" onclick="javascript:history.go(-1)">
 			</div>
 		</div>
 	</div>

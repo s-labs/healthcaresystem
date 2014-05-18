@@ -25,6 +25,11 @@
 				<div class="page-content">
 
 					<h2>Infant details</h2>
+					<c:choose>
+					<c:when test="${choosepatient}">
+							choose the patient from PIS then add details
+						</c:when>
+					<c:otherwise>
 					<form:form method="post" action="infantDetails"
 						commandName="infantDetails">
 
@@ -86,6 +91,8 @@
 
 						</table>
 					</form:form>
+					</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
 		</div>

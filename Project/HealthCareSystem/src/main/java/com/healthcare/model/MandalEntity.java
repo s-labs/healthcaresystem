@@ -38,7 +38,7 @@ public class MandalEntity {
 	private HealthCenterEntity healthCenter;
 	
 	
-	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "mandalcode")
 	@IndexColumn(name = "code")
 	private Set<VillageEntity> villages = new HashSet<VillageEntity>(0);

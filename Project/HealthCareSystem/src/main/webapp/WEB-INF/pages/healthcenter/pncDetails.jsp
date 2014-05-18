@@ -24,41 +24,48 @@
 			<div class="main-content">
 				<div class="page-content">
 					<h2>PNC Details</h2>
+					<c:choose>
+						<c:when test="${choosepatient}">
+							choose the patient from PIS then add details
+						</c:when>
+						<c:otherwise>
 
-					<form:form method="post" action="pncDetails"
-						commandName="pncDetails">
+							<form:form method="post" action="pncDetails"
+								commandName="pncDetails">
 
-						<table>
-							uhid : ${pncDetails.patient.uhid}
-							<form:input path="patient" value="${pncDetails.patient.uhid}" />
-							<tr>
-								<td>PNCHomevisit</td>
-								<td><form:input path="PNCHomevisit" /></td>
-							</tr>
+								<table>
+									uhid : ${pncDetails.patient.uhid}
+									<form:input path="patient" value="${pncDetails.patient.uhid}" />
+									<tr>
+										<td>PNCHomevisit</td>
+										<td><form:input path="PNCHomevisit" /></td>
+									</tr>
 
-							<tr>
-								<td>PNCComplications</td>
-								<td><form:input path="PNCComplications" /></td>
-							</tr>
+									<tr>
+										<td>PNCComplications</td>
+										<td><form:input path="PNCComplications" /></td>
+									</tr>
 
-							<tr>
-								<td>POST_PARTUM_CONTRACEPTION_METHOD</td>
-								<td><form:input path="POST_PARTUM_CONTRACEPTION_METHOD" /></td>
-							</tr>
+									<tr>
+										<td>POST_PARTUM_CONTRACEPTION_METHOD</td>
+										<td><form:input path="POST_PARTUM_CONTRACEPTION_METHOD" /></td>
+									</tr>
 
-							<tr>
-								<td>PNCCheckup</td>
-								<td><form:input path="PNCCheckup" /></td>
-							</tr>
+									<tr>
+										<td>PNCCheckup</td>
+										<td><form:input path="PNCCheckup" /></td>
+									</tr>
 
 
-							<tr>
-								<td colspan="2"><input type="submit"
-									value="SubmitmedicationDetails" /></td>
-							</tr>
+									<tr>
+										<td colspan="2"><input type="submit"
+											value="SubmitmedicationDetails" /></td>
+									</tr>
 
-						</table>
-					</form:form>
+								</table>
+							</form:form>
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
 		</div>

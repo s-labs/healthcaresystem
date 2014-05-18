@@ -17,76 +17,84 @@
 		<div class="main-container container-fluid">
 			<jsp:include page="/common/leftnavigation.jsp"></jsp:include>
 			<script>
-			$("#MIS").addClass("active");
-			$("#MIS").addClass("open");
-			$("#medicationDetails").addClass("active");
-		</script>
+				$("#MIS").addClass("active");
+				$("#MIS").addClass("open");
+				$("#medicationDetails").addClass("active");
+			</script>
 			<div class="main-content">
 				<div class="page-content">
+				
+					<c:choose>
+						<c:when test="${choosepatient}">
+							choose the patient from PIS then add details
+						</c:when>
+						<c:otherwise>
+
+							<form:form method="post" action="medicationDetails"
+								commandName="medicationDetails">
+${medicalHistory.patient.uhid}
+								<table>
+									uhid : ${medicalHistory.patient.uhid}
+									<form:input path="patient"
+										value="${medicalHistory.patient.uhid}" />
+									<tr>
+										<td>medication_name</td>
+										<td><form:input path="medication_name" /></td>
+									</tr>
+
+									<tr>
+										<td>drug_code</td>
+										<td><form:input path="drug_code" /></td>
+									</tr>
+
+									<tr>
+										<td>strength</td>
+										<td><form:input path="strength" /></td>
+									</tr>
+
+									<tr>
+										<td>dose</td>
+										<td><form:input path="dose" /></td>
+									</tr>
+
+									<tr>
+										<td>route</td>
+										<td><form:input path="route" /></td>
+									</tr>
+
+									<tr>
+										<td>frequency</td>
+										<td><form:input path="frequency" /></td>
+									</tr>
+
+									<tr>
+										<td>from_date</td>
+										<td><form:input path="from_date" /></td>
+									</tr>
+
+									<tr>
+										<td>to_date</td>
+										<td><form:input path="to_date" /></td>
+									</tr>
+
+									<tr>
+										<td>next_check_up</td>
+										<td><form:input path="next_check_up" /></td>
+									</tr>
 
 
-					<form:form method="post" action="medicationDetails"
-						commandName="medicationDetails">
 
-						<table>
-							uhid : ${medicalHistory.patient.uhid}
-							<form:input path="patient" value="${medicalHistory.patient.uhid}" />
-							<tr>
-								<td>medication_name</td>
-								<td><form:input path="medication_name" /></td>
-							</tr>
+									<tr>
+										<td colspan="2"><input type="submit"
+											value="SubmitmedicationDetails" /></td>
+									</tr>
 
-							<tr>
-								<td>drug_code</td>
-								<td><form:input path="drug_code" /></td>
-							</tr>
-
-							<tr>
-								<td>strength</td>
-								<td><form:input path="strength" /></td>
-							</tr>
-
-							<tr>
-								<td>dose</td>
-								<td><form:input path="dose" /></td>
-							</tr>
-
-							<tr>
-								<td>route</td>
-								<td><form:input path="route" /></td>
-							</tr>
-
-							<tr>
-								<td>frequency</td>
-								<td><form:input path="frequency" /></td>
-							</tr>
-
-							<tr>
-								<td>from_date</td>
-								<td><form:input path="from_date" /></td>
-							</tr>
-
-							<tr>
-								<td>to_date</td>
-								<td><form:input path="to_date" /></td>
-							</tr>
-
-							<tr>
-								<td>next_check_up</td>
-								<td><form:input path="next_check_up" /></td>
-							</tr>
-
-
-
-							<tr>
-								<td colspan="2"><input type="submit"
-									value="SubmitmedicationDetails" /></td>
-							</tr>
-
-						</table>
-					</form:form>
+								</table>
+							</form:form>
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
-			</div>
 		</div>
+	</div>
 </template:page>

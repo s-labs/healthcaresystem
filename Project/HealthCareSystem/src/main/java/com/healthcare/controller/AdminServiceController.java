@@ -1,6 +1,7 @@
 package com.healthcare.controller;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -82,8 +83,8 @@ public class AdminServiceController {
 
 		DistrictEntity district = adminService.getDistrict(districtCode);
 		model.addObject("district", district);
-		//List<HealthCenterEntity> healthcenters = adminService.getAllHealthCenters();
-		//model.addObject("healthcenters", healthcenters);
+		Set<MandalEntity>  mandals = adminService.getMandalsOfdistirict(districtCode);
+		model.addObject("mandals", mandals);
 		model.addObject("mandal", new MandalEntity());
 		model.setViewName("admin/district");
 		return model;

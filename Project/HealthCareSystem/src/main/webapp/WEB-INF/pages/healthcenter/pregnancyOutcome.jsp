@@ -25,53 +25,60 @@
 				<div class="page-content">
 
 					<h2>Pregnancy outcome</h2>
-					<form:form method="post" action="pregnancyOutcome"
-						commandName="pregnancyOutcome">
+					<c:choose>
+						<c:when test="${choosepatient}">
+							choose the patient from PIS then add details
+						</c:when>
+						<c:otherwise>
+							<form:form method="post" action="pregnancyOutcome"
+								commandName="pregnancyOutcome">
 
-						<table>
-							uhid : ${pregnancyOutcome.patient.uhid}
-							<form:input path="patient"
-								value="${pregnancyOutcome.patient.uhid}" />
-							<tr>
-								<td>PlaceofDelivery</td>
-								<td><form:input path="PlaceofDelivery" /></td>
-							</tr>
+								<table>
+									uhid : ${pregnancyOutcome.patient.uhid}
+									<form:input path="patient"
+										value="${pregnancyOutcome.patient.uhid}" />
+									<tr>
+										<td>PlaceofDelivery</td>
+										<td><form:input path="PlaceofDelivery" /></td>
+									</tr>
 
-							<tr>
-								<td>DeliveryType</td>
-								<td><form:input path="DeliveryType" /></td>
-							</tr>
+									<tr>
+										<td>DeliveryType</td>
+										<td><form:input path="DeliveryType" /></td>
+									</tr>
 
-							<tr>
-								<td>complications</td>
-								<td><form:input path="complications" /></td>
-							</tr>
+									<tr>
+										<td>complications</td>
+										<td><form:input path="complications" /></td>
+									</tr>
 
-							<tr>
-								<td>DateofDelivery</td>
-								<td><form:input path="DateofDelivery" /></td>
-							</tr>
+									<tr>
+										<td>DateofDelivery</td>
+										<td><form:input path="DateofDelivery" /></td>
+									</tr>
 
-							<tr>
-								<td>DateofDischarge</td>
-								<td><form:input path="DateofDischarge" /></td>
-							</tr>
+									<tr>
+										<td>DateofDischarge</td>
+										<td><form:input path="DateofDischarge" /></td>
+									</tr>
 
-							<tr>
-								<td>abortion</td>
-								<td><form:input path="abortion" /></td>
-							</tr>
-
-
+									<tr>
+										<td>abortion</td>
+										<td><form:input path="abortion" /></td>
+									</tr>
 
 
-							<tr>
-								<td colspan="2"><input type="submit"
-									value="SubmitmedicationDetails" /></td>
-							</tr>
 
-						</table>
-					</form:form>
+
+									<tr>
+										<td colspan="2"><input type="submit"
+											value="SubmitmedicationDetails" /></td>
+									</tr>
+
+								</table>
+							</form:form>
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
 		</div>

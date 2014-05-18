@@ -9,11 +9,10 @@
 <div class="navbar">
 	<div class="navbar-inner">
 		<div class="container-fluid">
-			<a href="${pageContext.request.contextPath}" class="brand"> <small> <i class=""></i>Health
-					care System
-			</small></a>
+			<a href="${pageContext.request.contextPath}" class="brand"> <small> <i class="">A Grid Based Indian Rural Health Care System
+			</i></small></a>
 			<ul class="nav ace-nav pull-right">
-				<li class="light-blue"><sec:authorize ifAnyGranted="ROLE_USER">
+				<li class="light-blue"><sec:authorize ifNotGranted="ROLE_ANONYMOUS">
 						<a class="dropdown-toggle" href="#" data-toggle="dropdown"> <span
 							class="user-info"> <small>Welcome,</small> ${username}
 						</span> <i class="icon-caret-down"></i>
@@ -48,7 +47,7 @@
 						</ul>
 
 
-					</sec:authorize> <sec:authorize ifNotGranted="ROLE_USER">
+					</sec:authorize> <sec:authorize ifAnyGranted="ROLE_ANONYMOUS">
 						<a href=" <c:url value="/login.htm"/>">Login</a>
 
 					</sec:authorize></li>

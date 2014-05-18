@@ -19,7 +19,7 @@
 		</script>
 		<div class="main-content">
 			<div class="page-content">
-
+			<input type="button" value="Back" onclick="javascript:history.go(-1)">
 				<table border=1>
 					<thead>
 						<tr>
@@ -70,6 +70,7 @@
 						</tr>
 					</table>
 				</form:form>
+				<input type="button" value="Back" onclick="javascript:history.go(-1)">
 			</div>
 		</div>
 	</div>

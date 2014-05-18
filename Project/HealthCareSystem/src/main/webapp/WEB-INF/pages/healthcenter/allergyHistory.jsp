@@ -24,50 +24,57 @@
 			<div class="main-content">
 				<div class="page-content">
 
+					<c:choose>
+						<c:when test="${choosepatient}">
+							choose the patient from PIS then add details
+						</c:when>
+						<c:otherwise>
+							<form:form method="post" action="allergyHistory"
+								commandName="allergyHistory">
 
-					<form:form method="post" action="allergyHistory"
-						commandName="allergyHistory">
+								<table>
 
-						<table>
+									uhid : ${allergyHistory.patient.uhid}
+									<form:input path="patient"
+										value="${allergyHistory.patient.uhid}" />
+									<tr>
+										<td>allergicTO</td>
+										<td><form:input path="allergicTO" /></td>
+									</tr>
 
-							uhid : ${allergyHistory.patient.uhid}
-							<form:input path="patient" value="${allergyHistory.patient.uhid}" />
-							<tr>
-								<td>allergicTO</td>
-								<td><form:input path="allergicTO" /></td>
-							</tr>
+									<tr>
+										<td>reactionDate</td>
+										<td><form:input path="reactionDate" /></td>
+									</tr>
 
-							<tr>
-								<td>reactionDate</td>
-								<td><form:input path="reactionDate" /></td>
-							</tr>
+									<tr>
+										<td>reactionType</td>
+										<td><form:input path="reactionType" /></td>
+									</tr>
 
-							<tr>
-								<td>reactionType</td>
-								<td><form:input path="reactionType" /></td>
-							</tr>
+									<tr>
+										<td>prescription</td>
+										<td><form:input path="prescription" /></td>
+									</tr>
 
-							<tr>
-								<td>prescription</td>
-								<td><form:input path="prescription" /></td>
-							</tr>
+									<tr>
+										<td>notes</td>
+										<td><form:input path="notes" /></td>
+									</tr>
 
-							<tr>
-								<td>notes</td>
-								<td><form:input path="notes" /></td>
-							</tr>
+									<tr>
+										<td>doctorName</td>
+										<td><form:input path="doctorName" /></td>
+									</tr>
+									<tr>
+										<td colspan="2"><input type="submit"
+											value="submit allergy history" /></td>
+									</tr>
 
-							<tr>
-								<td>doctorName</td>
-								<td><form:input path="doctorName" /></td>
-							</tr>
-							<tr>
-								<td colspan="2"><input type="submit"
-									value="submit allergy history" /></td>
-							</tr>
-
-						</table>
-					</form:form>
+								</table>
+							</form:form>
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
 		</div>

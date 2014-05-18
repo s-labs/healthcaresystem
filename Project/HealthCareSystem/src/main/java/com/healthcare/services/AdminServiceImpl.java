@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.hibernate.Hibernate;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -91,8 +92,6 @@ public class AdminServiceImpl implements AdminService {
 
 	@Transactional
 	public List<MandalEntity> getAllMandals() {
-		System.out
-				.println("inside getAllMandals() method of AdminServiceImpl class");
 		List<MandalEntity> mandals = mandalDao.getAllMandals();
 		return mandals;
 	}
@@ -203,6 +202,14 @@ public class AdminServiceImpl implements AdminService {
 	@Transactional
 	public VillageEntity getVillage(Long villageCode) {
 		return villageDao.getVillage(villageCode);
+	}
+
+	@Transactional
+	public Set<MandalEntity> getMandalsOfdistirict(Long districtCode) {
+		DistrictEntity district ;
+		district = districtDao.getDistrict(districtCode);
+		Hibernate.initialize(district.getMandals());
+		return district.getMandals();
 	}
 
 }

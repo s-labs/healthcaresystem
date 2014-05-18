@@ -24,57 +24,63 @@
 			<div class="main-content">
 				<div class="page-content">
 
+					<c:choose>
+						<c:when test="${choosepatient}">
+							choose the patient from PIS then add details
+						</c:when>
+						<c:otherwise>
+							<form:form method="post" action="surgicalHistory"
+								commandName="surgicalHistory">
 
-					<form:form method="post" action="surgicalHistory"
-						commandName="surgicalHistory">
+								<table>
+									uhid : ${medicalHistory.patient.uhid}
+									<form:input path="patient"
+										value="${surgicalHistory.patient.uhid}" />
+									<tr>
+										<td>Surgery</td>
+										<td><form:input path="Surgery" /></td>
+									</tr>
 
-						<table>
-							uhid : ${medicalHistory.patient.uhid}
-							<form:input path="patient"
-								value="${surgicalHistory.patient.uhid}" />
-							<tr>
-								<td>Surgery</td>
-								<td><form:input path="Surgery" /></td>
-							</tr>
+									<tr>
+										<td>SurgeryDate</td>
+										<td><form:input path="SurgeryDate" /></td>
+									</tr>
 
-							<tr>
-								<td>SurgeryDate</td>
-								<td><form:input path="SurgeryDate" /></td>
-							</tr>
+									<tr>
+										<td>doctorName</td>
+										<td><form:input path="doctorName" /></td>
+									</tr>
 
-							<tr>
-								<td>doctorName</td>
-								<td><form:input path="doctorName" /></td>
-							</tr>
+									<tr>
+										<td>PlaceofSurgery</td>
+										<td><form:input path="PlaceofSurgery" /></td>
+									</tr>
 
-							<tr>
-								<td>PlaceofSurgery</td>
-								<td><form:input path="PlaceofSurgery" /></td>
-							</tr>
+									<tr>
+										<td>SurgeryProcedure</td>
+										<td><form:input path="SurgeryProcedure" /></td>
+									</tr>
 
-							<tr>
-								<td>SurgeryProcedure</td>
-								<td><form:input path="SurgeryProcedure" /></td>
-							</tr>
+									<tr>
+										<td>Status</td>
+										<td><form:input path="Status" /></td>
+									</tr>
 
-							<tr>
-								<td>Status</td>
-								<td><form:input path="Status" /></td>
-							</tr>
-
-							<tr>
-								<td>Notes</td>
-								<td><form:input path="Notes" /></td>
-							</tr>
+									<tr>
+										<td>Notes</td>
+										<td><form:input path="Notes" /></td>
+									</tr>
 
 
-							<tr>
-								<td colspan="2"><input type="submit"
-									value="SubmitmedicationDetails" /></td>
-							</tr>
+									<tr>
+										<td colspan="2"><input type="submit"
+											value="SubmitmedicationDetails" /></td>
+									</tr>
 
-						</table>
-					</form:form>
+								</table>
+							</form:form>
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
 		</div>

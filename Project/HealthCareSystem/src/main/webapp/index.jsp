@@ -13,5 +13,5 @@
 <c:set var="pageTitle">A grid based indian rural healthcare system</c:set>
 <template:page pageTitle="${pageTitle}" bodyCss="home">
 	
-...	This the Welcome page 
+<img src="${pageContext.request.contextPath}/assets/img/homepage.JPG" align="center"/>
 </template:page>

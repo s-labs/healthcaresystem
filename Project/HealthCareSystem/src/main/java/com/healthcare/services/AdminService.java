@@ -1,6 +1,7 @@
 package com.healthcare.services;
 
 import java.util.List;
+import java.util.Set;
 
 import com.healthcare.form.HealthCenterForm;
 import com.healthcare.model.DistrictEntity;
@@ -35,5 +36,6 @@ public interface AdminService {
 	public void addVillage(VillageEntity village);
 	public List<VillageEntity> getAllVillages();
 	public VillageEntity getVillage(Long villageCode);
+	public Set<MandalEntity> getMandalsOfdistirict(Long districtCode);
 
 }

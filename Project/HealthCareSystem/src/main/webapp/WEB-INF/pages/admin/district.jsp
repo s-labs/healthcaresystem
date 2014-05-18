@@ -61,7 +61,7 @@
 					</thead>
 					<tbody>
 
-						<c:forEach var="mandal" items="${district.mandals}"
+						<c:forEach var="mandal" items="${mandals}"
 							varStatus="status">
 							<tr>
 								<td>${status.count}</td>

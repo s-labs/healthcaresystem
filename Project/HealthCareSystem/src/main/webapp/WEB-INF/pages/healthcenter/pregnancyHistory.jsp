@@ -23,81 +23,88 @@
 		<div class="main-content">
 			<div class="page-content">
 				<h2>Pregnancy History</h2>
-				<form:form method="post" action="pregnancyHistory"
-					commandName="pregnancyHistory">
+				<c:choose>
+					<c:when test="${choosepatient}">
+							choose the patient from PIS then add details
+						</c:when>
+					<c:otherwise>
+						<form:form method="post" action="pregnancyHistory"
+							commandName="pregnancyHistory">
 
-uhid : ${medicalHistory.patient.uhid}
-						<form:input path="patient" value="${medicalHistory.patient.uhid}" />
 
-					<table>
+							<form:input path="patient" value="${medicalHistory.patient.uhid}" />
 
-						<tr>
-							<td>lmp</td>
-							<td><form:input path="lmp" /></td>
-						</tr>
+							<table>
 
-						<tr>
-							<td>first_anc</td>
-							<td><form:input path="first_anc" /></td>
-						</tr>
+								<tr>
+									<td>lmp</td>
+									<td><form:input path="lmp" /></td>
+								</tr>
 
-						<tr>
-							<td>second_anc</td>
-							<td><form:input path="second_anc" /></td>
-						</tr>
+								<tr>
+									<td>first_anc</td>
+									<td><form:input path="first_anc" /></td>
+								</tr>
 
-						<tr>
-							<td>third_anc</td>
-							<td><form:input path="third_anc" /></td>
-						</tr>
+								<tr>
+									<td>second_anc</td>
+									<td><form:input path="second_anc" /></td>
+								</tr>
 
-						<tr>
-							<td>fourth_anc</td>
-							<td><form:input path="fourth_anc" /></td>
-						</tr>
+								<tr>
+									<td>third_anc</td>
+									<td><form:input path="third_anc" /></td>
+								</tr>
 
-						<tr>
-							<td>tt1</td>
-							<td><form:input path="tt1" /></td>
-						</tr>
+								<tr>
+									<td>fourth_anc</td>
+									<td><form:input path="fourth_anc" /></td>
+								</tr>
 
-						<tr>
-							<td>tt2</td>
-							<td><form:input path="tt2" /></td>
-						</tr>
+								<tr>
+									<td>tt1</td>
+									<td><form:input path="tt1" /></td>
+								</tr>
 
-						<tr>
-							<td>ttbooster</td>
-							<td><form:input path="ttbooster" /></td>
-						</tr>
+								<tr>
+									<td>tt2</td>
+									<td><form:input path="tt2" /></td>
+								</tr>
 
-						<tr>
-							<td>complication</td>
-							<td><form:input path="complication" /></td>
-						</tr>
+								<tr>
+									<td>ttbooster</td>
+									<td><form:input path="ttbooster" /></td>
+								</tr>
 
-						<tr>
-							<td>rti_sti</td>
-							<td><form:input path="rti_sti" /></td>
-						</tr>
+								<tr>
+									<td>complication</td>
+									<td><form:input path="complication" /></td>
+								</tr>
 
-						<tr>
-							<td>ifa_tablets_given</td>
-							<td><form:input path="ifa_tablets_given" /></td>
-						</tr>
+								<tr>
+									<td>rti_sti</td>
+									<td><form:input path="rti_sti" /></td>
+								</tr>
 
-						<tr>
-							<td>anaemia_hb_level</td>
-							<td><form:input path="anaemia_hb_level" /></td>
-						</tr>
+								<tr>
+									<td>ifa_tablets_given</td>
+									<td><form:input path="ifa_tablets_given" /></td>
+								</tr>
 
-						<tr>
-							<td colspan="2"><input type="submit"
-								value="pregnancyHistory" /></td>
-						</tr>
+								<tr>
+									<td>anaemia_hb_level</td>
+									<td><form:input path="anaemia_hb_level" /></td>
+								</tr>
 
-					</table>
-				</form:form>
+								<tr>
+									<td colspan="2"><input type="submit"
+										value="pregnancyHistory" /></td>
+								</tr>
+
+							</table>
+						</form:form>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 	</div>

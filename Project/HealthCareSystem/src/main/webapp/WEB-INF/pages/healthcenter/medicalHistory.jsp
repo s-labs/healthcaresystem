@@ -25,97 +25,104 @@
 			<div class="page-content">
 
 				<h2>Medical History</h2>
-				<form:form method="post" action="medicalHistory"
-					commandName="medicalHistory">
+				<c:choose>
+					<c:when test="${choosepatient}">
+							choose the patient from PIS then add details
+						</c:when>
+					<c:otherwise>
+						<form:form method="post" action="medicalHistory"
+							commandName="medicalHistory">
 
-					<table>
-						<tr>
-							<td>uhid :</td>
-							<td><form:input path="patient"
-									value="${medicalHistory.patient.uhid}" /></td>
-						</tr>
-						<tr>
-							<td>ip</td>
-							<td><form:input path="ip" /></td>
-						</tr>
+							<table>
+								<tr>
+									<td>uhid :</td>
+									<td><form:input path="patient"
+											value="${medicalHistory.patient.uhid}" /></td>
+								</tr>
+								<tr>
+									<td>ip</td>
+									<td><form:input path="ip" /></td>
+								</tr>
 
-						<tr>
-							<td>op</td>
-							<td><form:input path="op" /></td>
-						</tr>
+								<tr>
+									<td>op</td>
+									<td><form:input path="op" /></td>
+								</tr>
 
-						<tr>
-							<td>acc_patient</td>
-							<td><form:input path="accPatient" /></td>
-						</tr>
+								<tr>
+									<td>acc_patient</td>
+									<td><form:input path="accPatient" /></td>
+								</tr>
 
-						<tr>
-							<td>reason_for_visit</td>
-							<td><form:input path="reasonForVisit" /></td>
-						</tr>
+								<tr>
+									<td>reason_for_visit</td>
+									<td><form:input path="reasonForVisit" /></td>
+								</tr>
 
-						<tr>
-							<td>present_history</td>
-							<td><form:input path="presentHistory" /></td>
-						</tr>
+								<tr>
+									<td>present_history</td>
+									<td><form:input path="presentHistory" /></td>
+								</tr>
 
-						<tr>
-							<td>past_history</td>
-							<td><form:input path="pastHistory" /></td>
-						</tr>
+								<tr>
+									<td>past_history</td>
+									<td><form:input path="pastHistory" /></td>
+								</tr>
 
-						<tr>
-							<td>personal_history</td>
-							<td><form:input path="personalHistory" /></td>
-						</tr>
+								<tr>
+									<td>personal_history</td>
+									<td><form:input path="personalHistory" /></td>
+								</tr>
 
-						<tr>
-							<td>family_history</td>
-							<td><form:input path="familyHistory" /></td>
-						</tr>
+								<tr>
+									<td>family_history</td>
+									<td><form:input path="familyHistory" /></td>
+								</tr>
 
-						<tr>
-							<td>problem_form</td>
-							<td><form:input path="problemForm" /></td>
-						</tr>
+								<tr>
+									<td>problem_form</td>
+									<td><form:input path="problemForm" /></td>
+								</tr>
 
-						<tr>
-							<td>doctor_name</td>
-							<td><form:input path="doctorName" /></td>
-						</tr>
+								<tr>
+									<td>doctor_name</td>
+									<td><form:input path="doctorName" /></td>
+								</tr>
 
-						<tr>
-							<td>notes</td>
-							<td><form:input path="notes" /></td>
-						</tr>
+								<tr>
+									<td>notes</td>
+									<td><form:input path="notes" /></td>
+								</tr>
 
-						<tr>
-							<td>from_date</td>
-							<td><form:input path="fromDate" /></td>
-						</tr>
+								<tr>
+									<td>from_date</td>
+									<td><form:input path="fromDate" /></td>
+								</tr>
 
-						<tr>
-							<td>to_date</td>
-							<td><form:input path="toDate" /></td>
-						</tr>
+								<tr>
+									<td>to_date</td>
+									<td><form:input path="toDate" /></td>
+								</tr>
 
-						<tr>
-							<td>progress</td>
-							<td><form:input path="progress" /></td>
-						</tr>
+								<tr>
+									<td>progress</td>
+									<td><form:input path="progress" /></td>
+								</tr>
 
-						<tr>
-							<td>advice</td>
-							<td><form:input path="advice" /></td>
-						</tr>
+								<tr>
+									<td>advice</td>
+									<td><form:input path="advice" /></td>
+								</tr>
 
-						<tr>
-							<td colspan="2"><input type="submit"
-								value="SubmitMedicalHIstory" /></td>
-						</tr>
+								<tr>
+									<td colspan="2"><input type="submit"
+										value="SubmitMedicalHIstory" /></td>
+								</tr>
 
-					</table>
-				</form:form>
+							</table>
+						</form:form>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 	</div>
