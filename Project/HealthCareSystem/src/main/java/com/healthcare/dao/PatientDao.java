@@ -21,7 +21,7 @@ public interface PatientDao  {
 	
 	 	public void addPatient(PatientEntity Patient);
 	    public List<PatientEntity> getAllPatients();
-	    public void deletePatient(Integer patientId);
+	    public int deletePatient(Long patientCode);
 	    public PatientEntity getPatient(Long code);
 		public void addMedicalHistory(MedicalHistoryEntity medicalHistory);
 		public void addMedicalHistory(MedicationDetailsEntity medicationDetails);

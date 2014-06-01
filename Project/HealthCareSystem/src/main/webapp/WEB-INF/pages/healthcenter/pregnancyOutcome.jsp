@@ -29,14 +29,24 @@
 						<c:when test="${choosepatient}">
 							choose the patient from PIS then add details
 						</c:when>
+						<c:when test="${not empty SUCCESS_MESSAGE}">
+								${SUCCESS_MESSAGE}	</br>
+
+						</c:when>
 						<c:otherwise>
 							<form:form method="post" action="pregnancyOutcome"
 								commandName="pregnancyOutcome">
 
 								<table>
-									uhid : ${pregnancyOutcome.patient.uhid}
-									<form:input path="patient"
-										value="${pregnancyOutcome.patient.uhid}" />
+
+									<tr>
+										<td>uhid</td>
+										<td>${pregnancyOutcome.patient.uhid}</td>
+									</tr>
+									<tr>
+										<td>Name</td>
+										<td>${pregnancyOutcome.patient.firstName} ${pregnancyOutcome.patient.lastName}</td>
+									</tr>
 									<tr>
 										<td>PlaceofDelivery</td>
 										<td><form:input path="PlaceofDelivery" /></td>

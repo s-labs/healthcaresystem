@@ -29,6 +29,10 @@
 						<c:when test="${choosepatient}">
 							choose the patient from PIS then add details
 						</c:when>
+						<c:when test="${not empty SUCCESS_MESSAGE}">
+								${SUCCESS_MESSAGE}	</br>
+						
+					</c:when>
 						<c:otherwise>
 							<form:form method="post" action="childImmunisation"
 								commandName="childImmunisation">

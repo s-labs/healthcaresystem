@@ -28,21 +28,33 @@
 						<c:when test="${choosepatient}">
 							choose the patient from PIS then add details
 						</c:when>
+						<c:when test="${not empty SUCCESS_MESSAGE}">
+								${SUCCESS_MESSAGE}	</br>
+
+						</c:when>
 						<c:otherwise>
 
 							<form:form method="post" action="pncDetails"
 								commandName="pncDetails">
 
 								<table>
-									uhid : ${pncDetails.patient.uhid}
-									<form:input path="patient" value="${pncDetails.patient.uhid}" />
+									
 									<tr>
-										<td>PNCHomevisit</td>
+										<td>uhid</td>
+										<td>${pncDetails.patient.uhid}</td>
+									</tr>
+									<tr>
+										<td>Name</td>
+										<td>${pncDetails.patient.firstName} ${pncDetails.patient.lastName}</td>
+									</tr>
+									
+									<tr>
+										<td>PNC Home visit</td>
 										<td><form:input path="PNCHomevisit" /></td>
 									</tr>
 
 									<tr>
-										<td>PNCComplications</td>
+										<td>PNC Complications</td>
 										<td><form:input path="PNCComplications" /></td>
 									</tr>
 
@@ -52,14 +64,14 @@
 									</tr>
 
 									<tr>
-										<td>PNCCheckup</td>
+										<td>PNC Checkup</td>
 										<td><form:input path="PNCCheckup" /></td>
 									</tr>
 
 
 									<tr>
 										<td colspan="2"><input type="submit"
-											value="SubmitmedicationDetails" /></td>
+											value="Submit PNC Details" /></td>
 									</tr>
 
 								</table>

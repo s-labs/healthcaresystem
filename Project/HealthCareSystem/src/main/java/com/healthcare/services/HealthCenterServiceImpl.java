@@ -46,6 +46,7 @@ public class HealthCenterServiceImpl implements HealthCenterService{
 	@Override
 	@Transactional
 	public void addPatient(PatientEntity Patient) {
+		System.out.println(Patient.getGender());
 		patientDao.addPatient(Patient);
 		
 	}
@@ -197,6 +198,12 @@ public class HealthCenterServiceImpl implements HealthCenterService{
 		}
 		patientDao.update(patient);
 		
+	}
+
+	@Transactional
+	public int deletePatient(Long patientCode) {
+		
+		return patientDao.deletePatient(patientCode);
 	}
 
 }

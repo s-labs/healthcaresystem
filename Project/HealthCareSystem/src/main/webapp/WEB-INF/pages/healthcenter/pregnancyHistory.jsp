@@ -18,7 +18,7 @@
 		<script>
 			$("#MIS").addClass("active");
 			$("#MIS").addClass("open");
-			$("#pregnancyhistory").addClass("active");
+			$("#pregnancyHistory").addClass("active");
 		</script>
 		<div class="main-content">
 			<div class="page-content">
@@ -27,6 +27,10 @@
 					<c:when test="${choosepatient}">
 							choose the patient from PIS then add details
 						</c:when>
+						<c:when test="${not empty SUCCESS_MESSAGE}">
+								${SUCCESS_MESSAGE}	</br>
+						
+					</c:when>
 					<c:otherwise>
 						<form:form method="post" action="pregnancyHistory"
 							commandName="pregnancyHistory">

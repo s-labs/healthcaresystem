@@ -31,3 +31,9 @@
 	href="${pageContext.request.contextPath}/assets/css/ace-responsive.min.css" />
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/ace-skins.min.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/ui-lightness/jquery-ui-1.10.4.custom.css" />
+
+
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/jquery.datetimepicker.css" />

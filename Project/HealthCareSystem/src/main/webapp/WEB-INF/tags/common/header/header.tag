@@ -8,8 +8,8 @@
 
 <div class="navbar">
 	<div class="navbar-inner">
-		<div class="container-fluid">
-			<a href="${pageContext.request.contextPath}" class="brand"> <small> <i class="">A Grid Based Indian Rural Health Care System
+		<div class="container-fluid" style="border-bottom:solid">
+			<a href="${pageContext.request.contextPath}" class="brand" style="border-bottom:solid"> <small> <i class="">
 			</i></small></a>
 			<ul class="nav ace-nav pull-right">
 				<li class="light-blue"><sec:authorize ifNotGranted="ROLE_ANONYMOUS">

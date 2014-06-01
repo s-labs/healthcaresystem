@@ -177,9 +177,9 @@
 					href="${pageContext.request.contextPath}/healthCenter/tng"> <i
 						class="icon-desktop"></i> <span class="menu-text"> TNG </span>
 				</a></li>
-				<li>Patient Information <br /> <c:choose>
+				<li><b>Current Patient : </b> <br /> <c:choose>
 						<c:when test="${currentPatient != null}">
-					${currentPatient.firstName}
+					${currentPatient.firstName} ${currentPatient.lastName}
 					</c:when>
 						<c:otherwise>
 					no patient selected

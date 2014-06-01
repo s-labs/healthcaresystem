@@ -30,12 +30,26 @@
 			if("ontouchend" in document) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 		</script>
 		<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-
+		<script src="${pageContext.request.contextPath}/assets/js/jquery.validate.js"></script>
+		
+		
+		<script src="${pageContext.request.contextPath}/assets/js/jquery.datetimepicker.js"></script>
 		<!--page specific plugin scripts-->
 
 		<!--ace scripts-->
 
+ <script type="text/javascript">
+ jQuery(document).ready(function () {
+	 jQuery( "#accordion" ).accordion();
+	 jQuery( "#datepicker" ).datepicker({ changeYear: true, yearRange: "1950:2017",dateFormat: "dd/mm/yy",appendText: "(dd/mm/yyyy)"});
+	 jQuery( ".datepicker" ).datepicker({ changeYear: true, yearRange: "1950:2017",dateFormat: "dd/mm/yy",appendText: "(dd/mm/yyyy)"});
+	 jQuery('#datetimepicker').datetimepicker({ changeYear: true, yearRange: "2014:2017",appendText: "(dd/mm/yyyy)"});
+	
+});
+</script>
+
 		<script src="${pageContext.request.contextPath}/assets/js/ace-elements.min.js"></script>
 		<script src="${pageContext.request.contextPath}/assets/js/ace.min.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/jquery-ui-1.10.4.custom.js"></script>
 
 		<!--inline scripts related to this page-->

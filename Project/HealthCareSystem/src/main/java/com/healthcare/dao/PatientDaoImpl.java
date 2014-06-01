@@ -42,8 +42,13 @@ public class PatientDaoImpl implements PatientDao{
 	}
 
 	@Override
-	public void deletePatient(Integer patientId) {
-		// TODO Auto-generated method stub
+	public int deletePatient(Long patientId) {
+		String hql = "delete from PatientEntity where uhid = :uhid";
+		Session session = this.sessionFactory.getCurrentSession();
+		Query query = session .createQuery(hql);
+		query.setParameter("uhid", patientId);
+		int result = query.executeUpdate();
+		return result;
 		
 	}
 

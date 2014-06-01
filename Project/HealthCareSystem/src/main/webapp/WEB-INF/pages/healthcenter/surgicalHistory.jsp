@@ -28,14 +28,24 @@
 						<c:when test="${choosepatient}">
 							choose the patient from PIS then add details
 						</c:when>
+						<c:when test="${not empty SUCCESS_MESSAGE}">
+								${SUCCESS_MESSAGE}	</br>
+						
+					</c:when>
 						<c:otherwise>
 							<form:form method="post" action="surgicalHistory"
 								commandName="surgicalHistory">
 
 								<table>
-									uhid : ${medicalHistory.patient.uhid}
-									<form:input path="patient"
-										value="${surgicalHistory.patient.uhid}" />
+									
+									<tr>
+										<td>uhid</td>
+										<td>${surgicalHistory.patient.uhid}</td>
+									</tr>
+									<tr>
+										<td>Name</td>
+										<td>${surgicalHistory.patient.firstName} ${surgicalHistory.patient.lastName}</td>
+									</tr>
 									<tr>
 										<td>Surgery</td>
 										<td><form:input path="Surgery" /></td>
@@ -43,7 +53,7 @@
 
 									<tr>
 										<td>SurgeryDate</td>
-										<td><form:input path="SurgeryDate" /></td>
+										<td><form:input path="SurgeryDate" cssClass="datepicker"/></td>
 									</tr>
 
 									<tr>

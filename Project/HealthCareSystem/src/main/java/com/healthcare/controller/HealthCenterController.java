@@ -50,7 +50,7 @@ public class HealthCenterController {
 	}
 
 	@RequestMapping(value = "/addPatient", method = RequestMethod.GET)
-	public String addStateFrom(ModelMap map) {
+	public String addPatient(ModelMap map) {
 		map.addAttribute("patient", new PatientEntity());
 
 		return "healthcenter/addPatient";
@@ -113,6 +113,26 @@ public class HealthCenterController {
 		PatientEntity patient = healthCenterService.getPatient(patientCode);
 		model.addObject("patient", patient);
 		model.setViewName("healthcenter/patient");
+		return model;
+	}
+	
+	@RequestMapping("/deletePatient/{patientCode}")
+	public ModelAndView deletePatient(
+			@PathVariable("patientCode") Long patientCode,HttpSession session) {
+		ModelAndView model = new ModelAndView();
+		long healthcenterid = 0;
+		int result = healthCenterService.deletePatient(patientCode);
+		UserEntity user = (UserEntity) session.getAttribute("user");
+		Set<PatientEntity> patients = new HashSet<PatientEntity>();
+		if (user != null) {
+			healthcenterid = user.getHealthcenter().getId();
+			System.out.println(" healthcenterid :"+healthcenterid);
+			patients = healthCenterService
+					.getAllPatientsOfHealthCenter(healthcenterid);
+
+		}
+		model.addObject("patients", patients);
+		model.setViewName("healthcenter/allPatients");
 		return model;
 	}
 
@@ -183,7 +203,7 @@ public class HealthCenterController {
 	// end of clerk
 
 	@RequestMapping(value = "/addPatient", method = RequestMethod.POST)
-	public ModelAndView addState(
+	public ModelAndView addPatient(
 			@ModelAttribute(value = "patient") PatientEntity patient,
 			BindingResult result, HttpSession session) {
 
@@ -194,8 +214,9 @@ public class HealthCenterController {
 			patient.setHealthCenter(healthcenter);
 		}
 		healthCenterService.addPatient(patient);
-		List<PatientEntity> patients = healthCenterService.getAllPatients();
-		model.addObject("patients", patients);
+		//List<PatientEntity> patients = healthCenterService.getAllPatients();
+		model.addObject("SUCCESS_MESSAGE", "Patient added successfully");
+		//model.addObject("patients", patients);
 		model.setViewName("healthcenter/addPatient");
 		return model;
 	}
@@ -227,6 +248,7 @@ public class HealthCenterController {
 			ModelAndView model = new ModelAndView();
 			
 			healthCenterService.addHospitalisationHistory(hospitalisationHistory);
+			model.addObject("SUCCESS_MESSAGE", "Hospitalisation Details added successfully");
 			model.setViewName("healthcenter/hospitalisationHistory");
 			return model;
 		}
@@ -423,6 +445,13 @@ public class HealthCenterController {
 		PatientEntity patient = (PatientEntity) session
 				.getAttribute("currentPatient");
 		pregnancyOutcome.setPatient(patient);
+		if(patient == null) {
+			map.addAttribute("choosepatient",true);
+		}
+		else
+		{
+			map.addAttribute("choosepatient",false);
+		}
 		map.addAttribute("pregnancyOutcome", pregnancyOutcome);
 		return "healthcenter/pregnancyOutcome";
 	}

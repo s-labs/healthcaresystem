@@ -29,16 +29,26 @@
 					<c:when test="${choosepatient}">
 							choose the patient from PIS then add details
 						</c:when>
+						<c:when test="${not empty SUCCESS_MESSAGE}">
+								${SUCCESS_MESSAGE}	</br>
+						
+					</c:when>
 					<c:otherwise>
 						<form:form method="post" action="medicalHistory"
 							commandName="medicalHistory">
 
 							<table>
-								<tr>
-									<td>uhid :</td>
-									<td><form:input path="patient"
-											value="${medicalHistory.patient.uhid}" /></td>
-								</tr>
+								
+								
+									<tr>
+										<td>uhid</td>
+										<td>${medicalHistory.patient.uhid}</td>
+									</tr>
+									<tr>
+										<td>Name</td>
+										<td>${medicalHistory.patient.firstName} ${medicalHistory.patient.lastName}</td>
+									</tr>
+									
 								<tr>
 									<td>ip</td>
 									<td><form:input path="ip" /></td>
@@ -80,12 +90,12 @@
 								</tr>
 
 								<tr>
-									<td>problem_form</td>
+									<td>problem form</td>
 									<td><form:input path="problemForm" /></td>
 								</tr>
 
 								<tr>
-									<td>doctor_name</td>
+									<td>doctor name</td>
 									<td><form:input path="doctorName" /></td>
 								</tr>
 
@@ -95,13 +105,13 @@
 								</tr>
 
 								<tr>
-									<td>from_date</td>
-									<td><form:input path="fromDate" /></td>
+									<td>from date</td>
+									<td><form:input path="fromDate" cssClass="datepicker"/></td>
 								</tr>
 
 								<tr>
-									<td>to_date</td>
-									<td><form:input path="toDate" /></td>
+									<td>to date</td>
+									<td><form:input path="toDate" cssClass="datepicker"/></td>
 								</tr>
 
 								<tr>

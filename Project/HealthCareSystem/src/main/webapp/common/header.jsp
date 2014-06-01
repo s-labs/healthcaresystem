@@ -13,8 +13,8 @@
 </head>
 <body>
 <div >
-<div class="headtitle" style="width:500px;float:left">
-<center> <h2> A grid based indian rural healthcare system </h2> </center>
+<div class="headtitle" style="width:500px;float:left;border-bottom:solid">
+
 </div>
 <div class="logoutSection" style="float:left">
 <sec:authorize ifAnyGranted="ROLE_USER">

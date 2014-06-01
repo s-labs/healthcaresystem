@@ -33,13 +33,19 @@ public class PatientEntity implements GenericEntity<Long> {
 	@JoinColumn(name = "healthcentercode",nullable = false)
 	private HealthCenterEntity healthCenter;
 
-	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
+	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL },orphanRemoval=true)
 	@JoinColumn(name = "uhid")
 	@IndexColumn(name = "code")
 	private Set<MedicalHistoryEntity> medicalhistory = new HashSet<MedicalHistoryEntity>(
 			0);
+	
+	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL },orphanRemoval=true)
+	@JoinColumn(name = "uhid")
+	@IndexColumn(name = "id")
+	private Set<HospitalisationHistoryEntity> hospitalisationHistoryEntity = new HashSet<HospitalisationHistoryEntity>(
+			0);
 
-	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
+	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL},orphanRemoval=true)
 	@JoinColumn(name = "uhid")
 	@IndexColumn(name = "code")
 	private Set<MedicationDetailsEntity> medicationDetails = new HashSet<MedicationDetailsEntity>(
@@ -79,7 +85,7 @@ public class PatientEntity implements GenericEntity<Long> {
 	private String firstName;
 	private Date dob;
 	private Integer age;
-	private Character gender;
+	private String gender;
 	private String occupation;
 	private String fatherHusbandName;
 	private String motherName;
@@ -109,51 +115,7 @@ public class PatientEntity implements GenericEntity<Long> {
 
 	}
 
-	public PatientEntity(String lastName, String middleName, String firstName,
-			Date dob, Integer age, Character gender, String occupation,
-			String fatherHusbandName, String motherName, String addressLine1,
-			String addressLine2, String pinCode, String cityTownVillage,
-			String mandal, String district, String sate, String email,
-			Integer phone, String emerContactPerName,
-			String emerContactPerRelationship,
-			String emerContactPerAddressLine1,
-			String emerContactPerAddressLine2, String emerContactPerPinCode,
-			String emerContactPerCit, String emerContactPerMandal,
-			String emerContactPerDistrict, String emerContactPerState,
-			Integer emerContactPerPhone, Integer emerContactPerPhoneNumber,
-			String emerContactPerEmail) {
-		this.lastName = lastName;
-		this.middleName = middleName;
-		this.firstName = firstName;
-		this.dob = dob;
-		this.age = age;
-		this.gender = gender;
-		this.occupation = occupation;
-		this.fatherHusbandName = fatherHusbandName;
-		this.motherName = motherName;
-		this.addressLine1 = addressLine1;
-		this.addressLine2 = addressLine2;
-		this.pinCode = pinCode;
-		this.cityTownVillage = cityTownVillage;
-		this.mandal = mandal;
-		this.district = district;
-		this.sate = sate;
-		this.email = email;
-		this.phone = phone;
-		this.emerContactPerName = emerContactPerName;
-		this.emerContactPerRelationship = emerContactPerRelationship;
-		this.emerContactPerAddressLine1 = emerContactPerAddressLine1;
-		this.emerContactPerAddressLine2 = emerContactPerAddressLine2;
-		this.emerContactPerPinCode = emerContactPerPinCode;
-		this.emerContactPerCit = emerContactPerCit;
-		this.emerContactPerMandal = emerContactPerMandal;
-		this.emerContactPerDistrict = emerContactPerDistrict;
-		this.emerContactPerState = emerContactPerState;
-		this.emerContactPerPhone = emerContactPerPhone;
-		this.emerContactPerPhoneNumber = emerContactPerPhoneNumber;
-		this.emerContactPerEmail = emerContactPerEmail;
-	}
-
+	
 	public Long getUhid() {
 		return this.uhid;
 	}
@@ -236,11 +198,11 @@ public class PatientEntity implements GenericEntity<Long> {
 		this.age = age;
 	}
 
-	public Character getGender() {
+	public String getGender() {
 		return this.gender;
 	}
 
-	public void setGender(Character gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 

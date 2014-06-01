@@ -12,6 +12,8 @@
 
 <c:set var="pageTitle">A grid based indian rural healthcare system</c:set>
 <template:page pageTitle="${pageTitle}" bodyCss="home">
-	
-<img src="${pageContext.request.contextPath}/assets/img/homepage.JPG" align="center"/>
+	<center>
+<img src="${pageContext.request.contextPath}/assets/img/homepage.JPG" style="border:solid" align="center"/>
+
+</center>
 </template:page>

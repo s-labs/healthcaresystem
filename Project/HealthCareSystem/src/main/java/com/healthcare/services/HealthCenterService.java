@@ -47,6 +47,7 @@ public interface HealthCenterService {
 	public List<HealthCenterEntity> getAllHealthCentersOfLevel(int gridlevel);
 	public HealthCenterEntity getHealthCenter(long healthCenterCode);
 	public void updatePatient(PatientEntity patient, String tng);
+	public int deletePatient(Long patientCode);
 	
 
 }
