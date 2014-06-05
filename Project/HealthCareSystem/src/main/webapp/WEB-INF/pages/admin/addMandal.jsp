@@ -12,6 +12,23 @@
 
 <c:set var="pageTitle">A grid based indian rural healthcare system :: Admin Home Page</c:set>
 <template:page pageTitle="${pageTitle}" bodyCss="home">
+	<script type="text/javascript" language="javascript">
+		jQuery(document).ready(function() {
+			jQuery("#district").change(function(event) {
+				var districtValue = $(this).val();
+				url = "districtHealthCenterCode?districtcode=" + districtValue;
+				jQuery.ajax({
+					url : "districtHealthCenterCode?districtcode=" + districtValue,
+					success : function(result) {
+
+						jQuery("#nextHealthCenter").html(result);
+					}
+				});
+
+			});
+
+		});
+	</script>
 	<div class="main-container container-fluid">
 		<jsp:include page="/common/admin/leftnavigation.jsp"></jsp:include>
 		<script>
@@ -19,71 +36,71 @@
 		</script>
 		<div class="main-content">
 			<div class="page-content">
-				<h2>List of All Mandals</h2>
-				<table>
-					<thead>
-						<tr>
-							<th>S.No</th>
 
-							<th>Code</th>
+				<c:choose>
 
-							<th>Name</th>
+					<c:when test="${not empty SUCCESS_MESSAGE}">
+								${SUCCESS_MESSAGE}	</br>
 
-							<th>District Code</th>
+					</c:when>
+					<c:otherwise>
+						<h2>Add new Mandal</h2>
+						<form:form method="post" action="addMandal" commandName="mandal">
 
-							<th>Details</th>
+							<table>
+								<tr>
+									<td>Select District</td>
+									<td><form:select path="district" id="district">
 
-						</tr>
-					</thead>
-					<tbody>
+											<c:forEach var="district" items="${districts}"
+												varStatus="status">
 
-						<c:forEach var="mandal" items="${mandals}" varStatus="status">
-							<tr>
-								<td>${status.count}</td>
+												<form:option value="${district.code}">${district.name}</form:option>
+											</c:forEach>
+										</form:select></td>
+								</tr>
+								<tr>
+									<td>Mandal Name</td>
+									<td><form:input path="name" /></td>
+								</tr>
+							</table>
+							<hr>
+							<table>
+								<tr>
+									<td colspan="2">
+										<h1>Health center details</h1>
+									</td>
+								</tr>
+								<tr>
+									<td>HealthCenter Name</td>
+									<td><input name="healthcenterName" /></td>
+								</tr>
 
-								<td>${mandal.code }</td>
+								<tr>
+									<td>Level</td>
+									<td><select name="healthcenterlevel">
+											<option value="5">Village Sub Center</option>
+											<option value="4">Primary Health Center</option>
+									</select></td>
+								</tr>
+								<tr>
+									<td>Next Level Health center</td>
+									<td><b> <span id="nextHealthCenter"></span>
+									</b>
+								</tr>
 
-								<td>${mandal.name }</td>
-
-								<td>${mandal.district.name}</td>
-
-								<td><a href="mandal/${mandal.code}">Detail</a></td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-				<br />
-				<h2>Add new Mandal</h2>
-				<form:form method="post" action="addMandal" commandName="mandal">
-
-					<table>
-
-						<td>Select District</td>
-						<td><form:select path="district">
-
-								<c:forEach var="district" items="${districts}"
-									varStatus="status">
-
-									<form:option value="${district.code}">${district.name}</form:option>
-								</c:forEach>
-							</form:select></td>
-
-						<tr>
-							<td>Mandal Name</td>
-							<td><form:input path="name" /></td>
-
-
-						</tr>
-
-
-						<tr>
-							<td>
-							<td colspan="2"><input type="submit" value="add Mandal" /></td>
-							</td>
-						</tr>
-					</table>
-				</form:form>
-				<input type="button" value="Back" onclick="javascript:history.go(-1)">
+								<tr>
+								<tr>
+									<td>
+									<td colspan="2"><input type="submit" value="add Mandal" /></td>
+									</td>
+								</tr>
+							</table>
+						</form:form>
+					</c:otherwise>
+				</c:choose>
+				<input type="button" value="Back"
+					onclick="javascript:history.go(-1)">
 			</div>
 		</div>
 	</div>

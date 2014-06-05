@@ -42,7 +42,7 @@
 								<td>Last Name</td>
 								<td>${patient.lastName }</td>
 							</tr>
-							
+
 							<tr>
 								<td>Date of birth</td>
 								<td>${patient.dob }</td>
@@ -103,38 +103,100 @@
 								<td>phone</td>
 								<td>${patient.phone}</td>
 							</tr>
-							
-							
+
+
 						</table>
 					</div>
 					<h3>Medical History</h3>
 					<div>
-						<table id="sample-table-1"
-							class="table table-striped table-bordered table-hover">
-							<thead>
-								<tr>
 
-									<th>Column</th>
-									<th>Details</th>
+						<c:forEach var="medicalhistory" items="${patient.medicalhistory}"
+							varStatus="status">
 
-								</tr>
-							</thead>
-							<c:forEach var="medicalhistory" items="${patient.medicalhistory}"
-								varStatus="status">
-								<tr>
-									<td colspan="2">This record ${status.count}</td>
-								</tr>
-								<tr>
-									<td>In patient</td>
-									<td>${medicalhistory.ip}</td>
-								</tr>
-								<tr>
-									<td>Out patient</td>
-									<td>${medicalhistory.op}</td>
-								</tr>
+							<div class="accordion"></div>
+							<h3>This record ${status.count}</h3>
 
-							</c:forEach>
-						</table>
+							<div>
+								<table id="sample-table-1"
+									class="table table-striped table-bordered table-hover">
+									<thead>
+										<tr>
+											<th>Column</th>
+											<th>Details</th>
+										</tr>
+									</thead>
+									<tr>
+										<td>In patient</td>
+										<td>${medicalhistory.ip}</td>
+									</tr>
+									<tr>
+										<td>Out patient</td>
+										<td>${medicalhistory.op}</td>
+									</tr>
+
+									<tr>
+										<td>accPatient</td>
+										<td>${medicalhistory.accPatient}</td>
+									</tr>
+
+									<tr>
+										<td>emer Patient</td>
+										<td>${medicalhistory.emerPatient}</td>
+									</tr>
+									<tr>
+										<td>reason For Visit</td>
+										<td>${medicalhistory.reasonForVisit}</td>
+									</tr>
+
+									<tr>
+										<td>present History</td>
+										<td>${medicalhistory.presentHistory}</td>
+									</tr>
+									<tr>
+										<td>past History</td>
+										<td>${medicalhistory.pastHistory}</td>
+									</tr>
+									<tr>
+										<td>personal History</td>
+										<td>${medicalhistory.personalHistory}</td>
+									</tr>
+									<tr>
+										<td>family History</td>
+										<td>${medicalhistory.familyHistory}</td>
+									</tr>
+									<tr>
+										<td>problem Form</td>
+										<td>${medicalhistory.problemForm}</td>
+									</tr>
+									<tr>
+										<td>doctorName</td>
+										<td>${medicalhistory.doctorName}</td>
+									</tr>
+									<tr>
+										<td>notes</td>
+										<td>${medicalhistory.notes}</td>
+									</tr>
+									<tr>
+										<td>from Date</td>
+										<td>${medicalhistory.fromDate}</td>
+									</tr>
+									<tr>
+										<td>to Date</td>
+										<td>${medicalhistory.toDate}</td>
+									</tr>
+									<tr>
+										<td>progress</td>
+										<td>${medicalhistory.progress}</td>
+									</tr>
+									<tr>
+										<td>advice</td>
+										<td>${medicalhistory.advice}</td>
+									</tr>
+								</table>
+							</div>
+
+						</c:forEach>
+
 					</div>
 					<h3>Medication Details :</h3>
 					<div>

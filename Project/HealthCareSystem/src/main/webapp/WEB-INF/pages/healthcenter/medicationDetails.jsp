@@ -32,54 +32,59 @@
 
 							<form:form method="post" action="medicationDetails"
 								commandName="medicationDetails">
-${medicalHistory.patient.uhid}
+
 								<table>
-									uhid : ${medicalHistory.patient.uhid}
-									<form:input path="patient"
-										value="${medicalHistory.patient.uhid}" />
+									<tr>
+										<td>uhid</td>
+										<td>${medicationDetails.patient.uhid}</td>
+									</tr>
+									<tr>
+										<td>Name</td>
+										<td>${medicationDetails.patient.firstName} ${medicationDetails.patient.lastName}</td>
+									</tr>
 									<tr>
 										<td>medication_name</td>
-										<td><form:input path="medication_name" /></td>
+										<td><form:input path="medication_name" required="required"/></td>
 									</tr>
 
 									<tr>
 										<td>drug_code</td>
-										<td><form:input path="drug_code" /></td>
+										<td><form:input path="drug_code" required="required"/></td>
 									</tr>
 
 									<tr>
 										<td>strength</td>
-										<td><form:input path="strength" /></td>
+										<td><form:input path="strength" required="required"/></td>
 									</tr>
 
 									<tr>
 										<td>dose</td>
-										<td><form:input path="dose" /></td>
+										<td><form:input path="dose" required="required"/></td>
 									</tr>
 
 									<tr>
 										<td>route</td>
-										<td><form:input path="route" /></td>
+										<td><form:input path="route" required="required"/></td>
 									</tr>
 
 									<tr>
 										<td>frequency</td>
-										<td><form:input path="frequency" /></td>
+										<td><form:input path="frequency" required="required"/></td>
 									</tr>
 
 									<tr>
 										<td>from_date</td>
-										<td><form:input path="from_date" /></td>
+										<td><form:input path="from_date" required="required"/></td>
 									</tr>
 
 									<tr>
 										<td>to_date</td>
-										<td><form:input path="to_date" /></td>
+										<td><form:input path="to_date" required="required"/></td>
 									</tr>
 
 									<tr>
 										<td>next_check_up</td>
-										<td><form:input path="next_check_up" /></td>
+										<td><form:input path="next_check_up" required="required"/></td>
 									</tr>
 
 

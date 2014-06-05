@@ -40,12 +40,35 @@
 
  <script type="text/javascript">
  jQuery(document).ready(function () {
-	 jQuery( "#accordion" ).accordion();
+	 jQuery( "#accordion" ).accordion({autoHeight: false});
+	 jQuery( ".accordion" ).accordion();
 	 jQuery( "#datepicker" ).datepicker({ changeYear: true, yearRange: "1950:2017",dateFormat: "dd/mm/yy",appendText: "(dd/mm/yyyy)"});
 	 jQuery( ".datepicker" ).datepicker({ changeYear: true, yearRange: "1950:2017",dateFormat: "dd/mm/yy",appendText: "(dd/mm/yyyy)"});
 	 jQuery('#datetimepicker').datetimepicker({ changeYear: true, yearRange: "2014:2017",appendText: "(dd/mm/yyyy)"});
 	
 });
+</script>
+<script>
+function getXMLHTTP() {
+    //function to return the xml http object
+    var xmlhttp = false;
+
+    try {
+        xmlhttp = new XMLHttpRequest();
+    } catch (e) {
+        try {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        } catch (e) {
+            try {
+                xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+            } catch (e1) {
+                xmlhttp = false;
+            }
+        }
+    }
+
+    return xmlhttp;
+}
 </script>
 
 		<script src="${pageContext.request.contextPath}/assets/js/ace-elements.min.js"></script>

@@ -15,7 +15,7 @@
 	<div class="main-container container-fluid">
 		<jsp:include page="/common/admin/leftnavigation.jsp"></jsp:include>
 		<script>
-			$("#addMandal").addClass("active");
+			$("#viewMandal").addClass("active");
 		</script>
 		<div class="main-content">
 			<div class="page-content">

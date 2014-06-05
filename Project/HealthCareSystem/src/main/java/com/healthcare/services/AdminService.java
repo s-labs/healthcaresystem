@@ -26,7 +26,7 @@ public interface AdminService {
 	public List<MandalEntity> getAllMandals();
 	public MandalEntity getMandal(Long mandalCode);
 	public List<HealthCenterEntity> getAllHealthCenters();
-	public void addHealthCenter(HealthCenterForm healthcenterform);
+	public HealthCenterEntity addHealthCenter(HealthCenterForm healthcenterform);
 	public void addHCAdmin(UserEntity user);
 	public HealthCenterEntity getHealthCenter(Long healthcentercode);
 	public void updateHealthCenter(HealthCenterForm healthcenterform);
@@ -37,5 +37,9 @@ public interface AdminService {
 	public List<VillageEntity> getAllVillages();
 	public VillageEntity getVillage(Long villageCode);
 	public Set<MandalEntity> getMandalsOfdistirict(Long districtCode);
+	public MandalEntity getVillagesOfaMandal(Long mandalCode);
+	public List<HealthCenterEntity> getHealthCentersOfLevel(int i);
+	public StateEntity getDistrictsOfaState(Long stateCode);
+	public DistrictEntity getMandalsOfaDistrict(Long districtcode);
 
 }

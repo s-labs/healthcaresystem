@@ -29,8 +29,15 @@
 						commandName="medicationTreatment">
 
 						<table>
-							uhid : ${medicalHistory.patient.uhid}
-							<form:input path="patient" value="${medicationTreatment.patient.uhid}" />
+							<tr>
+									<td>uhid</td>
+									<td>${medicationTreatment.patient.uhid}</td>
+								</tr>
+								<tr>
+									<td>Name</td>
+									<td>${medicationTreatment.patient.firstName}
+										${medicationTreatment.patient.lastName}</td>
+								</tr>
 							<tr>
 								<td>ClinicalExamVitalsSystolicBP</td>
 								<td><form:input path="ClinicalExamVitalsSystolicBP" /></td>

@@ -19,58 +19,81 @@
 		</script>
 		<div class="main-content">
 			<div class="page-content">
-			<input type="button" value="Back" onclick="javascript:history.go(-1)">
-				<table border=1>
-					<thead>
-						<tr>
-							<th>S.No</th>
-							<th>Code</th>
-							<th>Name</th>
-							<th>State Code</th>
-							<th>Details</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="district" items="${districts}" varStatus="status">
-							<tr>
-								<td>${status.count}</td>
-								<td>${district.code }</td>
-								<td>${district.name }</td>
-								<td>${district.state.name}</td>
-								<td><a href="district/${district.code}">Detail</a></td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-				<h2>Add District</h2>
-				<form:form method="post" action="addDistrict"
-					commandName="districtform">
+				<c:choose>
 
-					<table>
+					<c:when test="${not empty SUCCESS_MESSAGE}">
+								${SUCCESS_MESSAGE}	</br>
 
-						<tr>
-							<td>District Name : </td>
-							<td><form:input path="district.name" /></td>
+					</c:when>
+					<c:otherwise>
 
-						</tr>
-						<tr>
-							<td>State : </td>
-							<td><select name="stateId">
+						<h2>Add District</h2>
+						<form:form method="post" action="addDistrict"
+							commandName="districtform">
 
-									<c:forEach var="state" items="${states}" varStatus="status">
+							<table>
 
-										<option value="${state.code}">${state.name}
-									</c:forEach>
-							</select></td>
-						</tr>
+								<tr>
+									<td>District Name :</td>
+									<td><form:input path="district.name" /></td>
 
-						</tr>
-						<tr>
-							<td colspan="2"><input type="submit" value="add District" /></td>
-						</tr>
-					</table>
-				</form:form>
-				<input type="button" value="Back" onclick="javascript:history.go(-1)">
+								</tr>
+								<tr>
+									<td>State :</td>
+									<td><select name="stateId">
+
+											<c:forEach var="state" items="${states}" varStatus="status">
+
+												<option value="${state.code}">${state.name}
+											</c:forEach>
+									</select></td>
+								</tr>
+							</table>
+							<hr>
+							<table>
+								<tr>
+									<td colspan="2">
+										<h1>Health center details</h1>
+									</td>
+								</tr>
+								<tr>
+									<td>HealthCenter Name</td>
+									<td><input name="healthcenterName" /></td>
+								</tr>
+
+								<tr>
+									<td>Level</td>
+									<td><select name="healthcenterlevel">
+											<option value="5">Village Sub Center</option>
+											<option value="4">Primary Health Center</option>
+									</select></td>
+								</tr>
+								<tr>
+									<td>Next Level Health center</td>
+									<td><b> <select name="nexthealthcenterid">
+												<c:forEach var="healthcenter" items="${nextHealthCenters}"
+													varStatus="status">
+
+													<option value="${healthcenter.id}">${healthcenter.name}</option>
+												</c:forEach>
+										</select>
+									</b>
+								</tr>
+
+								<tr>
+
+								</tr>
+
+
+								<tr>
+									<td colspan="2"><input type="submit" value="add District" /></td>
+								</tr>
+							</table>
+						</form:form>
+					</c:otherwise>
+				</c:choose>
+				<input type="button" value="Back"
+					onclick="javascript:history.go(-1)">
 			</div>
 		</div>
 	</div>

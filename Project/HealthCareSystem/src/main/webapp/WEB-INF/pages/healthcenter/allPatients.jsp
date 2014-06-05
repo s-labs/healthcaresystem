@@ -28,19 +28,19 @@
 
 							<th>S.No</th>
 							<th>UHID</th>
-							<th>Last Name</th>
-							<th class="hidden-480">Details</th>
-							<th class="hidden-480">delete</th>
+							<th>Name</th>
+							<th class="hidden-480">Details</th>							
 							<sec:authorize ifAnyGranted="ROLE_DOCTOR">
 								<th class="hidden-480">Switch</th>
 							</sec:authorize>
+							<th class="hidden-480">delete</th>
 						</tr>
 					</thead>
 					<c:forEach var="patient" items="${patients}" varStatus="status">
 						<tr>
 							<td>${status.count}</td>
 							<td>${patient.uhid}</td>
-							<td>${patient.lastName}</td>
+							<td>${patient.lastName} ${patient.firstName}</td>
 							<td><a
 								href="${pageContext.request.contextPath}/healthCenter/patient/${patient.uhid}">details
 							</a></td>

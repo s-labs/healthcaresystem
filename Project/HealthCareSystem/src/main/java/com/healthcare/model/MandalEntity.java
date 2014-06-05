@@ -29,11 +29,11 @@ public class MandalEntity {
 	@Column
 	private String name;	
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "districtcode",nullable = false)
 	private DistrictEntity district;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "healthcentercode",nullable = true)
 	private HealthCenterEntity healthCenter;
 	

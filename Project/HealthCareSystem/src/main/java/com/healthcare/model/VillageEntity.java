@@ -21,16 +21,18 @@ public class VillageEntity {
 
 	@Column(name = "Name")
 	private String name;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "districtcode", nullable = false)
+	private DistrictEntity district;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "mandalcode", nullable = false)
 	private MandalEntity mandal;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "healthcentercode", nullable = true)
-	private HealthCenterEntity healthCenter;
-
-	
+	private HealthCenterEntity healthCenter;	
 	
 	@Column(name = "Distance_0_5_KMS")
 	private boolean Distance_0_5_KMS;
@@ -45,8 +47,24 @@ public class VillageEntity {
 	//private int Village_BlockPHC_CHC_Code;
 	
 
+	/*public int getVillage_BlockPHC_CHC_Code() {
+		return Village_BlockPHC_CHC_Code;
+	}
+
+	public void setVillage_BlockPHC_CHC_Code(int village_BlockPHC_CHC_Code) {
+		Village_BlockPHC_CHC_Code = village_BlockPHC_CHC_Code;
+	}*/
+
 	public long getCode() {
 		return code;
+	}
+
+	public DistrictEntity getDistrict() {
+		return district;
+	}
+
+	public void setDistrict(DistrictEntity district) {
+		this.district = district;
 	}
 
 	public void setCode(long code) {

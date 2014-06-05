@@ -15,7 +15,7 @@
 	<div class="main-container container-fluid">
 		<jsp:include page="/common/admin/leftnavigation.jsp"></jsp:include>
 		<script>
-			$("#addVillage").addClass("active");
+			$("#viewVillage").addClass("active");
 		</script>
 		<div class="main-content">
 			<div class="page-content">
@@ -31,11 +31,11 @@
 							<input type="hidden" name="level" value="village" /> <input
 								type="hidden" name="associateto" value="${village.code}" /> <select
 								name="healthcenterid">
-
+<%-- 
 								<c:forEach items="${healthcenters}" var="healthcenter">
 								${healthcenter.name}
 									<option value="${healthcenter.id}">${healthcenter.name}</option>
-								</c:forEach>
+								</c:forEach>--%>
 							</select> <input type="submit">
 						</form>
 					</c:when>

@@ -16,66 +16,59 @@
 		<jsp:include page="/common/admin/leftnavigation.jsp"></jsp:include>
 		<script>
 			$("#addHealthCenter").addClass("active");
-			</script>
+		</script>
 		<div class="main-content">
 			<div class="page-content">
-				<h2>List of Health centers </h2>
-				<input type="button" value="Back" onclick="javascript:history.go(-1)">
-				<table border=1>
-					<thead>
-						<tr>
-							<th>S.No</th>
-							<th>Name</th>
-							<th>Level</th>
-							<th>Next Center </th>
-							<th> Edit </th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="healthcenter" items="${healthcenters}"
-							varStatus="status">
-							<tr>
-								<td>${status.count}</td>
-								<td>${healthcenter.name }</td>
-								<td>${healthcenter.level }</td>
-								<td>${healthcenter.next.name }</td>
-								<td> <a href="${pageContext.request.contextPath}/admin/editHealthCenter/${healthcenter.id}">Edit</a>
-						</c:forEach>
-					</tbody>
-				</table>
-				
-				<h2> Add New Health center </h2>
+				<c:choose>
 
-				<form:form method="post" action="addHealthCenter"
-					commandName="healthcenterform">
+					<c:when test="${not empty SUCCESS_MESSAGE}">
+								${SUCCESS_MESSAGE}	</br>
 
-					<table>
+					</c:when>
+					<c:otherwise>
+						<h2>Add New Health center</h2>
 
-						<tr>
-							<td>Health Center Name</td>
-							<td><form:input path="healthcenter.name" /></td>
-						</tr>
-						<tr>
-							<td>level</td>
-							<td><form:input path="healthcenter.level" /></td>
-						</tr>
-						<tr>
-							<td>Next HealthCenter</td>
-							<td><select name="next">
+						<form:form method="post" action="addHealthCenter"
+							commandName="healthcenterform">
 
-									<c:forEach var="healthcenter" items="${healthcenters}"
-										varStatus="status">
+							<table>
 
-										<option value="${healthcenter.id}">${healthcenter.name}
-									</c:forEach>
-							</select></td>
-						</tr>
-						<tr>
-							<td colspan="2"><input type="submit" value="add Health Center" /></td>
-						</tr>
-					</table>
-				</form:form>
-				<input type="button" value="Back" onclick="javascript:history.go(-1)">
+								<tr>
+									<td>Health Center Name</td>
+									<td><form:input path="healthcenter.name" /></td>
+								</tr>
+								<tr>
+									<td>level</td>
+									<td><form:select path="healthcenter.level" >
+										<form:option value="5">Village Sub Center</form:option>
+										<form:option value="4">Primary Health Center</form:option>
+										<form:option value="3">Community Health Center</form:option>
+										<form:option value="2">Area Hospital</form:option>
+										<form:option value="1">District Head Quaters</form:option>
+									</form:select></td>
+								</tr>
+								<tr>
+									<td>Next HealthCenter</td>
+									<td><select name="next">
+
+											<c:forEach var="healthcenter" items="${healthcenters}"
+												varStatus="status">
+
+												<option value="${healthcenter.id}">${healthcenter.name}
+											</c:forEach>
+									</select></td>
+								</tr>
+								<tr>
+									<td colspan="2"><input type="submit"
+										value="add Health Center" /></td>
+								</tr>
+							</table>
+						</form:form>
+					</c:otherwise>
+				</c:choose>
+
+				<input type="button" value="Back"
+					onclick="javascript:history.go(-1)">
 			</div>
 		</div>
 	</div>

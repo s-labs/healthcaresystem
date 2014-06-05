@@ -75,6 +75,7 @@ public class AdminServiceImpl implements AdminService {
 		district = districtDao.getDistrict(districtCode);
 		district1 = district;
 		district1.setMandals(district.getMandals());
+		Hibernate.initialize(district1.getHealthCenter());
 		return district1;
 	}
 
@@ -98,7 +99,11 @@ public class AdminServiceImpl implements AdminService {
 
 	@Transactional
 	public MandalEntity getMandal(Long mandalCode) {
-		return mandalDao.getMandal(mandalCode);
+		MandalEntity mandal = mandalDao.getMandal(mandalCode);
+		Hibernate.initialize(mandal.getHealthCenter());
+		Hibernate.initialize(mandal.getDistrict());
+		Hibernate.initialize(mandal.getVillages());
+		return mandal;
 	}
 
 	@Transactional
@@ -115,11 +120,11 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	@Transactional
-	public void addHealthCenter(HealthCenterForm healthcenterform) {
+	public HealthCenterEntity addHealthCenter(HealthCenterForm healthcenterform) {
 		long nextHealthCenterId =  healthcenterform.getNext();
 		HealthCenterEntity healthcenter = healthcenterform.getHealthcenter();
-		 healthcenter = healthCenterDao.addHealthCenter(healthcenter ,nextHealthCenterId);
-		
+		healthcenter = healthCenterDao.addHealthCenter(healthcenter ,nextHealthCenterId);
+		return healthcenter;
 	}
 
 	@Transactional
@@ -201,7 +206,11 @@ public class AdminServiceImpl implements AdminService {
 
 	@Transactional
 	public VillageEntity getVillage(Long villageCode) {
-		return villageDao.getVillage(villageCode);
+		VillageEntity village = villageDao.getVillage(villageCode);
+		//Hibernate.initialize(village.getDistrict());
+		Hibernate.initialize(village.getMandal());
+		Hibernate.initialize(village.getHealthCenter());
+		return village;
 	}
 
 	@Transactional
@@ -210,6 +219,32 @@ public class AdminServiceImpl implements AdminService {
 		district = districtDao.getDistrict(districtCode);
 		Hibernate.initialize(district.getMandals());
 		return district.getMandals();
+	}
+
+	@Transactional
+	public MandalEntity getVillagesOfaMandal(Long mandalCode) {
+		MandalEntity mandal = mandalDao.getMandal(mandalCode);
+		Hibernate.initialize(mandal.getVillages());
+		return mandal;
+	}
+
+	@Transactional
+	public List<HealthCenterEntity> getHealthCentersOfLevel(int i) {
+		return healthCenterDao.getAllHealthCentersOfLevel(i);
+	}
+
+	@Transactional
+	public StateEntity getDistrictsOfaState(Long stateCode) {
+		StateEntity state = stateDao.getState(stateCode);
+		Hibernate.initialize(state.getDistricts());
+		return state;
+	}
+
+	@Transactional
+	public DistrictEntity getMandalsOfaDistrict(Long districtcode) {
+		DistrictEntity district = districtDao.getDistrict(districtcode);
+		Hibernate.initialize(district.getMandals());
+		return district;
 	}
 
 }
