@@ -33,6 +33,12 @@
 								<span class="caret"></span>
 							</c:if>
 						</button>
+						<button id="G5" class="btn  disabled" data-toggle="dropdown">
+							G5
+							<c:if test="${gridlevel=='5' }">
+								<span class="caret"></span>
+							</c:if>
+						</button>
 						$("#G"+"${gridlevel}").addClass("btn-primary");
 
 					</div>

@@ -54,7 +54,6 @@ public class AdminServiceImpl implements AdminService {
 
 	@Transactional
 	public StateEntity getState(Long stateCode) {
-		// TODO Auto-generated method stub
 		return stateDao.getState(stateCode);
 	}
 
@@ -142,6 +141,7 @@ public class AdminServiceImpl implements AdminService {
 		roles.add(role1);
 		roles.add(role2);
 		user.setRoles(roles);
+		
 		
 		user.setEnabled(true);
 		userDao.addUser(user );
@@ -245,6 +245,17 @@ public class AdminServiceImpl implements AdminService {
 		DistrictEntity district = districtDao.getDistrict(districtcode);
 		Hibernate.initialize(district.getMandals());
 		return district;
+	}
+
+	@Transactional
+	public int deleteDistrict(Long districtCode) {
+		return districtDao.deleteDistrict(districtCode);
+	}
+
+	@Transactional
+	public void deleteMandal(Long mandalCode) {
+		mandalDao.deleteMandal(mandalCode);
+		
 	}
 
 }

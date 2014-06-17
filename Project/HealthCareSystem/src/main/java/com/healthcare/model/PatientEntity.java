@@ -12,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -32,6 +34,12 @@ public class PatientEntity implements GenericEntity<Long> {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "healthcentercode",nullable = false)
 	private HealthCenterEntity healthCenter;
+	
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+    @JoinTable(name="PREVIOUS_HEALTHCENTERS",
+                joinColumns={@JoinColumn(name="uhid")},
+                inverseJoinColumns={@JoinColumn(name="id")})
+    private Set<HealthCenterEntity> previousHealthCenters = new HashSet<HealthCenterEntity>();
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL },orphanRemoval=true)
 	@JoinColumn(name = "uhid")
@@ -116,6 +124,15 @@ public class PatientEntity implements GenericEntity<Long> {
 	}
 
 	
+	public Set<HealthCenterEntity> getPreviousHealthCenters() {
+		return previousHealthCenters;
+	}
+
+	public void setPreviousHealthCenters(
+			Set<HealthCenterEntity> previousHealthCenters) {
+		this.previousHealthCenters = previousHealthCenters;
+	}
+
 	public Long getUhid() {
 		return this.uhid;
 	}

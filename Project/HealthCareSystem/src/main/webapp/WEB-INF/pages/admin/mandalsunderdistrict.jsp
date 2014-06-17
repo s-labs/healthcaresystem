@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<h2>Villages :</h2>
+<h2>Mandals :</h2>
 				<table>
 					<thead>
 						<tr>
@@ -10,6 +10,7 @@
 							<th>Name &nbsp </th>
 							
 							<th>Details &nbsp </th>
+							<th>Delete &nbsp </th>
 							
 						</tr>
 					</thead>
@@ -24,6 +25,7 @@
 							
 								<td>${mandal.name }</td>
 								<td><a href="mandal/${mandal.code}">Detail</a></td>
+								<td><a href="deletemandal/${mandal.code}">Delete</a></td>
 							</tr>
 						</c:forEach>
 					</tbody>

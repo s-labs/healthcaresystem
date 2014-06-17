@@ -68,11 +68,15 @@
 				<prop key="/adminWelcome.htm">adminWelcomeController</prop>
 				<prop key="/logout.htm">logoutController</prop>
 				<prop key="/accessdenied.htm">accessDeniedController</prop>
+				<prop key="/profile.htm">profileController</prop>
 
 			</props>
 		</property>
 	</bean>
-
+<bean name="profileController"
+		class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="profile" />
+	</bean>
 	<bean
 		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
 		<property name="order" value="1" />

@@ -50,7 +50,7 @@
 								<td>Select State</td>
 								<td><div id="statesdropdown">
 										<select name="state" id="state">
-
+											<option value="0">Select state</option>
 											<c:forEach var="state" items="${states}" varStatus="status">
 												<option value="${state.code}">${state.name}</option>
 											</c:forEach>

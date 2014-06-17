@@ -91,4 +91,10 @@ public class HealthCenterDaoImpl implements HealthCenterDao {
 		return results;
 	}
 
+	@Override
+	public Set<PatientEntity> getAllPreviousPatientsOfHealthCenter(
+			long healthcenterid) {
+		return getHealthCenter(healthcenterid).getPreviousPatients();
+	}
+
 }

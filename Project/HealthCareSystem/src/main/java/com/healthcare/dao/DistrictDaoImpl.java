@@ -28,8 +28,13 @@ public class DistrictDaoImpl implements DistrictDao {
 				.createQuery("from DistrictEntity").list();
 	}
 
-	public void deleteDistrict(Integer districtId) {
-		// TODO Auto-generated method stub
+	public int deleteDistrict(Long districtId) {
+		String hql = "delete from DistrictEntity where ID = :ID";
+		Session session = this.sessionFactory.getCurrentSession();
+		Query query = session .createQuery(hql);
+		query.setParameter("ID", districtId);
+		int result = query.executeUpdate();
+		return result;
 
 	}
 

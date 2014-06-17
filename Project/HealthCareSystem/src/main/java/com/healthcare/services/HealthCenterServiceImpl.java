@@ -167,7 +167,9 @@ public class HealthCenterServiceImpl implements HealthCenterService{
 
 	@Transactional
 	public Set<PatientEntity> getAllPatientsOfHealthCenter(long healthcenterid) {
-		return healthCenterDao.getAllPatientsOfHealthCenter(healthcenterid);
+		Set<PatientEntity> patients = healthCenterDao.getAllPreviousPatientsOfHealthCenter(healthcenterid);
+		patients.addAll(healthCenterDao.getAllPatientsOfHealthCenter(healthcenterid));
+		return patients;
 	}
 
 	@Transactional
@@ -195,6 +197,7 @@ public class HealthCenterServiceImpl implements HealthCenterService{
 		HealthCenterEntity next = current.getNext();
 		if(tng.equalsIgnoreCase("move") && next!=null) {
 			patient.setHealthCenter(next);
+			patient.getPreviousHealthCenters().add(current);
 		}
 		patientDao.update(patient);
 		

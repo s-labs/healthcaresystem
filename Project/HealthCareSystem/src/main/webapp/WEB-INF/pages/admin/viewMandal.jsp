@@ -24,7 +24,7 @@
 					success : function(result) {
 
 						jQuery("#mandals").html(result);
-						}
+					}
 				});
 
 			});
@@ -43,27 +43,28 @@
 		<div class="main-content">
 			<div class="page-content">
 
-									<table>
+				<table>
 
-							<tr>
+					<tr>
 
-								<td>Select district</td>
-								<td><div id="statesdropdown">
-										<select name="district" id="district">
+						<td>Select district</td>
+						<td><div id="statesdropdown">
+								<select name="district" id="district">
+									<option value="0">Select District</option>
+									<c:forEach var="district" items="${districts}"
+										varStatus="status">
+										<option value="${district.code}">${district.name}</option>
+									</c:forEach>
+								</select>
+							</div></td>
+					</tr>
 
-											<c:forEach var="district" items="${districts}" varStatus="status">
-												<option value="${district.code}">${district.name}</option>
-											</c:forEach>
-										</select>
-									</div></td>
-							</tr>
+				</table>
+				<hr>
+				<h1>Mandals will be populated here</h1>
+				<div id="mandals"></div>
 
-						</table>
-						<hr>
-						<h1>Mandals will be populated here</h1>
-						<div id="mandals"></div>
 
-				
 				<input type="button" value="Back"
 					onclick="javascript:history.go(-1)">
 			</div>

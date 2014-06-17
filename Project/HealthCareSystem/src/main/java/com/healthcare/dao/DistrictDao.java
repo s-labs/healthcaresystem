@@ -8,7 +8,7 @@ import com.healthcare.model.StateEntity;
 public interface DistrictDao {
 	public void addDistrict(DistrictEntity district);
     public List<DistrictEntity> getAllDistricts();
-    public void deleteDistrict(Integer districtId);
+    public int deleteDistrict(Long districtCode);
     public DistrictEntity getDistrict(Long code);
 	public void update(DistrictEntity district);
 

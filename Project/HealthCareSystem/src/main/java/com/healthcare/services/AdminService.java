@@ -41,5 +41,7 @@ public interface AdminService {
 	public List<HealthCenterEntity> getHealthCentersOfLevel(int i);
 	public StateEntity getDistrictsOfaState(Long stateCode);
 	public DistrictEntity getMandalsOfaDistrict(Long districtcode);
+	public int deleteDistrict(Long districtCode);
+	public void deleteMandal(Long mandalCode);
 
 }

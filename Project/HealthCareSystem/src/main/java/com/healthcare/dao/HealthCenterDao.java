@@ -22,5 +22,8 @@ public interface HealthCenterDao {
 	public Set<PatientEntity> getAllPatientsOfHealthCenter(long healthcenterid);
 
 	public List<HealthCenterEntity> getAllHealthCentersOfLevel(int level);
+
+	public Set<PatientEntity> getAllPreviousPatientsOfHealthCenter(
+			long healthcenterid);
 	
 }

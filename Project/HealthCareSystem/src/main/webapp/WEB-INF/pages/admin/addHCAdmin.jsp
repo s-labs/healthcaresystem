@@ -28,7 +28,7 @@
 					</c:when>
 					<c:otherwise>
 						<h2>Add Health Center Admin</h2>
-						<form:form method="post" action="addHCAdmin" commandName="user">
+						<form:form method="post" action="${pageContext.request.contextPath}/admin/addHCAdmin" commandName="user">
 
 							<table>
 

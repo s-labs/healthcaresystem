@@ -41,6 +41,26 @@
 					</c:when>
 					<c:otherwise>
 						<br /> HealthCenter Name : ${mandal.healthCenter.name}
+						
+						<h1>Health Center users : </h1>
+						<table class="table table-striped table-bordered table-hover">
+						<th>username</th>
+						<th>role</th>
+						<c:forEach var="user" items="${mandal.healthCenter.users}"
+							varStatus="status">
+							<tr>
+						<td>${user.username }</td>
+						<td><c:forEach var="role" items="${user.roles}" varStatus="status">
+						${role.authority} &nbsp; &nbsp;<br/>
+						
+						</c:forEach>
+						</td></tr>
+						
+							</c:forEach>
+							
+							</table>
+							<br/>
+							<a href="${pageContext.request.contextPath}/admin/addHCAdmin/${mandal.healthCenter.id}">Add new Health center admin</a>
 					</c:otherwise>
 				</c:choose>
 

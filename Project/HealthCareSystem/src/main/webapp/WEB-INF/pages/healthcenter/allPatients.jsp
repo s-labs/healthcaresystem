@@ -29,6 +29,7 @@
 							<th>S.No</th>
 							<th>UHID</th>
 							<th>Name</th>
+							<th>Health Center Name</th>
 							<th class="hidden-480">Details</th>							
 							<sec:authorize ifAnyGranted="ROLE_DOCTOR">
 								<th class="hidden-480">Switch</th>
@@ -41,6 +42,7 @@
 							<td>${status.count}</td>
 							<td>${patient.uhid}</td>
 							<td>${patient.lastName} ${patient.firstName}</td>
+							<td>${patient.healthCenter.name}</td>
 							<td><a
 								href="${pageContext.request.contextPath}/healthCenter/patient/${patient.uhid}">details
 							</a></td>

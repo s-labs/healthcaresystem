@@ -27,8 +27,13 @@ public class MandalDaoImpl implements MandalDao{
 		return this.sessionFactory.getCurrentSession().createQuery("from MandalEntity").list();
 	}
 
-	public void deleteMandal(Integer mandalId) {
-		// TODO Auto-generated method stub
+	public int deleteMandal(long mandalId) {
+		String hql = "delete from MandalEntity where ID = :ID";
+		Session session = this.sessionFactory.getCurrentSession();
+		Query query = session .createQuery(hql);
+		query.setParameter("ID", mandalId);
+		int result = query.executeUpdate();
+		return result;
 		
 	}
 

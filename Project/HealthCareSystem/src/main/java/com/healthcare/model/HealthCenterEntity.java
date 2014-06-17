@@ -1,5 +1,6 @@
 package com.healthcare.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -9,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -18,36 +20,36 @@ import org.hibernate.annotations.IndexColumn;
 @Entity
 @Table(name = "healthcenter")
 public class HealthCenterEntity {
-	
 
 	@Id
 	@Column
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
 
 	@Column
 	private String name;
-	
+
 	@Column
 	private int level;
-	
-	@OneToOne(fetch = FetchType.EAGER)	
+
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "next")
-	@IndexColumn(name="id")
+	@IndexColumn(name = "id")
 	private HealthCenterEntity next;
-	
-	@OneToMany(fetch = FetchType.EAGER)	
+
+	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name = "healthcentercode")
-	@IndexColumn(name="USER_ID")
+	@IndexColumn(name = "USER_ID")
 	private Set<UserEntity> users;
-	
-	@OneToMany(fetch = FetchType.EAGER)	
+
+	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name = "healthcentercode")
-	@IndexColumn(name="UHID")
+	@IndexColumn(name = "UHID")
 	private Set<PatientEntity> patients;
-	
-	
+
+	@ManyToMany(mappedBy = "previousHealthCenters")
+	private Set<PatientEntity> previousPatients = new HashSet<PatientEntity>();
+
 	public Long getId() {
 		return id;
 	}
@@ -96,7 +98,14 @@ public class HealthCenterEntity {
 		this.patients = patients;
 	}
 
+	public Set<PatientEntity> getPreviousPatients() {
+		return previousPatients;
+	}
 
-
+	public void setPreviousPatients(Set<PatientEntity> previousPatients) {
+		this.previousPatients = previousPatients;
+	}
+	
+	
 
 }

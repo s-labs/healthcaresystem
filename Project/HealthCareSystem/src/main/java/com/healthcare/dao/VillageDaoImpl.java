@@ -27,8 +27,13 @@ public class VillageDaoImpl implements VillageDao{
 		return this.sessionFactory.getCurrentSession().createQuery("from VillageEntity").list();
 	}
 
-	public void deleteVillage(Integer villageId) {
-		// TODO Auto-generated method stub
+	public int deleteVillage(Integer villageId) {
+		String hql = "delete from PatientEntity where ID = :ID";
+		Session session = this.sessionFactory.getCurrentSession();
+		Query query = session .createQuery(hql);
+		query.setParameter("ID", villageId);
+		int result = query.executeUpdate();
+		return result;
 		
 	}
 

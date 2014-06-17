@@ -51,7 +51,7 @@
 								<tr>
 									<td>Select District</td>
 									<td><form:select path="district" id="district">
-
+											<form:option value="0">select district</form:option>
 											<c:forEach var="district" items="${districts}"
 												varStatus="status">
 
@@ -79,8 +79,10 @@
 								<tr>
 									<td>Level</td>
 									<td><select name="healthcenterlevel">
-											<option value="5">Village Sub Center</option>
-											<option value="4">Primary Health Center</option>
+											
+											<option value="3">CommunityHealthCenter</option>
+											
+											
 									</select></td>
 								</tr>
 								<tr>

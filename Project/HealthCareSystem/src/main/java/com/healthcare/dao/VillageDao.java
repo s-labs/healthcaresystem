@@ -8,7 +8,7 @@ public interface VillageDao{
 	
 	public void addVillage(VillageEntity village);
     public List<VillageEntity> getAllVillages();
-    public void deleteVillage(Integer villageId);
+    public int deleteVillage(Integer villageId);
 	public VillageEntity getVillage(Long villageCode);
      
     

@@ -2,6 +2,7 @@ package com.healthcare.controller;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -97,6 +98,29 @@ public class AdminServiceController {
 		model.setViewName("admin/district");
 		return model;
 	}
+	
+	@RequestMapping("/deletedistrict/{districtCode}")
+	public ModelAndView deleteDistrict(
+			@PathVariable("districtCode") Long districtCode) {
+		ModelAndView model = new ModelAndView();
+
+		adminService.deleteDistrict(districtCode);
+		model.setViewName("success");
+		model.addObject("SUCCESS_MESSAGE", "district deleted successfully");
+		return model;
+	}
+	
+	@RequestMapping("/deletemandal/{mandalCode}")
+	public ModelAndView deleteMandal(
+			@PathVariable("mandalCode") Long mandalCode) {
+		ModelAndView model = new ModelAndView();
+
+		adminService.deleteMandal(mandalCode);
+		model.setViewName("success");
+		
+		model.addObject("SUCCESS_MESSAGE", "mandal deleted successfully");
+		return model;
+	}
 
 	@RequestMapping(value="/mandalsList",method=RequestMethod.GET, headers="Accept=application/json", produces = "application/json;charset=UTF-8")
 	
@@ -126,11 +150,12 @@ public class AdminServiceController {
 	@RequestMapping(value = "/addDistrict", method = RequestMethod.POST)
 	public ModelAndView addDistrict(
 			@ModelAttribute(value = "districtform") DistrictForm districtform,
-			BindingResult result,@RequestParam("healthcenterName") String healthcenterName,@RequestParam("nexthealthcenterid") long nexthealthcenterid) {
+			BindingResult result,@RequestParam("healthcenterName") String healthcenterName,@RequestParam("nexthealthcenterid") long nexthealthcenterid,@RequestParam("healthcenterlevel") int healthcenterlevel) {
 
 		ModelAndView model = new ModelAndView();
 		HealthCenterForm healthcenterform = new HealthCenterForm();
 		HealthCenterEntity healthcenter = new HealthCenterEntity();
+		healthcenter.setLevel(healthcenterlevel);
 		healthcenter.setName(healthcenterName);
 		healthcenterform.setHealthcenter(healthcenter );
 		healthcenterform.setNext(nexthealthcenterid);
@@ -139,7 +164,7 @@ public class AdminServiceController {
 
 		adminService.addDistrict(districtform.getDistrict(),
 				districtform.getStateId());
-		model.addObject("SUCCESS_MESSAGE", "village added successfully");
+		model.addObject("SUCCESS_MESSAGE", "district added successfully");
 		model.setViewName("admin/addDistrict");
 		return model;
 	}
@@ -186,12 +211,13 @@ public class AdminServiceController {
 	@RequestMapping(value = "/addMandal", method = RequestMethod.POST)
 	public ModelAndView addMandal(
 			@ModelAttribute(value = "mandal") MandalEntity mandal,
-			BindingResult result,@RequestParam("healthcenterName") String healthcenterName,@RequestParam("nexthealthcenterid") long nexthealthcenterid) {
+			BindingResult result,@RequestParam("healthcenterName") String healthcenterName,@RequestParam("nexthealthcenterid") long nexthealthcenterid,@RequestParam("healthcenterlevel") int healthcenterlevel) {
 
 		ModelAndView model = new ModelAndView();
 		HealthCenterForm healthcenterform = new HealthCenterForm();
 		HealthCenterEntity healthcenter = new HealthCenterEntity();
 		healthcenter.setName(healthcenterName);
+		healthcenter.setLevel(healthcenterlevel);
 		healthcenterform.setHealthcenter(healthcenter );
 		healthcenterform.setNext(nexthealthcenterid);
 		healthcenter = adminService.addHealthCenter(healthcenterform );
@@ -230,9 +256,6 @@ public class AdminServiceController {
 
 		MandalEntity mandal = adminService.getMandal(mandalCode);
 		model.addObject("mandal", mandal);
-		List<HealthCenterEntity> healthcenters = adminService
-				.getAllHealthCenters();
-		model.addObject("healthcenters", healthcenters);
 		model.setViewName("admin/mandal");
 		return model;
 	}
@@ -259,13 +282,15 @@ public class AdminServiceController {
 	@RequestMapping(value = "/addVillage", method = RequestMethod.POST)
 	public ModelAndView addVillage(
 			@ModelAttribute(value = "village") VillageEntity village,
-			BindingResult result,@RequestParam("healthcenterName") String healthcenterName,@RequestParam("nexthealthcenterid") long nexthealthcenterid) {
+			BindingResult result,@RequestParam("healthcenterName") String healthcenterName,@RequestParam("nexthealthcenterid") long nexthealthcenterid,@RequestParam("healthcenterlevel") int healthcenterlevel) {
 
 		ModelAndView model = new ModelAndView();
 		HealthCenterForm healthcenterform = new HealthCenterForm();
 		HealthCenterEntity healthcenter = new HealthCenterEntity();
+		healthcenter.setLevel(healthcenterlevel);
 		healthcenter.setName(healthcenterName);
 		healthcenterform.setHealthcenter(healthcenter );
+		
 		healthcenterform.setNext(nexthealthcenterid);
 		healthcenter = adminService.addHealthCenter(healthcenterform );
 		village.setHealthCenter(healthcenter);
@@ -381,6 +406,19 @@ public class AdminServiceController {
 	public String addHCAdminFrom(ModelMap map) {
 		List<HealthCenterEntity> healthcenters = adminService
 				.getAllHealthCenters();
+		map.addAttribute("healthcenters", healthcenters);
+		map.addAttribute("user", new UserEntity());
+
+		return "admin/addHCAdmin";
+	}
+	
+	@RequestMapping(value = "/addHCAdmin/{healthcentercode}", method = RequestMethod.GET)
+	public String addHCAdminFrom(ModelMap map,@PathVariable("healthcentercode") long healthcentercode) {
+		List<HealthCenterEntity> healthcenters = new ArrayList<HealthCenterEntity>();
+		HealthCenterEntity healthcenter;
+		healthcenter = adminService.getHealthCenter(healthcentercode);
+		
+		healthcenters.add(healthcenter);
 		map.addAttribute("healthcenters", healthcenters);
 		map.addAttribute("user", new UserEntity());
 

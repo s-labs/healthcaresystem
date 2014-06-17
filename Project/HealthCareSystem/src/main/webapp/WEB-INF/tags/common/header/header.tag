@@ -37,7 +37,7 @@
 									</a>
 								</sec:authorize></li>
 
-							<li><a href="#"> <i class="icon-user"></i> Profile
+							<li><a href="${pageContext.request.contextPath}/profile.htm"> <i class="icon-user"></i> Profile
 							</a></li>
 
 							<li class="divider"></li>
