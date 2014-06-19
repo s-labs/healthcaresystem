@@ -47,7 +47,7 @@ public class HealthCenterEntity {
 	@IndexColumn(name = "UHID")
 	private Set<PatientEntity> patients;
 
-	@ManyToMany(mappedBy = "previousHealthCenters")
+	@ManyToMany(mappedBy = "previousHealthCenters",fetch = FetchType.EAGER)
 	private Set<PatientEntity> previousPatients = new HashSet<PatientEntity>();
 
 	public Long getId() {
